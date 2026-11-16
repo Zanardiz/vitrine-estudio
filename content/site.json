@@ -1,0 +1,136 @@
+{
+  "seo": {
+    "titulo": "Vitrine Estúdio: sites sob medida para pequenas empresas",
+    "descricao": "Refazemos o seu site e mandamos a prévia pronta antes de você pagar, com a nota do Google de antes e depois. Sites com nota 90 ou mais no celular.",
+    "descricao_compartilhar": "Veja o seu site novo pronto antes de pagar: a Prévia Vitrine."
+  },
+  "inicio": {
+    "titulo": "Sites sob medida para negócios",
+    "texto": "Antes de você pagar, mandamos o seu site novo pronto, ao lado do atual. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada."
+  },
+  "previa": {
+    "titulo": "A prévia do seu site em 3 passos.",
+    "texto": "Você só decide no último.",
+    "passos": [
+      {
+        "nome": "Lemos o seu site atual",
+        "texto": "Anotamos os serviços, as fotos, o bairro e os horários, e medimos a nota do site no celular.",
+        "foto": "photo-f69023035",
+        "foto_alt": "Dedo tocando a tela de um celular sobre uma mesa branca"
+      },
+      {
+        "nome": "Montamos o site novo",
+        "texto": "Com os seus textos e as suas fotos, num endereço privado e fora do Google.",
+        "foto": "photo-f102159114",
+        "foto_alt": "Notebook aberto com código de estilo na tela"
+      },
+      {
+        "nome": "Você compara os dois sites",
+        "texto": "Um link com os dois sites lado a lado e as notas de antes e depois. Gostou, publicamos.",
+        "foto": "photo-f51439363",
+        "foto_alt": "Mão segurando um celular ao lado de um copo de café"
+      }
+    ]
+  },
+  "padrao": {
+    "titulo": "O Padrão Vitrine",
+    "complemento": "Seis regras de todo site que entregamos.",
+    "texto": "Valem para a prévia e para o site publicado. Se uma não passa, o site não sai.",
+    "itens": [
+      {
+        "nome": "Nota 90 ou mais no Google",
+        "texto": "Nas quatro áreas do PageSpeed, medida no celular antes da entrega."
+      },
+      {
+        "nome": "A sua empresa, não um modelo",
+        "texto": "As suas fotos, os seus serviços e o seu bairro, em vez de um tema pronto com o seu logo."
+      },
+      {
+        "nome": "Um efeito do seu ramo no site",
+        "texto": "Um movimento feito para o seu negócio, como a foto que se revela aqui ao lado."
+      },
+      {
+        "nome": "Botão de WhatsApp no site",
+        "texto": "Fixo no canto da tela, com o horário de hoje à vista: contato em um toque."
+      },
+      {
+        "nome": "O Google entende cada página",
+        "texto": "Título, descrição e os dados da empresa no formato que o Google lê."
+      },
+      {
+        "nome": "Um painel para editar o site",
+        "texto": "Um painel simples para trocar frases, serviços e perguntas sem esperar por nós."
+      }
+    ]
+  },
+  "manifesto": {
+    "rotulo": "O que defendemos",
+    "antes": "Site de pequena empresa não precisa parecer pequeno. Ele precisa abrir rápido, mostrar o seu trabalho de verdade e fazer quem chegou pelo celular",
+    "destaque": "chamar você",
+    "depois": " no mesmo minuto."
+  },
+  "trabalhos": {
+    "titulo": "Site da Macedo's Auto Detail",
+    "texto": "Estética automotiva em Caxias do Sul. Página única com os serviços, os pacotes e o pedido de orçamento pelo Instagram."
+  },
+  "analise": {
+    "titulo": "Análise grátis do seu site.",
+    "complemento": "Nota de 0 a 100 em quatro áreas.",
+    "texto": "Cole o endereço e espere uns 30 segundos. A análise roda o PageSpeed Insights na versão de celular, sem cadastro."
+  },
+  "servicos": {
+    "titulo": "Três serviços para o seu site",
+    "texto": "Toda escolha começa pela prévia grátis.",
+    "itens": [
+      {
+        "nome": "Otimização",
+        "texto": "Deixamos o site que você já tem mais rápido no celular, com SEO básico e botão de WhatsApp."
+      },
+      {
+        "nome": "Site novo",
+        "texto": "Página única ou várias páginas, feito do zero, com textos, fotos e formulário de contato."
+      },
+      {
+        "nome": "Manutenção mensal",
+        "texto": "Todo mês rodamos a análise de novo, trocamos textos e fotos e corrigimos o que piorar."
+      }
+    ]
+  },
+  "perguntas": {
+    "titulo": "Perguntas sobre a prévia",
+    "texto": "O que mais nos perguntam antes de pedir.",
+    "itens": [
+      {
+        "pergunta": "A prévia é grátis mesmo?",
+        "resposta": "Sim. Se não gostar, você não paga nada, e apagamos a prévia em 30 dias."
+      },
+      {
+        "pergunta": "E se eu ainda não tenho site?",
+        "resposta": "Montamos a prévia com o que está no seu Instagram ou na sua página do Google: fotos, serviços e horários."
+      },
+      {
+        "pergunta": "Quanto custa arrumar ou fazer um site?",
+        "resposta": "Depende do tamanho do site e do que precisa mudar. Mandamos o valor fechado antes de começar."
+      },
+      {
+        "pergunta": "Vocês mexem em site de WordPress?",
+        "resposta": "Sim. Fazemos temas de WordPress do zero e também trabalhamos com sites em HTML."
+      },
+      {
+        "pergunta": "Preciso trocar a hospedagem do site?",
+        "resposta": "Não. Trabalhamos na hospedagem que você já usa. Para site novo, indicamos opções sem mensalidade."
+      }
+    ]
+  },
+  "orcamento": {
+    "titulo": "Peça a prévia do seu site",
+    "texto": "Mande o endereço do site atual. Sem site, conte o que a empresa faz e onde fica.",
+    "email": "contato@vitrineestudio.example",
+    "endereco_formulario": ""
+  },
+  "rodape": {
+    "titulo": "Veja o seu site novo antes de pagar",
+    "texto": "A prévia é grátis e chega por e-mail, com o link privado.",
+    "frase": "Sites sob medida para pequenas empresas."
+  }
+}

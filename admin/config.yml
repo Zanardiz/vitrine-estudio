@@ -1,0 +1,97 @@
+# Painel /admin. Troque SEU-USUARIO-GITHUB pelo seu usuário do GitHub depois de criar o repositório.
+backend:
+  name: github
+  repo: Zanardiz/vitrine-estudio
+  branch: main
+  commit_messages:
+    update: "conteudo: atualiza {{slug}} pelo painel"
+
+media_folder: assets/img/uploads
+public_folder: assets/img/uploads
+
+collections:
+  - name: site
+    label: Site
+    editor: { preview: false }
+    files:
+      - name: textos
+        label: Textos da página
+        file: content/site.json
+        format: json
+        fields:
+          - label: Google e compartilhamento
+            name: seo
+            widget: object
+            fields:
+              - { label: Título da aba e do Google, name: titulo, widget: string }
+              - { label: Descrição no Google, name: descricao, widget: text }
+              - { label: Descrição ao compartilhar no WhatsApp, name: descricao_compartilhar, widget: text }
+          - label: Primeira tela
+            name: inicio
+            widget: object
+            fields:
+              - { label: Frase pequena acima do título, name: chamada, widget: string }
+              - { label: Título principal, name: titulo, widget: string, hint: "Curto: até uns 40 caracteres." }
+              - { label: Texto abaixo do título, name: texto, widget: text }
+          - label: Análise grátis
+            name: analise
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Complemento do título (em cor suave), name: complemento, widget: string }
+              - { label: Texto ao lado do campo, name: texto, widget: text }
+          - label: Serviços
+            name: servicos
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+              - label: Serviços
+                name: itens
+                widget: list
+                min: 1
+                summary: "{{fields.nome}}"
+                fields:
+                  - { label: Nome, name: nome, widget: string }
+                  - { label: Descrição, name: texto, widget: text }
+          - label: Trabalhos
+            name: trabalhos
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+          - label: Etapas
+            name: etapas
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: string }
+          - label: Perguntas
+            name: perguntas
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: string }
+              - label: Perguntas
+                name: itens
+                widget: list
+                min: 1
+                summary: "{{fields.pergunta}}"
+                fields:
+                  - { label: Pergunta, name: pergunta, widget: string }
+                  - { label: Resposta, name: resposta, widget: text }
+          - label: Orçamento
+            name: orcamento
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+              - { label: E-mail que recebe os pedidos, name: email, widget: string }
+              - { label: Endereço do formulário (Formspree), name: endereco_formulario, widget: string, required: false, hint: "Opcional. Ex.: https://formspree.io/f/abcd1234. Com ele, o pedido chega sem abrir o app de e-mail." }
+          - label: Rodapé
+            name: rodape
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: string }
+              - { label: Frase abaixo do logo, name: frase, widget: string }

@@ -1,0 +1,72 @@
+/* Zanardigital v2: só o que fica dentro dos visuais e o kit não tem (a análise, os quadros de foto, as regras). */
+
+/* A prévia: cada etapa com a sua foto no painel do cartão */
+#previa .panel { --p-h: 336px; position: relative; overflow: hidden; }
+#previa .panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* O Padrão: a foto que se revela (picture-develops) e as seis regras em três colunas */
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(440px, var(--ly-fit, 440px)); }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.padrao__regras { list-style: none; margin: var(--s-8) 0 0; padding: 0; counter-reset: regra; row-gap: var(--s-7); }
+.padrao__regra { counter-increment: regra; border-top: 1px solid color-mix(in oklab, var(--ink) 22%, transparent); padding-top: var(--s-4); display: grid; gap: var(--s-2); }
+.padrao__regra h3::before { content: counter(regra, decimal-leading-zero); display: block; font: 500 var(--t-small)/1 var(--font-text); color: var(--muted); margin-bottom: var(--s-3); }
+.padrao__regra h3 { font: 400 var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
+.padrao__regra p { color: var(--muted); max-width: 36ch; }
+
+/* Trabalhos e serviços: um quadro, cantos do sistema, sem legenda */
+.servicos__photo, .trabalho { position: relative; overflow: hidden; border-radius: var(--r-lg); background: var(--surface); }
+.servicos__photo { aspect-ratio: 4 / 3; }
+.trabalho { aspect-ratio: 3 / 2; }
+.servicos__photo > img, .trabalho img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.trabalho img { object-position: 50% 0%; }
+
+/* O pedido da prévia num painel de chão alternativo */
+.orcamento__box { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-7); }
+
+/* A análise: o formulário de uma linha e o painel de resultado */
+.analise__intro { font-size: var(--t-lead); line-height: 1.5; max-width: 40ch; }
+.audit { display: grid; gap: var(--s-4); }
+.audit .btn-row { margin: 0; }
+.audit-panel { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-6); display: grid; gap: var(--s-6); }
+.audit-panel__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); }
+.audit-panel__site { overflow-wrap: anywhere; text-align: right; }
+.audit-scores { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); }
+.audit-scores > li { display: grid; justify-items: center; gap: var(--s-2); text-align: center; font-size: var(--t-small); font-weight: 500; }
+.audit-ring {
+  width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; position: relative;
+  background:
+    radial-gradient(circle, var(--surface) 0 34px, transparent 35px),
+    conic-gradient(var(--ink) calc(var(--v) * 1%), color-mix(in oklab, var(--ink) 14%, transparent) 0);
+}
+.audit-ring b { font: 400 28px/1 var(--font-display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.audit-issues { display: grid; gap: var(--s-3); }
+.audit-issues h3 { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; }
+.audit-issues ol { margin: 0; padding-left: 1.25em; display: grid; gap: var(--s-2); font-size: var(--t-body); line-height: 1.5; }
+.audit-issues .link { justify-self: start; }
+
+@media (max-width: 1023px) {
+  .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); }
+  .padrao__regras .padrao__regra { grid-column: span 6; }
+}
+
+@media (max-width: 639px) {
+  .audit-scores { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s-5); }
+  .audit-panel { padding: var(--s-5); }
+  .orcamento__box { padding: var(--s-5); }
+  .padrao__regras .padrao__regra { grid-column: 1 / -1; }
+}
+
+/* O pedido: a foto embaixo do texto, ao lado do formulário */
+.pedido__photo { position: relative; overflow: hidden; border-radius: var(--r-lg); aspect-ratio: 3 / 2; background: var(--surface); }
+.pedido__photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.padrao__regra p, .audit-issues .link { color: var(--ink); }
+@media (min-width: 1024px) { .develop { height: 316px; } .padrao__regras { margin-top: var(--s-7); } }
+
+/* Celular: a prévia e o Padrão cabem em duas telas inteiras */
+@media (max-width: 639px) {
+  #previa .panel { --p-h: 168px; }
+  #previa .grid { row-gap: var(--s-5); }
+  .develop { aspect-ratio: 16 / 9; margin-top: var(--s-5); }
+  .padrao__regras { margin-top: var(--s-6); row-gap: var(--s-4); }
+  .padrao__regra h3::before { margin-bottom: var(--s-2); }
+}
