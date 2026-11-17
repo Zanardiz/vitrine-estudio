@@ -22,7 +22,8 @@
   let lenis = null;
   function initScroll() {
     if (!window.Lenis) return;
-    lenis = new window.Lenis({ lerp: calm ? 0.16 : 0.09, smoothWheel: true });
+    // A roda do mouse é tratada pelas janelas (initPanels); no toque, a rolagem segue normal.
+    lenis = new window.Lenis({ lerp: calm ? 0.16 : 0.09, smoothWheel: !fine });
     const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
@@ -31,7 +32,9 @@
       if (!el) return;
       e.preventDefault();
       closeMenu();
-      lenis.scrollTo(el, { offset: -20, duration: 1.4 });
+      // as seções grudam no topo; o marcador antes delas guarda a posição real
+      const mark = el.previousElementSibling;
+      lenis.scrollTo(mark && mark.tagName === 'I' ? mark : el, { duration: 1.4 });
       history.replaceState(null, '', id);
     }));
   }
@@ -265,6 +268,135 @@
     });
   }
 
+  /* Janelas: cada seção gruda no topo, a próxima sobe por cima e a de baixo encolhe e escurece.
+     Uma rolada (ou seta para baixo) leva à próxima janela; seções altas andam uma tela por vez. */
+  const STEP_MS = 1.05;
+  function initPanels() {
+    const panels = $$('main > section, .flow > section, .foot');
+    if (!panels.length) return;
+    const marks = panels.map((p) => { const m = document.createElement('i'); m.style.cssText = 'display:block;height:0'; p.before(m); return m; });
+    let stops = [];
+    let tops = [];
+    const measure = () => {
+      const vh = window.innerHeight;
+      stops = [];
+      tops = [];
+      panels.forEach((p, i) => {
+        const h = p.offsetHeight;
+        if (!p.classList.contains('hs')) p.style.setProperty('--stick', `${Math.min(0, vh - h)}px`);
+        const top = marks[i].getBoundingClientRect().top + window.scrollY;
+        tops.push(top);
+        stops.push(Math.round(top));
+        const extra = h - vh;
+        if (extra > vh * 0.15) {
+          const stepLen = p.classList.contains('hs') ? vh * 0.55 : vh * 0.8;
+          for (let y = stepLen; y < extra; y += stepLen) stops.push(Math.round(top + y));
+          stops.push(Math.round(top + extra));
+        }
+      });
+      stops = [...new Set(stops)].sort((a, b) => a - b);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    setTimeout(measure, 1500);
+
+    // a janela de baixo encolhe e escurece enquanto a próxima sobe
+    if (M) {
+      panels.forEach((p, i) => {
+        const next = panels[i + 1];
+        if (!next || p.classList.contains('hs')) return;
+        const shade = document.createElement('span');
+        shade.className = 'panel-shade';
+        p.append(shade);
+        M.scroll((v) => {
+          p.style.transform = v > 0 ? `scale(${(1 - 0.08 * v).toFixed(4)})` : '';
+          p.style.borderRadius = v > 0 ? `${Math.round(v * 32)}px` : '';
+          shade.style.opacity = (v * 0.55).toFixed(3);
+        }, { target: next, offset: ['start end', 'start start'] });
+      });
+    }
+
+    // contador de janelas
+    const pager = document.createElement('div');
+    pager.className = 'pager';
+    pager.setAttribute('aria-hidden', 'true');
+    pager.innerHTML = `<b data-pg>01</b><span>/ ${String(panels.length).padStart(2, '0')}</span><span class="pager__bar"><i data-pg-bar></i></span>${fine ? '<span class="pager__hint">Role ou use ↓</span>' : ''}`;
+    document.body.append(pager);
+    const pgNum = $('[data-pg]', pager);
+    const pgBar = $('[data-pg-bar]', pager);
+    const updatePager = () => {
+      const y = window.scrollY + window.innerHeight * 0.5;
+      let idx = 0;
+      tops.forEach((t, i) => { if (t <= y) idx = i; });
+      pgNum.textContent = String(idx + 1).padStart(2, '0');
+      pgBar.style.width = `${((idx + 1) / panels.length) * 100}%`;
+    };
+    window.addEventListener('scroll', updatePager, { passive: true });
+    updatePager();
+
+    if (!fine || !lenis) return;
+    let lock = false;
+    const go = (dir) => {
+      if (lock) return;
+      const y = window.scrollY;
+      const target = dir > 0 ? stops.find((s) => s > y + 8) : [...stops].reverse().find((s) => s < y - 8);
+      if (target === undefined) return;
+      lock = true;
+      const unlock = () => { lock = false; };
+      const safety = setTimeout(unlock, (D(STEP_MS) + 0.6) * 1000);
+      lenis.scrollTo(target, { duration: D(STEP_MS), easing: (t) => 1 - Math.pow(1 - t, 4), onComplete: () => { clearTimeout(safety); setTimeout(unlock, 160); } });
+    };
+    const menuOpen = () => menu && !menu.hidden;
+    window.addEventListener('wheel', (e) => {
+      if (e.ctrlKey || menuOpen()) return;
+      e.preventDefault();
+      if (Math.abs(e.deltaY) < 4) return;
+      go(Math.sign(e.deltaY));
+    }, { passive: false });
+    document.addEventListener('keydown', (e) => {
+      const tag = (e.target.tagName || '').toLowerCase();
+      if (menuOpen() || ['input', 'textarea', 'select'].includes(tag) || e.target.isContentEditable) return;
+      const down = ['ArrowDown', 'PageDown'].includes(e.key) || (e.key === ' ' && !e.shiftKey);
+      const up = ['ArrowUp', 'PageUp'].includes(e.key) || (e.key === ' ' && e.shiftKey);
+      if (!down && !up) return;
+      e.preventDefault();
+      go(down ? 1 : -1);
+    });
+  }
+
+  /* Capítulos: o celular entra de um jeito diferente em cada janela e os extras aparecem */
+  function initChapters() {
+    if (!M) return;
+    const entries = {
+      'chap--antes': { phone: { y: [260, 0], rotate: [30, 12], opacity: [0, 1] } },
+      'chap--previa': { phone: { scale: [0.6, 1], rotate: [-20, 0], opacity: [0, 1] } },
+      'chap--nota': { phone: { x: [-300, 0], rotate: [-40, -14], opacity: [0, 1] } },
+      'chap--whats': { phone: { y: [300, 0], opacity: [0, 1] } },
+      'chap--publica': { phone: { rotateY: [180, 0], scale: [0.8, 1], opacity: [0, 1] } },
+    };
+    $$('.chap').forEach((ch) => {
+      const kind = Object.keys(entries).find((k) => ch.classList.contains(k));
+      const phone = $('[data-chap]', ch);
+      const extra = $('[data-chap-extra]', ch);
+      if (phone) phone.style.opacity = '0';
+      if (extra) extra.style.opacity = '0';
+      M.inView(ch, () => {
+        if (phone) M.animate(phone, entries[kind].phone, { type: 'spring', stiffness: 90, damping: 15, delay: 0.15 });
+        if (!extra) return;
+        if (kind === 'chap--antes') M.animate(extra, { scale: [3, 1], opacity: [0, 1], rotate: [-30, -14] }, { duration: D(0.45), ease: [0.6, 0, 0.3, 1.4], delay: 0.7 });
+        if (kind === 'chap--nota') {
+          extra.style.opacity = '1';
+          M.animate(0, 90, { duration: D(1.6), ease: [0.2, 0.8, 0.2, 1], onUpdate: (v) => { extra.textContent = Math.round(v); } }).then(() => { extra.textContent = '90+'; });
+        }
+        if (kind === 'chap--whats') {
+          extra.style.opacity = '1';
+          M.animate($$('span', extra), { scale: [0.4, 1], y: [30, 0], opacity: [0, 1] }, { type: 'spring', stiffness: 260, damping: 16, delay: M.stagger(0.45, { startDelay: 0.5 }) });
+        }
+      }, { amount: 0.45 });
+    });
+  }
+
   /* Formulário do pedido */
   function initForm() {
     const form = $('[data-form]');
@@ -314,5 +446,7 @@
   initReel();
   initMenu();
   initCursor();
+  initPanels();
+  initChapters();
   initForm();
 })();
