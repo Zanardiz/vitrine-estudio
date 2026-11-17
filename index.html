@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#eef0f6">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/v6.css">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
@@ -114,6 +114,21 @@
     <div class="chap__phone" data-chap><img src="assets/img/work-macedos-servicos-celular.webp" width="390" height="844" alt="Site da Macedo's Auto Detail, cliente real, no celular" loading="lazy"></div>
   </section>
 
+  <!-- Antes | Depois: as palavras se afastam e o celular sai do preto e branco para a cor (seção presa) -->
+  <section class="ad" aria-labelledby="ad-h" data-pin data-ad>
+    <div class="ad__sticky">
+      <canvas class="topo" aria-hidden="true" data-topo></canvas>
+      <h2 id="ad-h" class="sr">Antes e depois do site</h2>
+      <span class="ad__word" aria-hidden="true" data-ad-l>Antes</span>
+      <figure class="ad__phone">
+        <img class="ad__before" src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="O site antes: sem cor e sem vida" loading="lazy">
+        <img class="ad__after" src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="O site depois, com o novo visual" loading="lazy" data-ad-after>
+      </figure>
+      <span class="ad__word" aria-hidden="true" data-ad-r>Depois</span>
+      <p class="tiny ad__cap">Role para ver o site mudar</p>
+    </div>
+  </section>
+
   <div class="flow" data-flow>
     <svg class="ribbon" viewBox="0 0 1440 3000" preserveAspectRatio="none" aria-hidden="true">
       <defs><linearGradient id="rib" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d4bff"/><stop offset=".55" stop-color="#5b6cff"/><stop offset="1" stop-color="#5ff0ff"/></linearGradient></defs>
@@ -180,11 +195,13 @@
 
   <!-- A frase grande, com o mapa de linhas ao fundo e fotos que andam em velocidades diferentes -->
   <section class="state" aria-labelledby="state-h">
-    <img class="state__ph state__ph--a" src="assets/img/photo-f188536778-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="0.18">
-    <img class="state__ph state__ph--b" src="assets/img/photo-f187311853-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="-0.12">
-    <img class="state__ph state__ph--c" src="assets/img/photo-f197684384-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="0.1">
+    <canvas class="topo" aria-hidden="true" data-topo></canvas>
+    <figure class="state__ph state__ph--a" data-speed="0.18"><figcaption class="tiny">Barbearia · conceito</figcaption><img src="assets/img/photo-f188536778-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
+    <figure class="state__ph state__ph--b" data-speed="-0.12"><figcaption class="tiny">Café · conceito</figcaption><img src="assets/img/photo-f187311853-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
+    <figure class="state__ph state__ph--c" data-speed="0.1"><figcaption class="tiny">Clínica · conceito</figcaption><img src="assets/img/photo-f197684384-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
+    <svg class="sign" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
     <p class="tiny state__kicker">O que defendemos</p>
-    <h2 id="state-h" class="state__title" data-split>Site de pequena empresa não precisa parecer <span class="hl">pequeno.</span></h2>
+    <h2 id="state-h" class="state__title" data-light>Site de pequena empresa não precisa parecer <span class="hl">pequeno.</span></h2>
     <p class="state__text">Ele precisa abrir rápido, mostrar o seu trabalho de verdade e fazer quem chegou pelo celular <strong>chamar você</strong> no mesmo minuto.</p>
   </section>
 
@@ -327,6 +344,8 @@
 </main>
 
 <footer class="foot">
+  <canvas class="topo" aria-hidden="true" data-topo></canvas>
+  <svg class="sign sign--foot" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
   <p class="tiny">A prévia é grátis e chega por e-mail, com o link privado.</p>
   <a class="foot__big" href="#pedido" data-split>Veja o seu site novo antes de pagar</a>
   <div class="foot__row">

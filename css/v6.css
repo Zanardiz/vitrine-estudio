@@ -377,3 +377,58 @@ main > section.hs { position: relative; z-index: 1; }
   .chap__bubbles { right: 4%; top: auto; bottom: 12%; }
   .chap--nota .chap__text { order: -1; }
 }
+
+/* ===== Efeitos do site do piloto ===== */
+/* Mapa topográfico animado */
+.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: .9; }
+.state > *:not(.topo), .foot > *:not(.topo) { position: relative; z-index: 2; }
+.state { background-image: none; }
+.foot { overflow: hidden; }
+
+/* Assinatura que se desenha */
+.sign { display: block; width: min(560px, 80vw); height: auto; margin: 0 auto -30px; overflow: visible; }
+.sign text { font: 400 150px "Mrs Saint Delafield", cursive; fill: transparent; stroke: var(--lime); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.sign.drawn text { fill: var(--lime); transition: fill .8s ease .2s; }
+.sign--foot { position: absolute !important; right: var(--g); top: 40px; width: min(420px, 50vw); margin: 0; opacity: .9; }
+
+/* Fotos espalhadas com legenda */
+figure.state__ph { margin: 0; display: grid; gap: 6px; position: absolute; z-index: 1; }
+figure.state__ph img { border-radius: 8px; filter: grayscale(.35) contrast(1.05); }
+figure.state__ph figcaption { color: rgb(233 236 223 / .55); text-align: left; font-size: 9px; }
+.state__ph--a { left: 5%; top: 12%; }
+.state__ph--b { right: 6%; top: 18%; }
+.state__ph--c { left: 12%; bottom: 8%; }
+
+/* Frase que acende palavra por palavra */
+[data-light] .lw { color: rgb(233 236 223 / .16); transition: color .35s ease; }
+[data-light] .lw.on { color: #e9ecdf; }
+[data-light] .hl .lw.on { color: var(--lime); }
+
+/* Antes | Depois */
+main > section[data-pin] { position: relative; z-index: 1; min-height: 0; }
+.ad { height: 260vh; background: #1c1f17; color: #e9ecdf; }
+.ad__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
+.ad__word { position: absolute; top: 50%; z-index: 1; font: 800 clamp(54px, 8.6vw, 160px)/1 var(--font); letter-spacing: -.06em; text-transform: uppercase; translate: 0 -50%; white-space: nowrap; }
+.ad__word[data-ad-l] { right: 50%; margin-right: clamp(120px, 13vw, 200px); color: rgb(233 236 223 / .35); }
+.ad__word[data-ad-r] { left: 50%; margin-left: clamp(120px, 13vw, 200px); color: var(--lime); }
+.ad__phone { position: relative; z-index: 2; margin: 0; width: clamp(200px, 20vw, 300px); aspect-ratio: 390 / 844; padding: 9px; border-radius: 44px; background: #0b0b0d; box-shadow: 0 0 0 1.5px #3a3a40 inset, 0 60px 100px -40px rgb(0 0 0 / .8); }
+.ad__phone img { position: absolute; inset: 9px; width: calc(100% - 18px); height: calc(100% - 18px); object-fit: cover; object-position: top; border-radius: 36px; }
+.ad__before { filter: grayscale(1) blur(2px) brightness(.7); }
+.ad__after { clip-path: inset(100% 0 0 0); }
+.ad__cap { position: absolute; bottom: 34px; left: 50%; translate: -50% 0; color: rgb(233 236 223 / .55); z-index: 2; }
+
+/* Cartões escuros de canto cortado */
+.services .service { background: #15171c; color: #fff; clip-path: polygon(0 0, calc(100% - 46px) 0, 100% 46px, 100% 100%, 46px 100%, 0 calc(100% - 46px)); border-radius: 0; }
+.services .service p { color: rgb(255 255 255 / .62); }
+.services .service::before { content: ""; position: absolute; inset: 0; border: 1px solid rgb(255 255 255 / .12); clip-path: inherit; pointer-events: none; }
+.services .service:hover { background: var(--lime); color: var(--ink); }
+.services .service:hover p { color: #2d3305; }
+
+@media (max-width: 1023px) {
+  .ad__word { font-size: 17vw; }
+  .ad__word[data-ad-l] { margin-right: 26vw; }
+  .ad__word[data-ad-r] { margin-left: 26vw; }
+  .ad__phone { width: 42vw; }
+  figure.state__ph { opacity: .45; }
+  .sign--foot { display: none; }
+}

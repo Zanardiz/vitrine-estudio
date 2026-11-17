@@ -284,13 +284,13 @@
       tops = [];
       panels.forEach((p, i) => {
         const h = p.offsetHeight;
-        if (!p.classList.contains('hs')) p.style.setProperty('--stick', `${Math.min(0, vh - h)}px`);
+        if (!p.matches('.hs, [data-pin]')) p.style.setProperty('--stick', `${Math.min(0, vh - h)}px`);
         const top = marks[i].getBoundingClientRect().top + window.scrollY;
         tops.push(top);
         stops.push(Math.round(top));
         const extra = h - vh;
         if (extra > vh * 0.15) {
-          const stepLen = p.classList.contains('hs') ? vh * 0.55 : vh * 0.8;
+          const stepLen = p.matches('.hs, [data-pin]') ? vh * 0.55 : vh * 0.8;
           for (let y = stepLen; y < extra; y += stepLen) stops.push(Math.round(top + y));
           stops.push(Math.round(top + extra));
         }
@@ -306,7 +306,7 @@
     if (M) {
       panels.forEach((p, i) => {
         const next = panels[i + 1];
-        if (!next || p.classList.contains('hs')) return;
+        if (!next || p.matches('.hs, [data-pin]')) return;
         const shade = document.createElement('span');
         shade.className = 'panel-shade';
         p.append(shade);
@@ -413,6 +413,115 @@
     });
   }
 
+  /* Mapa topográfico: linhas de nível que se mexem devagar (marching squares sobre ondas somadas) */
+  const TOPO_CELL = 18;
+  const TOPO_LEVELS = [-2.4, -1.8, -1.2, -0.6, 0, 0.6, 1.2, 1.8, 2.4];
+  const TOPO_FPS = 24;
+  function initTopo() {
+    $$('[data-topo]').forEach((canvas) => {
+      const ctx = canvas.getContext('2d');
+      const lime = !canvas.closest('.foot');
+      const color = lime ? 'rgba(214,255,31,.3)' : 'rgba(255,255,255,.16)';
+      let w = 0; let h = 0; let visible = false; let last = 0;
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      const size = () => { w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+      const field = (x, y, t) => Math.sin(x * 0.007 + t * 0.2) + Math.sin(y * 0.011 - t * 0.15) + Math.sin((x + y) * 0.005 + t * 0.1) + Math.sin(Math.hypot(x - w * 0.6, y - h * 0.4) * 0.012 - t * 0.25);
+      const frac = (a, b, v) => (v - a) / (b - a || 1e-6);
+      function draw(t) {
+        ctx.clearRect(0, 0, w, h);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.2;
+        const cols = Math.ceil(w / TOPO_CELL) + 1;
+        const rows = Math.ceil(h / TOPO_CELL) + 1;
+        const v = new Float32Array(cols * rows);
+        for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) v[j * cols + i] = field(i * TOPO_CELL, j * TOPO_CELL, t);
+        ctx.beginPath();
+        for (const L of TOPO_LEVELS) {
+          for (let j = 0; j < rows - 1; j++) {
+            for (let i = 0; i < cols - 1; i++) {
+              const a = v[j * cols + i]; const b = v[j * cols + i + 1];
+              const c = v[(j + 1) * cols + i + 1]; const d = v[(j + 1) * cols + i];
+              const x = i * TOPO_CELL; const y = j * TOPO_CELL; const s = TOPO_CELL;
+              const pts = [];
+              if ((a > L) !== (b > L)) pts.push([x + s * frac(a, b, L), y]);
+              if ((b > L) !== (c > L)) pts.push([x + s, y + s * frac(b, c, L)]);
+              if ((d > L) !== (c > L)) pts.push([x + s * frac(d, c, L), y + s]);
+              if ((a > L) !== (d > L)) pts.push([x, y + s * frac(a, d, L)]);
+              if (pts.length >= 2) { ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[1][0], pts[1][1]); }
+              if (pts.length === 4) { ctx.moveTo(pts[2][0], pts[2][1]); ctx.lineTo(pts[3][0], pts[3][1]); }
+            }
+          }
+        }
+        ctx.stroke();
+      }
+      const loop = (now) => {
+        if (!visible) return;
+        if (now - last > 1000 / TOPO_FPS) { last = now; draw((now / 1000) * (calm ? 0.5 : 1)); }
+        requestAnimationFrame(loop);
+      };
+      size();
+      window.addEventListener('resize', size);
+      new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(loop); }).observe(canvas);
+    });
+  }
+
+  /* Assinatura que se desenha quando aparece */
+  function initSign() {
+    $$('[data-sign]').forEach((svg) => {
+      const text = $('text', svg);
+      const LEN = 1400;
+      text.style.strokeDasharray = `${LEN}`;
+      text.style.strokeDashoffset = `${LEN}`;
+      const draw = () => {
+        if (!M) { text.style.strokeDashoffset = '0'; svg.classList.add('drawn'); return; }
+        M.animate(LEN, 0, { duration: D(2.4), ease: [0.45, 0, 0.2, 1], onUpdate: (v) => { text.style.strokeDashoffset = `${v}`; } }).then(() => svg.classList.add('drawn'));
+      };
+      if (M) M.inView(svg, draw, { amount: 0.5 }); else draw();
+    });
+  }
+
+  /* Frase que acende palavra por palavra com o scroll */
+  function initLight() {
+    $$('[data-light]').forEach((el) => {
+      const words = [];
+      const walk = (node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach((part) => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.append(part); return; }
+              const s = document.createElement('span'); s.className = 'lw'; s.textContent = part; words.push(s); frag.append(s);
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1) walk(n);
+        });
+      };
+      walk(el);
+      if (!M) { words.forEach((w) => w.classList.add('on')); return; }
+      M.scroll((p) => { const lit = Math.round(p * words.length * 1.2); words.forEach((w, i) => w.classList.toggle('on', i < lit)); }, { target: el, offset: ['start 95%', 'start 25%'] });
+    });
+  }
+
+  /* Antes | Depois: as palavras se afastam e o site ganha cor de baixo para cima */
+  function initBeforeAfter() {
+    const sec = $('[data-ad]');
+    if (!sec || !M) return;
+    const l = $('[data-ad-l]', sec);
+    const r = $('[data-ad-r]', sec);
+    const after = $('[data-ad-after]', sec);
+    const phone = $('.ad__phone', sec);
+    M.scroll((p) => {
+      const spread = Math.min(1, p * 1.3);
+      l.style.transform = `translateX(${-spread * 3}vw)`;
+      r.style.transform = `translateX(${spread * 3}vw) scale(${1 + spread * 0.05})`;
+      l.style.opacity = `${1 - spread * 0.5}`;
+      const reveal = Math.min(1, Math.max(0, (p - 0.15) / 0.65));
+      after.style.clipPath = `inset(${((1 - reveal) * 100).toFixed(1)}% 0 0 0 round 36px)`;
+      phone.style.transform = `rotate(${((1 - reveal) * -8).toFixed(2)}deg) scale(${(0.92 + reveal * 0.08).toFixed(3)})`;
+    }, { target: sec, offset: ['start start', 'end end'] });
+  }
+
   /* Formulário do pedido */
   function initForm() {
     const form = $('[data-form]');
@@ -464,5 +573,9 @@
   initCursor();
   initPanels();
   initChapters();
+  initTopo();
+  initSign();
+  initLight();
+  initBeforeAfter();
   initForm();
 })();
