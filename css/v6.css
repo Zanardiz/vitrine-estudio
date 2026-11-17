@@ -449,3 +449,11 @@ main > section[data-pin] { position: relative; z-index: 1; min-height: 0; }
 
 /* Contraste do texto pequeno no capítulo cinza */
 .chap--antes .tiny { color: #33342f; }
+
+/* ===== O que você recebe: serviços em cima, as seis regras embaixo ===== */
+.oferta__kicker { margin: clamp(40px, 5vw, 64px) 0 16px; color: var(--lime) !important; }
+.rules--compact .rule { padding: 20px 22px 24px 0; }
+.rules--compact .rule::before { margin-bottom: 10px; }
+.rules--compact h3 { font-size: 20px; }
+.rules--compact p { font-size: 14px; }
+.oferta .services .service { min-height: 220px; }

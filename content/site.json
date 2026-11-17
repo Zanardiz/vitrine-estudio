@@ -6,7 +6,7 @@
   },
   "inicio": {
     "titulo": "Sites sob medida para negócios",
-    "texto": "Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada."
+    "texto": "Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Ele abre rápido no celular: nota 90 ou mais no teste de velocidade do próprio Google. Não gostou, não paga nada."
   },
   "previa": {
     "titulo": "A prévia do seu site em 3 passos.",
@@ -38,8 +38,8 @@
     "texto": "Valem para a prévia e para o site publicado. Se uma não passa, o site não sai.",
     "itens": [
       {
-        "nome": "Nota 90 ou mais no Google",
-        "texto": "Nas quatro áreas do PageSpeed, medida no celular antes da entrega."
+        "nome": "Rápido no celular",
+        "texto": "Nota 90 ou mais no teste gratuito do Google (PageSpeed), que mede velocidade, facilidade de uso, segurança e se o Google entende a página."
       },
       {
         "nome": "A sua empresa, não um modelo",
