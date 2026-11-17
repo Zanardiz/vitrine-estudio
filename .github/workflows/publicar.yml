@@ -32,7 +32,7 @@ jobs:
       - name: Junta os arquivos do site
         run: |
           mkdir _site
-          cp -r index.html credits.html privacidade.html favicon.svg share.jpg robots.txt assets css js admin previas _site/
+          cp -r index.html credits.html privacidade.html favicon.svg share.jpg robots.txt assets css js admin previas conceitos _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

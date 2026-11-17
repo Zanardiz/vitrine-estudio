@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Odonto Clara · site-conceito do Vitrine Estúdio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--ink:#141414;--muted:#6b6b6b;--accent:#f4b6cf}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 Figtree,system-ui,sans-serif;overflow-x:hidden}
+.tag{background:var(--ink);color:#fff;font-size:12px;text-align:center;padding:6px 16px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(16px,5vw,72px);font-size:14px;font-weight:500}
+.logo{font:500 24px 'Bodoni Moda',serif;letter-spacing:.02em}
+nav ul{display:flex;gap:28px;list-style:none;padding:0}
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:24px clamp(16px,5vw,72px) 80px;min-height:calc(100vh - 110px)}
+.blob{position:absolute;width:520px;height:420px;background:var(--accent);filter:blur(60px);opacity:.55;border-radius:50%;left:30%;top:10%;z-index:0}
+.hero>*{position:relative;z-index:1}.hero>.blob{position:absolute;z-index:0}.hero>.badge,.hero>.count{position:absolute}
+h1{font:400 clamp(52px,7vw,104px)/.95 'Bodoni Moda',serif;text-transform:uppercase;letter-spacing:-.01em}
+.hero p{margin-top:24px;max-width:34ch;color:var(--muted);font-size:18px}
+.cta{display:inline-flex;gap:12px;align-items:center;margin-top:30px;border-bottom:2px solid var(--ink);padding-bottom:6px;font-weight:700;text-decoration:none;color:var(--ink);text-transform:uppercase;letter-spacing:.1em;font-size:14px}
+.photo{aspect-ratio:4/5;overflow:hidden;filter:grayscale(1) contrast(1.05)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.count{position:absolute;right:clamp(16px,5vw,72px);bottom:40px;font:500 44px 'Bodoni Moda',serif}
+.badge{position:absolute;right:46%;top:12%;width:120px;height:120px;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge text{font:600 11px Figtree;letter-spacing:.3em;text-transform:uppercase}
+@media(max-width:800px){nav ul{display:none}.hero{grid-template-columns:1fr;min-height:auto}.badge{display:none}}
+</style>
+</head>
+<body>
+<div class="tag">Site-conceito do Vitrine Estúdio · empresa fictícia</div>
+<nav><span class="logo">Odonto Clara</span><ul><li>Tratamentos</li><li>Equipe</li><li>Convênios</li><li>Agendar</li></ul></nav>
+<section class="hero">
+  <div class="blob"></div>
+  <div>
+    <h1>Sorria<br>sem<br>medo.</h1>
+    <p>Atendimento calmo para adultos e crianças, com horário marcado de verdade e orçamento antes de começar.</p>
+    <a class="cta" href="#">Agendar avaliação →</a>
+  </div>
+  <div class="photo"><img src="../../assets/img/photo-f197684384-960.webp" alt="Dentista sorrindo enquanto atende uma criança na cadeira"></div>
+  <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60,60 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs><text><textPath href="#c">Avaliação gratuita · Avaliação gratuita ·</textPath></text></svg>
+  <span class="count">*01</span>
+</section>
+<p style="padding:20px;font-size:12px;opacity:.6;text-align:center">Fotos: <a href="../../credits.html" style="color:inherit">créditos</a> · <a href="../../" style="color:inherit">Vitrine Estúdio</a></p>
+</body>
+</html>

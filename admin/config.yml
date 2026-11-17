@@ -30,9 +30,47 @@ collections:
             name: inicio
             widget: object
             fields:
-              - { label: Frase pequena acima do título, name: chamada, widget: string }
-              - { label: Título principal, name: titulo, widget: string, hint: "Curto: até uns 40 caracteres." }
-              - { label: Texto abaixo do título, name: texto, widget: text }
+              - { label: Título (usado nas buscas), name: titulo, widget: string }
+              - { label: Texto abaixo do título grande, name: texto, widget: text }
+          - label: Como funciona (prévia)
+            name: previa
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Complemento (em itálico), name: texto, widget: string }
+              - label: Passos
+                name: passos
+                widget: list
+                min: 1
+                summary: "{{fields.nome}}"
+                fields:
+                  - { label: Nome, name: nome, widget: string }
+                  - { label: Texto, name: texto, widget: text }
+                  - { label: Foto (não mexer), name: foto, widget: hidden }
+                  - { label: Descrição da foto, name: foto_alt, widget: string }
+          - label: Padrão Vitrine
+            name: padrao
+            widget: object
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Frase pequena acima, name: complemento, widget: string }
+              - { label: Texto, name: texto, widget: text }
+              - label: Regras
+                name: itens
+                widget: list
+                min: 1
+                summary: "{{fields.nome}}"
+                fields:
+                  - { label: Nome, name: nome, widget: string }
+                  - { label: Texto, name: texto, widget: text }
+          - label: Frase da faixa verde
+            name: manifesto
+            widget: object
+            fields:
+              - { label: Rótulo (para leitores de tela), name: rotulo, widget: string }
+              - { label: Começo da frase, name: antes, widget: text }
+              - { label: Parte destacada, name: destaque, widget: string }
+              - { label: Final da frase, name: depois, widget: string }
           - label: Análise grátis
             name: analise
             widget: object
@@ -60,12 +98,6 @@ collections:
             fields:
               - { label: Título, name: titulo, widget: string }
               - { label: Texto, name: texto, widget: text }
-          - label: Etapas
-            name: etapas
-            widget: object
-            fields:
-              - { label: Título, name: titulo, widget: string }
-              - { label: Texto, name: texto, widget: string }
           - label: Perguntas
             name: perguntas
             widget: object

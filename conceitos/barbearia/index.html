@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barbearia Brasa · site-conceito do Vitrine Estúdio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b0a;--ink:#f3ece4;--muted:#a3968a;--accent:#ff7a1a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 Figtree,system-ui,sans-serif}
+.tag{background:var(--accent);color:#0d0b0a;font-size:12px;font-weight:700;text-align:center;padding:6px 16px}
+nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:24px clamp(16px,5vw,72px);font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.logo{font:900 28px 'Big Shoulders Display';letter-spacing:.04em}
+.hero{position:relative;min-height:calc(100vh - 110px);display:grid;align-items:end;padding:0 clamp(16px,5vw,72px) 64px;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.1) brightness(.55)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#0d0b0a 95%)}
+.hero>div{position:relative;z-index:1}
+.big{font:900 clamp(80px,15vw,230px)/.82 'Big Shoulders Display';text-transform:uppercase;letter-spacing:-.01em}
+.big span{color:var(--accent)}
+.row{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-top:28px;flex-wrap:wrap}
+.row p{max-width:38ch;color:var(--muted);font-size:18px}
+.cta{background:var(--accent);color:#0d0b0a;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:18px 30px;border-radius:4px;text-decoration:none}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#ffffff14;border-top:1px solid #ffffff14}
+.prices div{background:var(--bg);padding:48px clamp(16px,3vw,40px)}
+.prices b{display:block;font:900 64px 'Big Shoulders Display';color:var(--accent)}
+.prices h3{font:700 26px 'Big Shoulders Display';text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:800px){.prices{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="tag">Site-conceito do Vitrine Estúdio · empresa fictícia</div>
+<nav><span class="logo">BRASA</span><span>Agendar · Cortes · Endereço</span></nav>
+<section class="hero">
+  <img src="../../assets/img/photo-f188536778-960.webp" alt="Barbeiro sorrindo enquanto prepara o cliente para o corte">
+  <div>
+    <div class="big">Corte<br>na <span>brasa</span></div>
+    <div class="row"><p>Barba quente, toalha quente e o corte que você pediu. Agende em 20 segundos, sem fila.</p><a class="cta" href="#">Agendar horário</a></div>
+  </div>
+</section>
+<section class="prices">
+  <div><b>R$ 45</b><h3>Corte</h3><p>Máquina e tesoura, com lavagem.</p></div>
+  <div><b>R$ 35</b><h3>Barba</h3><p>Toalha quente e navalha.</p></div>
+  <div><b>R$ 70</b><h3>Combo</h3><p>Corte e barba, com bebida.</p></div>
+</section>
+<p style="padding:20px;font-size:12px;opacity:.6;text-align:center">Fotos: <a href="../../credits.html" style="color:inherit">créditos</a> · <a href="../../" style="color:inherit">Vitrine Estúdio</a></p>
+</body>
+</html>
