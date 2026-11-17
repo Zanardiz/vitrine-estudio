@@ -118,6 +118,8 @@ function showReport(address, report) {
 // O Google às vezes devolve os títulos em inglês; os mais comuns, em português simples para o dono da empresa.
 const ISSUE_PT = {
   'robots-txt': 'O arquivo que orienta o Google (robots.txt) tem erro',
+  'redirects': 'A página passa por redirecionamentos antes de abrir',
+  'redirects-insight': 'A página passa por redirecionamentos antes de abrir',
   'forced-reflow-insight': 'O site faz o navegador recalcular a página várias vezes',
   'image-delivery-insight': 'As imagens estão mais pesadas do que precisam',
   'network-dependency-tree-insight': 'Muitos arquivos carregam em fila, um esperando o outro',
