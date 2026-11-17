@@ -9,7 +9,7 @@ const canvas = document.querySelector('[data-canvas]');
 // Com "reduzir movimento" ligado, a cena continua viva, só que mais devagar.
 const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const reduce = false;
-let released = false;
+let released = document.documentElement.dataset.ready === '1';
 document.addEventListener('vitrine:ready', () => { released = true; }, { once: true });
 setTimeout(() => { released = true; }, 4000);
 
@@ -176,6 +176,7 @@ function start() {
     return;
   }
 
+  stage.classList.add('live');
   let running = false;
   const loop = () => { if (!running) return; step(); requestAnimationFrame(loop); };
   const setRunning = (on) => { if (on && !running) { running = true; requestAnimationFrame(loop); } else if (!on) running = false; };

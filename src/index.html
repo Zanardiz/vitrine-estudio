@@ -14,8 +14,10 @@
 <meta name="theme-color" content="#eef0f6">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/v6.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap"></noscript>
+<link rel="stylesheet" href="css/v6.css?v=1794931256">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -53,7 +55,7 @@
   <section class="hero" aria-labelledby="hero-h">
     <div class="hero__stage" data-stage>
       <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
-      <img class="hero__fallback" src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="">
+      <picture class="hero__poster"><source media="(max-width: 700px)" srcset="assets/img/hero-cena-mob.webp"><img src="assets/img/hero-cena.webp" width="1365" height="804" alt="Celulares com os sites flutuando entre peças 3D brancas, pretas e azuis" fetchpriority="high"></picture>
       <div class="hero__over">
         <h1 id="hero-h" class="hero__title" data-split>Sites que fazem a sua empresa ser lembrada.</h1>
         <div class="hero__meta">
@@ -301,7 +303,7 @@
         <h2 id="pedido-h" class="big" data-split>{{orcamento.titulo}}</h2>
         <p class="lead">{{orcamento.texto}}</p>
       </div>
-      <form class="form" action="mailto:{{orcamento.email}}" method="post" enctype="text/plain" data-endpoint="{{orcamento.endereco_formulario}}" data-sent="Seu pedido chegou. Mandamos a prévia por e-mail." novalidate data-form>
+      <form class="form" action="#pedido" method="post" data-mailto="{{orcamento.email}}" data-endpoint="{{orcamento.endereco_formulario}}" data-sent="Seu pedido chegou. Mandamos a prévia por e-mail." novalidate data-form>
         <div class="field"><label for="f-name">Nome</label>
           <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
           <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
@@ -338,8 +340,13 @@
 
 <script src="assets/vendor/motion.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js" defer></script>
-<script type="module" src="js/cena.js"></script>
-<script type="module" src="js/analise.js"></script>
+<script src="js/site.js?v=1794931256" defer></script>
+<script type="module">
+  // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
+  const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;
+  const later = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
+  if (big) addEventListener("load", () => later(() => import("./js/cena.js?v=1794931256")), { once: true });
+</script>
+<script type="module" src="js/analise.js?v=1794931256"></script>
 </body>
 </html>

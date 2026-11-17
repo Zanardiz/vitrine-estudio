@@ -42,7 +42,7 @@
   /* Carregamento: contador de 0 a 100, depois a tela sobe e a abertura aparece */
   function initLoader() {
     const loader = $('[data-loader]');
-    const finish = () => { ready = true; document.dispatchEvent(new Event('vitrine:ready')); };
+    const finish = () => { ready = true; document.documentElement.dataset.ready = '1'; document.dispatchEvent(new Event('vitrine:ready')); };
     if (!loader || !M) { loader?.remove(); finish(); return; }
     const count = $('[data-loader-count]', loader);
     const bar = $('[data-loader-bar]', loader);
@@ -132,7 +132,7 @@
     const imgs = $$('.hcard__img img', track);
     M.scroll((p) => {
       track.style.transform = `translateX(${-distance * p}px)`;
-      bar.style.width = `${p * 100}%`;
+      bar.style.transform = `scaleX(${p.toFixed(3)})`;
       imgs.forEach((img, i) => { img.style.translate = `${(p * 120) - i * 30}px 0`; });
     }, { target: sec, offset: ['start start', 'end end'] });
   }
@@ -331,7 +331,7 @@
       let idx = 0;
       tops.forEach((t, i) => { if (t <= y) idx = i; });
       pgNum.textContent = String(idx + 1).padStart(2, '0');
-      pgBar.style.width = `${((idx + 1) / panels.length) * 100}%`;
+      pgBar.style.transform = `scaleX(${((idx + 1) / panels.length).toFixed(3)})`;
     };
     window.addEventListener('scroll', updatePager, { passive: true });
     updatePager();
@@ -414,15 +414,14 @@
   }
 
   /* Mapa topográfico: linhas de nível que se mexem devagar (marching squares sobre ondas somadas) */
-  const TOPO_CELL = 18;
+  const TOPO_CELL = 22;
   const TOPO_LEVELS = [-2.4, -1.8, -1.2, -0.6, 0, 0.6, 1.2, 1.8, 2.4];
-  const TOPO_FPS = 24;
   function initTopo() {
     $$('[data-topo]').forEach((canvas) => {
       const ctx = canvas.getContext('2d');
       const lime = !canvas.closest('.foot');
       const color = lime ? 'rgba(214,255,31,.3)' : 'rgba(255,255,255,.16)';
-      let w = 0; let h = 0; let visible = false; let last = 0;
+      let w = 0; let h = 0;
       const dpr = Math.min(window.devicePixelRatio, 1.5);
       const size = () => { w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
       const field = (x, y, t) => Math.sin(x * 0.007 + t * 0.2) + Math.sin(y * 0.011 - t * 0.15) + Math.sin((x + y) * 0.005 + t * 0.1) + Math.sin(Math.hypot(x - w * 0.6, y - h * 0.4) * 0.012 - t * 0.25);
@@ -454,14 +453,16 @@
         }
         ctx.stroke();
       }
-      const loop = (now) => {
-        if (!visible) return;
-        if (now - last > 1000 / TOPO_FPS) { last = now; draw((now / 1000) * (calm ? 0.5 : 1)); }
-        requestAnimationFrame(loop);
-      };
-      size();
-      window.addEventListener('resize', size);
-      new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(loop); }).observe(canvas);
+      // Desenha uma vez quando aparece (o movimento é um deslize leve em CSS, sem custo de processador).
+      let drawn = false;
+      const paint = () => { size(); draw(1.7); drawn = true; };
+      let resizeTimer = null;
+      window.addEventListener('resize', () => { if (!drawn) return; clearTimeout(resizeTimer); resizeTimer = setTimeout(paint, 300); });
+      new IntersectionObserver(([e], obs) => {
+        if (!e.isIntersecting) return;
+        obs.disconnect();
+        (window.requestIdleCallback || ((fn) => setTimeout(fn, 60)))(paint);
+      }, { rootMargin: '200px' }).observe(canvas);
     });
   }
 
@@ -544,8 +545,15 @@
         return;
       }
       const endpoint = form.dataset.endpoint;
-      if (!endpoint) return; // sem endereço de envio, o navegador abre o e-mail (mailto)
       e.preventDefault();
+      if (!endpoint) {
+        // sem endereço de envio, monta o e-mail com os campos e abre o app de e-mail
+        const data = new FormData(form);
+        const body = [...data.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
+        window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent('Pedido de prévia')}&body=${encodeURIComponent(body)}`;
+        status.textContent = 'Abrimos o seu e-mail com o pedido pronto. É só enviar.';
+        return;
+      }
       status.textContent = 'Enviando…';
       try {
         const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
@@ -564,7 +572,6 @@
   initSplit();
   initRibbon();
   initHorizontal();
-  initBand();
   initParallax();
   initTilt();
   initMagnet();

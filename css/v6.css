@@ -288,7 +288,7 @@ html:not(.js) .loader { display: none; }
 .hcard__arrow { font-size: 60px; transition: transform .4s var(--ease); }
 .hcard--cta:hover .hcard__arrow { transform: translateX(14px); }
 .hs__progress { height: 2px; background: var(--line); margin-top: 26px; }
-.hs__progress i { display: block; height: 100%; width: 0; background: var(--blue); }
+.hs__progress i { display: block; height: 100%; width: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; }
 
 /* Linhas que se desenham */
 .rule { position: relative; border-bottom-color: transparent; }
@@ -323,7 +323,7 @@ main > section.hs { position: relative; z-index: 1; }
 .pager { position: fixed; z-index: 90; right: var(--g); bottom: 22px; display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgb(255 255 255 / .85); backdrop-filter: blur(10px); font: 600 11px var(--text); letter-spacing: .1em; color: var(--ink); }
 .pager b { font: 800 14px var(--font); }
 .pager__bar { width: 70px; height: 2px; background: var(--line); }
-.pager__bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .6s var(--ease); }
+.pager__bar i { display: block; height: 100%; width: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease); }
 .pager__hint { opacity: .55; }
 @media (pointer: coarse) { .pager__hint { display: none; } }
 
@@ -432,3 +432,20 @@ main > section[data-pin] { position: relative; z-index: 1; min-height: 0; }
   figure.state__ph { opacity: .45; }
   .sign--foot { display: none; }
 }
+
+/* ===== Velocidade ===== */
+/* A abertura mostra a foto da cena; no computador, a cena 3D entra por cima quando fica pronta */
+.hero__poster { position: absolute; inset: 0; }
+.hero__poster img { width: 100%; height: 100%; object-fit: cover; animation: poster-breathe 9s ease-in-out infinite alternate; }
+@keyframes poster-breathe { to { transform: scale(1.05) translateY(-1.5%); } }
+.hero__canvas { opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero__stage.live .hero__canvas { opacity: 1; }
+.hero__stage.live .hero__poster { opacity: 0; transition: opacity 1.2s var(--ease) .2s; }
+.hero__fallback { display: none; }
+
+/* Mapa: desenhado uma vez, com um deslize leve em CSS (sem custo de processador) */
+.topo { inset: -6%; width: 112%; height: 112%; animation: topo-drift 26s ease-in-out infinite alternate; }
+@keyframes topo-drift { to { transform: translate3d(-3%, 2%, 0) rotate(1.5deg) scale(1.04); } }
+
+/* Contraste do texto pequeno no capítulo cinza */
+.chap--antes .tiny { color: #33342f; }
