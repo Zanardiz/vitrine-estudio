@@ -67,7 +67,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .hero__fallback { position: absolute; left: 50%; top: 50%; width: 220px; transform: translate(-50%, -55%) rotate(-10deg); border-radius: 28px; opacity: 0; }
 .no-webgl .hero__fallback { opacity: 1; }
-.hero__over { position: absolute; inset: auto 0 0; padding: var(--g); display: flex; justify-content: space-between; align-items: end; gap: 24px; color: #fff; pointer-events: none; }
+.hero__over { position: absolute; inset: auto 0 0; padding: 120px var(--g) var(--g); background: linear-gradient(transparent, rgb(15 17 21 / .82) 60%); display: flex; justify-content: space-between; align-items: end; gap: 24px; color: #fff; pointer-events: none; }
 .hero__title { font: 500 clamp(36px, 4.6vw, 76px)/.98 var(--font); letter-spacing: -.045em; max-width: 13ch; }
 .hero__meta { display: grid; justify-items: end; gap: 10px; font: 500 11px var(--text); letter-spacing: .1em; text-transform: uppercase; color: rgb(255 255 255 / .7); text-align: right; }
 .hero__scroll b { display: inline-block; animation: bob 1.6s ease-in-out infinite; }
