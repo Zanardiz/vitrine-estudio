@@ -81,6 +81,10 @@ async function runPageSpeed(address) {
   if (response.status === 429) {
     throw new Error('A análise do Google chegou ao limite de agora.');
   }
+  if (response.status === 403) {
+    // chave sem a API ativada, ou restrição de domínio: o problema é nosso, não o endereço digitado
+    throw new Error('A análise do Google está indisponível agora.');
+  }
   const data = await response.json().catch(() => null);
   if (!response.ok || !data?.lighthouseResult) {
     throw new Error('Não foi possível abrir esse site. Confira se o endereço está certo e se o site está no ar.');
