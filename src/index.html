@@ -14,7 +14,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/v3.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -30,95 +30,48 @@
 </header>
 
 <main id="topo">
-  <!-- Abertura editorial: slides com título em serifa gigante, foto em preto e branco, mancha rosa e selo girando -->
-  <section class="ed" data-ed aria-labelledby="ed-h">
-    <div class="ed__blob ed__blob--a" aria-hidden="true"></div>
-    <div class="ed__blob ed__blob--b" aria-hidden="true"></div>
+  <!-- Abertura no estilo da vitrine de tênis: cor chapada, palavra gigante atrás e o site flutuando em 3D -->
+  <section class="nk" data-hero style="--bg:#7fd4f5" aria-labelledby="hero-h">
+    <div class="nk__word" aria-hidden="true" data-word>CAFÉ</div>
 
-    <article class="ed__slide ed__slide--muse is-on" data-slide>
-      <figure class="ed__photo"><img src="assets/img/photo-f197429032-960.webp" width="960" height="640" alt="Pessoa num café com o celular na mão e o notebook aberto" fetchpriority="high"></figure>
-      <h1 class="ed__title" id="ed-h"><span class="ed__line">Seu site</span> <span class="ed__line">antes de</span> <span class="ed__line">pagar</span></h1>
-      <div class="ed__cols">
-        <p><b>Sites sob medida para pequenas empresas.</b> {{inicio.texto}}</p>
-        <p>A prévia é grátis e chega por e-mail, ao lado do seu site atual. <a class="ed__more" href="#pedido">Pedir minha prévia</a></p>
-      </div>
-    </article>
-
-    <article class="ed__slide ed__slide--vanity" data-slide aria-hidden="true">
-      <figure class="ed__photo"><img src="assets/img/photo-f187311853-960.webp" width="960" height="640" alt="Barista preparando um espresso" loading="lazy"></figure>
-      <p class="ed__kicker">O site do seu</p>
-      <p class="ed__title"><span class="ed__line">Café</span></p>
-      <div class="ed__cols"><p>Cardápio, horário e encomendas pelo WhatsApp, numa página que abre rápido no celular. <a class="ed__more" href="conceitos/cafe/">Ver o conceito</a></p></div>
-    </article>
-
-    <article class="ed__slide ed__slide--muse" data-slide aria-hidden="true">
-      <figure class="ed__photo"><img src="assets/img/photo-f188536778-960.webp" width="960" height="640" alt="Barbeiro sorrindo enquanto atende um cliente" loading="lazy"></figure>
-      <p class="ed__title"><span class="ed__line">Agenda</span> <span class="ed__line">sempre</span> <span class="ed__line">cheia</span></p>
-      <div class="ed__cols"><p><b>Barbearia.</b> Preços à vista, botão de agendar e as fotos dos cortes no lugar do link solto do Instagram.</p><p><a class="ed__more" href="conceitos/barbearia/">Ver o conceito</a></p></div>
-    </article>
-
-    <article class="ed__slide ed__slide--vanity" data-slide aria-hidden="true">
-      <figure class="ed__photo"><img src="assets/img/photo-f197684384-960.webp" width="960" height="640" alt="Dentista sorrindo enquanto atende uma criança" loading="lazy"></figure>
-      <p class="ed__kicker">Clínicas que passam</p>
-      <p class="ed__title"><span class="ed__line">Calma</span></p>
-      <div class="ed__cols"><p>Equipe, convênios e avaliação marcada em dois toques, com cara de lugar cuidadoso. <a class="ed__more" href="conceitos/clinica/">Ver o conceito</a></p></div>
-    </article>
-
-    <a class="ed__badge" href="#pedido" aria-label="Pedir a prévia grátis">
-      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="badge-c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#badge-c">Prévia grátis · Sem compromisso · Prévia grátis ·</textPath></text></svg>
-      <span aria-hidden="true">+</span>
-    </a>
-
-    <div class="ed__nav">
-      <button data-ed-prev aria-label="Slide anterior">‹</button>
-      <button data-ed-next aria-label="Próximo slide">›</button>
-      <span class="ed__count" aria-hidden="true">*<b data-ed-count>01</b></span>
-    </div>
-    <div class="ed__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
-  </section>
-
-  <!-- Vitrine dos ramos: cada ramo pinta a tela, a palavra gigante muda e o site flutua em 3D -->
-  <section class="hero" data-hero style="--bg:#f6b88f;--fg:#1a1410;--word:#ffffff" aria-labelledby="hero-h">
-    <div class="hero__word" aria-hidden="true" data-word>CAFÉ</div>
-
-    <div class="hero__copy">
-      <p class="eyebrow" data-hero-in>Escolha o seu ramo</p>
-      <h2 id="hero-h" data-hero-in>Um site com a <em>cara</em> do seu negócio.</h2>
-      <p class="hero__lead" data-hero-in>Troque a cor ao lado e veja o site de cada ramo no computador e no celular.</p>
-      <div class="hero__ctas" data-hero-in>
-        <a class="btn btn--ink" href="#pedido">Quero o meu assim <span aria-hidden="true">→</span></a>
-        <a class="link" href="#conceitos">Ver todos os sites</a>
-      </div>
+    <div class="nk__left">
+      <p class="nk__tag" data-hero-in>Vitrine Estúdio · sites sob medida</p>
+      <h1 id="hero-h" class="nk__title" data-hero-in>Seu site novo antes de pagar</h1>
+      <p class="nk__price" data-hero-in><b>R$ 0</b> para ver a prévia</p>
+      <p class="nk__lead" data-hero-in>{{inicio.texto}}</p>
+      <a class="nk__cta" href="#pedido" data-hero-in>Pedir minha prévia <span aria-hidden="true">→</span></a>
     </div>
 
-    <div class="stage" data-stage aria-live="polite">
-      <div class="device-pair" data-pair>
-        <figure class="laptop">
-          <div class="laptop__screen"><img data-desk src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site-conceito do Café Aurora no computador"></div>
-          <div class="laptop__base" aria-hidden="true"></div>
-        </figure>
-        <figure class="phone">
-          <div class="phone__screen"><img data-mob src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="O mesmo site no celular"></div>
+    <div class="nk__stage" data-stage>
+      <div class="nk__float" data-pair>
+        <figure class="nk__phone" data-phone>
+          <img data-mob src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site-conceito do Café Aurora no celular">
         </figure>
       </div>
-      <div class="chip chip--wa" data-chip="1" aria-hidden="true"><span class="chip__dot"></span><span data-chip-wa>Oi! Vocês fazem encomenda de bolo?</span></div>
-      <div class="chip chip--score" data-chip="2" aria-hidden="true"><b>90+</b><span>nossa meta no Google</span></div>
-      <div class="chip chip--tag" data-chip="3" aria-hidden="true" data-chip-tag>Conceito</div>
+      <div class="nk__shadow" aria-hidden="true"></div>
     </div>
 
-    <div class="hero__rail">
-      <div class="counter" aria-hidden="true"><span>*</span><b data-count>01</b><i>/04</i></div>
-      <div class="hero__name"><b data-name>Café Aurora</b><span data-kind>Site-conceito · empresa fictícia</span></div>
-      <div class="swatches" role="tablist" aria-label="Escolha um ramo">
-        <button role="tab" aria-selected="true" data-go="0" style="--c:#f6b88f" aria-label="Café"></button>
-        <button role="tab" aria-selected="false" data-go="1" style="--c:#b6b0f2" aria-label="Barbearia"></button>
-        <button role="tab" aria-selected="false" data-go="2" style="--c:#f4bfd3" aria-label="Clínica odontológica"></button>
-        <button role="tab" aria-selected="false" data-go="3" style="--c:#6fd0f6" aria-label="Estética automotiva, cliente real"></button>
+    <div class="nk__right">
+      <p class="nk__label">Escolha o ramo</p>
+      <div class="nk__grid" role="tablist" aria-label="Escolha um ramo">
+        <button role="tab" aria-selected="true" data-go="0">Café</button>
+        <button role="tab" aria-selected="false" data-go="1">Barbearia</button>
+        <button role="tab" aria-selected="false" data-go="2">Clínica</button>
+        <button role="tab" aria-selected="false" data-go="3">Estética</button>
       </div>
-      <div class="arrows">
-        <button data-prev aria-label="Ramo anterior">←</button><button data-next aria-label="Próximo ramo">→</button>
+      <p class="nk__label">Cor do fundo</p>
+      <div class="nk__swatches" aria-hidden="true">
+        <i data-go-dot="0" style="--c:#7fd4f5"></i><i data-go-dot="1" style="--c:#b7b1f5"></i><i data-go-dot="2" style="--c:#f7b6cf"></i><i data-go-dot="3" style="--c:#b8ec9c"></i>
       </div>
+      <p class="nk__name"><b data-name>Café Aurora</b><span data-kind>Site-conceito · empresa fictícia</span></p>
     </div>
+
+    <div class="nk__bottom">
+      <button class="nk__arrow" data-prev aria-label="Ramo anterior">←</button>
+      <button class="nk__arrow" data-next aria-label="Próximo ramo">→</button>
+    </div>
+    <a class="nk__play" href="conceitos/cafe/" data-open><span aria-hidden="true">▶</span> Ver o site</a>
+    <p class="nk__count" aria-hidden="true"><b data-count>01</b>/04</p>
   </section>
 
   <!-- Faixa que corre -->
