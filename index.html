@@ -10,138 +10,143 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0e0e10">
+<meta name="theme-color" content="#eef0f6">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/v3.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/v6.css">
+<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#topo">Pular para o conteúdo</a>
+<div class="cursor" aria-hidden="true" data-cursor></div>
 
-<header class="topbar" data-topbar>
-  <a class="logo" href="#topo" aria-label="Vitrine Estúdio, início"><span class="logo__mark" aria-hidden="true"></span>Vitrine<em>Estúdio</em></a>
-  <nav aria-label="Seções">
-    <a href="#previa">Prévia</a><a href="#conceitos">Conceitos</a><a href="#padrao">Padrão</a><a href="#analise">Análise</a><a href="#perguntas">Perguntas</a>
-  </nav>
-  <a class="btn btn--small" href="#pedido">Pedir prévia</a>
+<header class="bar">
+  <a class="bar__logo" href="#topo" aria-label="Vitrine Estúdio, início">VITRINE<sup>®</sup></a>
+  <div class="bar__actions">
+    <a class="pill pill--dark" href="#pedido">Pedir prévia <i aria-hidden="true"></i></a>
+    <button class="pill" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu <span aria-hidden="true">••</span></button>
+  </div>
 </header>
 
+<nav class="menu" id="menu" aria-label="Seções" hidden data-menu>
+  <button class="pill menu__close" type="button" data-menu-close>Fechar <span aria-hidden="true">✕</span></button>
+  <ul>
+    <li><a href="#intro">Prévia grátis</a></li>
+    <li><a href="#trabalhos">Sites</a></li>
+    <li><a href="#padrao">Padrão</a></li>
+    <li><a href="#analise">Análise</a></li>
+    <li><a href="#perguntas">Perguntas</a></li>
+    <li><a href="#pedido">Pedir prévia</a></li>
+  </ul>
+</nav>
+
 <main id="topo">
-  <!-- Abertura no estilo da vitrine de tênis: cor chapada, palavra gigante atrás e o site flutuando em 3D -->
-  <section class="nk" data-hero style="--bg:#7fd4f5" aria-labelledby="hero-h">
-    <div class="nk__word" aria-hidden="true" data-word>CAFÉ</div>
-
-    <div class="nk__left">
-      <p class="nk__tag" data-hero-in>Vitrine Estúdio · sites sob medida</p>
-      <h1 id="hero-h" class="nk__title" data-hero-in>Seu site novo antes de pagar</h1>
-      <p class="nk__price" data-hero-in><b>R$ 0</b> para ver a prévia</p>
-      <p class="nk__lead" data-hero-in>Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada.</p>
-      <a class="nk__cta" href="#pedido" data-hero-in>Pedir minha prévia <span aria-hidden="true">→</span></a>
-    </div>
-
-    <div class="nk__stage" data-stage>
-      <div class="nk__float" data-pair>
-        <figure class="nk__phone" data-phone>
-          <img data-mob src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site-conceito do Café Aurora no celular">
-        </figure>
+  <!-- Abertura: painel escuro com a cena 3D (peças e celulares que reagem ao mouse) -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero__stage" data-stage>
+      <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
+      <img class="hero__fallback" src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="">
+      <div class="hero__over">
+        <h1 id="hero-h" class="hero__title" data-split>Sites que fazem a sua empresa ser lembrada.</h1>
+        <div class="hero__meta">
+          <span>Prévia grátis antes de pagar</span>
+          <span class="hero__scroll" aria-hidden="true">Role <b>↓</b></span>
+        </div>
       </div>
-      <div class="nk__shadow" aria-hidden="true"></div>
     </div>
-
-    <div class="nk__right">
-      <p class="nk__label">Escolha o ramo</p>
-      <div class="nk__grid" role="tablist" aria-label="Escolha um ramo">
-        <button role="tab" aria-selected="true" data-go="0">Café</button>
-        <button role="tab" aria-selected="false" data-go="1">Barbearia</button>
-        <button role="tab" aria-selected="false" data-go="2">Clínica</button>
-        <button role="tab" aria-selected="false" data-go="3">Estética</button>
-      </div>
-      <p class="nk__label">Cor do fundo</p>
-      <div class="nk__swatches" aria-hidden="true">
-        <i data-go-dot="0" style="--c:#7fd4f5"></i><i data-go-dot="1" style="--c:#b7b1f5"></i><i data-go-dot="2" style="--c:#f7b6cf"></i><i data-go-dot="3" style="--c:#b8ec9c"></i>
-      </div>
-      <p class="nk__name"><b data-name>Café Aurora</b><span data-kind>Site-conceito · empresa fictícia</span></p>
-    </div>
-
-    <div class="nk__bottom">
-      <button class="nk__arrow" data-prev aria-label="Ramo anterior">←</button>
-      <button class="nk__arrow" data-next aria-label="Próximo ramo">→</button>
-    </div>
-    <a class="nk__play" href="conceitos/cafe/" data-open><span aria-hidden="true">▶</span> Ver o site</a>
-    <p class="nk__count" aria-hidden="true"><b data-count>01</b>/04</p>
   </section>
 
-  <!-- Faixa que corre -->
-  <div class="marquee" aria-hidden="true"><div class="marquee__track" data-marquee>
-    <span>Prévia grátis</span><i>✦</i><span>Nota 90+ no Google</span><i>✦</i><span>Botão de WhatsApp</span><i>✦</i><span>Feito para o seu ramo</span><i>✦</i><span>Não gostou, não paga</span><i>✦</i>
-    <span>Prévia grátis</span><i>✦</i><span>Nota 90+ no Google</span><i>✦</i><span>Botão de WhatsApp</span><i>✦</i><span>Feito para o seu ramo</span><i>✦</i><span>Não gostou, não paga</span><i>✦</i>
-  </div></div>
+  <div class="flow" data-flow>
+    <svg class="ribbon" viewBox="0 0 1440 3000" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="rib" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d4bff"/><stop offset=".55" stop-color="#5b6cff"/><stop offset="1" stop-color="#5ff0ff"/></linearGradient></defs>
+      <path data-ribbon d="M -40 120 C 260 40, 360 420, 180 640 S 120 1100, 520 1180 S 1240 1000, 1300 1460 S 900 1960, 640 2080 S 260 2600, 760 2760 S 1380 2700, 1500 2960" fill="none" stroke="url(#rib)" stroke-width="46" stroke-linecap="round"/>
+    </svg>
+
+    <section class="intro" id="intro" aria-labelledby="intro-h">
+      <h2 id="intro-h" class="big" data-split>Seu site novo, pronto antes de você pagar.</h2>
+      <div class="intro__side">
+        <p>Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada.</p>
+        <a class="pill pill--light" href="#previa"><i aria-hidden="true"></i> Como funciona</a>
+      </div>
+      <div class="intro__card" data-rise>
+        <img src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site-conceito do Café Aurora no celular" loading="lazy" data-speed="-0.04">
+        <img src="assets/conceitos/barbearia-mob.webp" width="390" height="844" alt="Site-conceito da Barbearia Brasa no celular" loading="lazy" data-speed="0.05">
+        <img src="assets/conceitos/clinica-mob.webp" width="390" height="844" alt="Site-conceito da Odonto Clara no celular" loading="lazy" data-speed="-0.02">
+      </div>
+    </section>
+
+    <!-- Reel: os sites passando, com o botão no meio das palavras -->
+    <section class="reel" aria-label="Sites em movimento">
+      <div class="marks" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i></div>
+      <a class="reel__panel" href="#trabalhos" data-reel>
+        <img class="is-on" src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="" loading="lazy">
+        <img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="" loading="lazy">
+        <img src="assets/img/work-macedos-servicos.webp" width="1440" height="900" alt="" loading="lazy">
+        <img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="" loading="lazy">
+        <span class="reel__words"><b data-reel-l>Ver</b><span class="reel__btn" aria-hidden="true">▶</span><b data-reel-r>sites</b></span>
+        <span class="sr">Ver os sites</span>
+      </a>
+      <div class="marks" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i></div>
+    </section>
+
+    <section class="work" id="trabalhos" aria-labelledby="work-h">
+      <div class="work__head">
+        <h2 id="work-h" class="big" data-split>Sites em destaque</h2>
+        <p class="tiny">Três sites-conceito, feitos para mostrar o estilo,<br>e um cliente de verdade.</p>
+      </div>
+      <div class="work__grid">
+        <a class="wcard" href="conceitos/cafe/" data-rise>
+          <span class="wcard__img"><img src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site do Café Aurora" loading="lazy"></span>
+          <span class="tiny">Site · Conceito · Café</span><b>Café Aurora</b>
+        </a>
+        <a class="wcard" href="conceitos/barbearia/" data-rise>
+          <span class="wcard__img"><img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="Site da Barbearia Brasa" loading="lazy"></span>
+          <span class="tiny">Site · Conceito · Barbearia</span><b>Barbearia Brasa</b>
+        </a>
+        <a class="wcard" href="conceitos/clinica/" data-rise>
+          <span class="wcard__img"><img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="Site da Odonto Clara" loading="lazy"></span>
+          <span class="tiny">Site · Conceito · Clínica</span><b>Odonto Clara</b>
+        </a>
+        <a class="wcard wcard--real" href="#trabalho" data-rise>
+          <span class="wcard__img"><img src="assets/img/work-macedos-servicos.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail" loading="lazy"></span>
+          <span class="tiny">Site · Cliente real · Estética automotiva</span><b>Macedo's Auto Detail</b>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- A frase grande, com o mapa de linhas ao fundo e fotos que andam em velocidades diferentes -->
+  <section class="state" aria-labelledby="state-h">
+    <img class="state__ph state__ph--a" src="assets/img/photo-f188536778-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="0.18">
+    <img class="state__ph state__ph--b" src="assets/img/photo-f187311853-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="-0.12">
+    <img class="state__ph state__ph--c" src="assets/img/photo-f197684384-500.webp" width="500" height="333" alt="" loading="lazy" data-speed="0.1">
+    <p class="tiny state__kicker">O que defendemos</p>
+    <h2 id="state-h" class="state__title" data-split>Site de pequena empresa não precisa parecer <span class="hl">pequeno.</span></h2>
+    <p class="state__text">Ele precisa abrir rápido, mostrar o seu trabalho de verdade e fazer quem chegou pelo celular <strong>chamar você</strong> no mesmo minuto.</p>
+  </section>
 
   <section class="sec" id="previa" aria-labelledby="previa-h">
-    <div class="sec__head">
-      <p class="eyebrow">Como funciona</p>
-      <h2 id="previa-h" data-reveal>A prévia do seu site em 3 passos. <em>Você só decide no último.</em></h2>
-    </div>
+    <div class="sec__head"><h2 id="previa-h" class="big" data-split>A prévia do seu site em 3 passos.</h2><p class="tiny">Você só decide no último.</p></div>
     <ol class="steps">
       <li class="step" data-rise>
-        <div class="step__img"><img src="assets/img/photo-f69023035-960.webp" width="960" height="640" alt="Dedo tocando a tela de um celular sobre uma mesa branca" loading="lazy" decoding="async"></div>
-        <h3>Lemos o seu site atual</h3>
-        <p>Anotamos os serviços, as fotos, o bairro e os horários, e medimos a nota do site no celular.</p>
+        <span class="step__img"><img src="assets/img/photo-f69023035-960.webp" width="960" height="640" alt="Dedo tocando a tela de um celular sobre uma mesa branca" loading="lazy"></span>
+        <h3>Lemos o seu site atual</h3><p>Anotamos os serviços, as fotos, o bairro e os horários, e medimos a nota do site no celular.</p>
       </li>
       <li class="step" data-rise>
-        <div class="step__img"><img src="assets/img/photo-f102159114-960.webp" width="960" height="640" alt="Notebook aberto com código de estilo na tela" loading="lazy" decoding="async"></div>
-        <h3>Montamos o site novo</h3>
-        <p>Com os seus textos e as suas fotos, num endereço privado e fora do Google.</p>
+        <span class="step__img"><img src="assets/img/photo-f102159114-960.webp" width="960" height="640" alt="Notebook aberto com código de estilo na tela" loading="lazy"></span>
+        <h3>Montamos o site novo</h3><p>Com os seus textos e as suas fotos, num endereço privado e fora do Google.</p>
       </li>
       <li class="step" data-rise>
-        <div class="step__img"><img src="assets/img/photo-f51439363-960.webp" width="960" height="640" alt="Mão segurando um celular ao lado de um copo de café" loading="lazy" decoding="async"></div>
-        <h3>Você compara os dois sites</h3>
-        <p>Um link com os dois sites lado a lado e as notas de antes e depois. Gostou, publicamos.</p>
+        <span class="step__img"><img src="assets/img/photo-f51439363-960.webp" width="960" height="640" alt="Mão segurando um celular ao lado de um copo de café" loading="lazy"></span>
+        <h3>Você compara os dois sites</h3><p>Um link com os dois sites lado a lado e as notas de antes e depois. Gostou, publicamos.</p>
       </li>
     </ol>
   </section>
 
-  <!-- Carrossel 3D dos sites -->
-  <section class="sec sec--dark" id="conceitos" aria-labelledby="conceitos-h">
-    <div class="sec__head">
-      <p class="eyebrow">Os sites</p>
-      <h2 id="conceitos-h" data-reveal>Cada empresa com a <em>sua</em> cara.</h2>
-      <p class="sec__sub">Arraste para girar. Três são conceitos que criamos para mostrar o estilo; a Macedo's é cliente de verdade.</p>
-    </div>
-    <div class="ring" data-ring>
-      <div class="ring__spin" data-ring-spin>
-        <a class="card3d" href="conceitos/cafe/" style="--i:0"><img src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site do Café Aurora" loading="lazy"><span><b>Café Aurora</b>Conceito</span></a>
-        <a class="card3d" href="conceitos/barbearia/" style="--i:1"><img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="Site da Barbearia Brasa" loading="lazy"><span><b>Barbearia Brasa</b>Conceito</span></a>
-        <a class="card3d" href="conceitos/clinica/" style="--i:2"><img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="Site da Odonto Clara" loading="lazy"><span><b>Odonto Clara</b>Conceito</span></a>
-        <a class="card3d card3d--real" href="#trabalho" style="--i:3"><img src="assets/img/work-macedos-servicos.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail, página de serviços" loading="lazy"><span><b>Macedo's Auto Detail</b>Cliente real</span></a>
-        <a class="card3d" href="conceitos/cafe/" style="--i:4"><img src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site do Café Aurora no celular" loading="lazy"><span><b>Café Aurora</b>No celular</span></a>
-        <a class="card3d card3d--real" href="#trabalho" style="--i:5"><img src="assets/img/work-macedos-lavagem.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail, página de lavagem" loading="lazy"><span><b>Macedo's Auto Detail</b>Cliente real</span></a>
-        <a class="card3d" href="conceitos/barbearia/" style="--i:6"><img src="assets/conceitos/barbearia-mob.webp" width="390" height="844" alt="Site da Barbearia Brasa no celular" loading="lazy"><span><b>Barbearia Brasa</b>No celular</span></a>
-        <a class="card3d" href="conceitos/clinica/" style="--i:7"><img src="assets/conceitos/clinica-mob.webp" width="390" height="844" alt="Site da Odonto Clara no celular" loading="lazy"><span><b>Odonto Clara</b>No celular</span></a>
-      </div>
-    </div>
-
-    <article class="real" id="trabalho" aria-labelledby="trabalho-h">
-      <div class="real__shots" data-rise>
-        <img src="assets/img/work-macedos-agenda-720.webp" width="720" height="450" alt="Site da Macedo's: agenda de horários" loading="lazy">
-        <img class="real__phone" src="assets/img/work-macedos-servicos-celular.webp" width="390" height="844" alt="Site da Macedo's no celular" loading="lazy">
-      </div>
-      <div class="real__text" data-rise>
-        <p class="eyebrow">Cliente real</p>
-        <h3 id="trabalho-h">Site da Macedo's Auto Detail</h3>
-        <p>Estética automotiva em Caxias do Sul. Página única com os serviços, os pacotes e o pedido de orçamento pelo Instagram.</p>
-      </div>
-    </article>
-  </section>
-
-  <section class="sec" id="padrao" aria-labelledby="padrao-h">
-    <div class="sec__head">
-      <p class="eyebrow">Seis regras de todo site que entregamos.</p>
-      <h2 id="padrao-h" data-reveal>O Padrão Vitrine</h2>
-      <p class="sec__sub">Valem para a prévia e para o site publicado. Se uma não passa, o site não sai.</p>
-    </div>
+  <section class="sec sec--ink" id="padrao" aria-labelledby="padrao-h">
+    <div class="sec__head"><h2 id="padrao-h" class="big" data-split>O Padrão Vitrine</h2><p class="tiny">Seis regras de todo site que entregamos. Valem para a prévia e para o site publicado. Se uma não passa, o site não sai.</p></div>
     <ol class="rules">
       <li class="rule" data-rise><h3>Nota 90 ou mais no Google</h3><p>Nas quatro áreas do PageSpeed, medida no celular antes da entrega.</p></li>
       <li class="rule" data-rise><h3>A sua empresa, não um modelo</h3><p>As suas fotos, os seus serviços e o seu bairro, em vez de um tema pronto com o seu logo.</p></li>
@@ -152,21 +157,30 @@
     </ol>
   </section>
 
-  <section class="manifesto" aria-label="O que defendemos">
-    <p data-words>Site de pequena empresa não precisa parecer pequeno. Ele precisa abrir rápido, mostrar o seu trabalho de verdade e fazer quem chegou pelo celular <strong>chamar você</strong> no mesmo minuto.</p>
+  <section class="sec" id="trabalho" aria-labelledby="trabalho-h">
+    <div class="real">
+      <div class="real__shots" data-rise>
+        <img src="assets/img/work-macedos-agenda-720.webp" width="720" height="450" alt="Site da Macedo's: agenda de horários" loading="lazy">
+        <img class="real__phone" src="assets/img/work-macedos-servicos-celular.webp" width="390" height="844" alt="Site da Macedo's no celular" loading="lazy" data-speed="-0.08">
+      </div>
+      <div class="real__text" data-rise>
+        <p class="tiny">Cliente real · Caxias do Sul</p>
+        <h2 id="trabalho-h">Site da Macedo's Auto Detail</h2>
+        <p>Estética automotiva em Caxias do Sul. Página única com os serviços, os pacotes e o pedido de orçamento pelo Instagram.</p>
+      </div>
+    </div>
   </section>
 
   <section class="sec sec--blue" id="analise" aria-labelledby="analise-h">
     <div class="split">
       <div>
-        <p class="eyebrow">Nota de 0 a 100 em quatro áreas.</p>
-        <h2 id="analise-h" data-reveal>Análise grátis do seu site.</h2>
-        <p class="sec__sub">Cole o endereço e espere uns 30 segundos. A análise roda o PageSpeed Insights na versão de celular, sem cadastro.</p>
+        <h2 id="analise-h" class="big" data-split>Análise grátis do seu site.</h2>
+        <p class="lead">Nota de 0 a 100 em quatro áreas. Cole o endereço e espere uns 30 segundos. A análise roda o PageSpeed Insights na versão de celular, sem cadastro.</p>
         <form class="audit" action="https://pagespeed.web.dev/analysis" method="get" target="_blank" novalidate data-audit>
           <label for="a-url">Endereço do site</label>
           <div class="audit__row">
             <input id="a-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="minhaloja.com.br" required aria-describedby="a-url-err">
-            <button class="btn btn--lime" type="submit">Analisar</button>
+            <button class="pill pill--dark" type="submit">Analisar <i aria-hidden="true"></i></button>
           </div>
           <p class="field__error" id="a-url-err" hidden>Escreva o endereço do site, como minhaloja.com.br.</p>
           <p class="form__status" role="status" data-audit-status></p>
@@ -193,10 +207,7 @@
   </section>
 
   <section class="sec" id="servicos" aria-labelledby="servicos-h">
-    <div class="sec__head">
-      <p class="eyebrow">Toda escolha começa pela prévia grátis.</p>
-      <h2 id="servicos-h" data-reveal>Três serviços para o seu site</h2>
-    </div>
+    <div class="sec__head"><h2 id="servicos-h" class="big" data-split>Três serviços para o seu site</h2><p class="tiny">Toda escolha começa pela prévia grátis.</p></div>
     <ul class="services">
       <li class="service" data-rise><h3>Otimização</h3><p>Deixamos o site que você já tem mais rápido no celular, com SEO básico e botão de WhatsApp.</p><span aria-hidden="true">↗</span></li>
       <li class="service" data-rise><h3>Site novo</h3><p>Página única ou várias páginas, feito do zero, com textos, fotos e formulário de contato.</p><span aria-hidden="true">↗</span></li>
@@ -206,10 +217,7 @@
 
   <section class="sec" id="perguntas" aria-labelledby="perguntas-h">
     <div class="split split--faq">
-      <div class="sec__head">
-        <p class="eyebrow">O que mais nos perguntam antes de pedir.</p>
-        <h2 id="perguntas-h" data-reveal>Perguntas sobre a prévia</h2>
-      </div>
+      <div class="sec__head"><h2 id="perguntas-h" class="big" data-split>Perguntas sobre a prévia</h2><p class="tiny">O que mais nos perguntam antes de pedir.</p></div>
       <div class="faq">
         <details><summary>A prévia é grátis mesmo?</summary><p>Sim. Se não gostar, você não paga nada, e apagamos a prévia em 30 dias.</p></details>
         <details><summary>E se eu ainda não tenho site?</summary><p>Montamos a prévia com o que está no seu Instagram ou na sua página do Google: fotos, serviços e horários.</p></details>
@@ -220,12 +228,11 @@
     </div>
   </section>
 
-  <section class="sec sec--orange" id="pedido" aria-labelledby="pedido-h">
+  <section class="sec sec--lime" id="pedido" aria-labelledby="pedido-h">
     <div class="split">
       <div>
-        <p class="eyebrow">Grátis e sem compromisso</p>
-        <h2 id="pedido-h" data-reveal>Peça a prévia do seu site</h2>
-        <p class="sec__sub">Mande o endereço do site atual. Sem site, conte o que a empresa faz e onde fica.</p>
+        <h2 id="pedido-h" class="big" data-split>Peça a prévia do seu site</h2>
+        <p class="lead">Mande o endereço do site atual. Sem site, conte o que a empresa faz e onde fica.</p>
       </div>
       <form class="form" action="mailto:contato@vitrineestudio.example" method="post" enctype="text/plain" data-endpoint="" data-sent="Seu pedido chegou. Mandamos a prévia por e-mail." novalidate data-form>
         <div class="field"><label for="f-name">Nome</label>
@@ -246,24 +253,26 @@
           <p class="field__error" id="f-servico-err" hidden>Escolha o serviço que você quer.</p></div>
         <div class="field field--full"><label for="f-msg">O que a empresa faz</label>
           <textarea id="f-msg" name="mensagem" rows="3"></textarea></div>
-        <button class="btn btn--ink btn--full" type="submit">Pedir minha prévia <span aria-hidden="true">→</span></button>
+        <button class="pill pill--dark pill--big" type="submit">Pedir minha prévia <i aria-hidden="true"></i></button>
         <p class="form__status" role="status" data-form-status></p>
       </form>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <a class="footer__big" href="#pedido" data-big>Veja o seu site novo antes de pagar <span aria-hidden="true">→</span></a>
-  <div class="footer__row">
-    <span>Vitrine Estúdio · Sites sob medida para pequenas empresas.</span>
-    <span>A prévia é grátis e chega por e-mail, com o link privado.</span>
+<footer class="foot">
+  <p class="tiny">A prévia é grátis e chega por e-mail, com o link privado.</p>
+  <a class="foot__big" href="#pedido" data-split>Veja o seu site novo antes de pagar</a>
+  <div class="foot__row">
+    <span>VITRINE<sup>®</sup> · Sites sob medida para pequenas empresas.</span>
     <span><a href="privacidade.html">Privacidade</a> · <a href="credits.html">Créditos das fotos</a></span>
   </div>
 </footer>
 
 <script src="assets/vendor/motion.js"></script>
-<script src="js/vitrine.js" defer></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="js/site.js" defer></script>
+<script type="module" src="js/cena.js"></script>
 <script type="module" src="js/analise.js"></script>
 </body>
 </html>
