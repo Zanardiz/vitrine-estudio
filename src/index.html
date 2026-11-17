@@ -21,13 +21,18 @@
 </head>
 <body>
 <a class="skip" href="#topo">Pular para o conteúdo</a>
-<div class="cursor" aria-hidden="true" data-cursor></div>
+<div class="cursor" aria-hidden="true" data-cursor><span data-cursor-text></span></div>
+<div class="loader" aria-hidden="true" data-loader>
+  <span class="loader__word">VITRINE<sup>®</sup></span>
+  <span class="loader__count"><b data-loader-count>0</b>%</span>
+  <span class="loader__bar"><i data-loader-bar></i></span>
+</div>
 
 <header class="bar">
   <a class="bar__logo" href="#topo" aria-label="Vitrine Estúdio, início">VITRINE<sup>®</sup></a>
   <div class="bar__actions">
-    <a class="pill pill--dark" href="#pedido">Pedir prévia <i aria-hidden="true"></i></a>
-    <button class="pill" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu <span aria-hidden="true">••</span></button>
+    <a class="pill pill--dark" href="#pedido" data-magnet>Pedir prévia <i aria-hidden="true"></i></a>
+    <button class="pill" data-magnet type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu <span aria-hidden="true">••</span></button>
   </div>
 </header>
 
@@ -92,25 +97,30 @@
       <div class="marks" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i></div>
     </section>
 
+    <div class="band" aria-hidden="true"><div class="band__track" data-band>
+      <span>Prévia grátis</span><i>✦</i><span>Nota 90+ no Google</span><i>✦</i><span>WhatsApp no site</span><i>✦</i><span>Feito para o seu ramo</span><i>✦</i>
+      <span>Prévia grátis</span><i>✦</i><span>Nota 90+ no Google</span><i>✦</i><span>WhatsApp no site</span><i>✦</i><span>Feito para o seu ramo</span><i>✦</i>
+    </div></div>
+
     <section class="work" id="trabalhos" aria-labelledby="work-h">
       <div class="work__head">
         <h2 id="work-h" class="big" data-split>Sites em destaque</h2>
         <p class="tiny">Três sites-conceito, feitos para mostrar o estilo,<br>e um cliente de verdade.</p>
       </div>
       <div class="work__grid">
-        <a class="wcard" href="conceitos/cafe/" data-rise>
+        <a class="wcard" href="conceitos/cafe/" data-rise data-tilt>
           <span class="wcard__img"><img src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site do Café Aurora" loading="lazy"></span>
           <span class="tiny">Site · Conceito · Café</span><b>Café Aurora</b>
         </a>
-        <a class="wcard" href="conceitos/barbearia/" data-rise>
+        <a class="wcard" href="conceitos/barbearia/" data-rise data-tilt>
           <span class="wcard__img"><img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="Site da Barbearia Brasa" loading="lazy"></span>
           <span class="tiny">Site · Conceito · Barbearia</span><b>Barbearia Brasa</b>
         </a>
-        <a class="wcard" href="conceitos/clinica/" data-rise>
+        <a class="wcard" href="conceitos/clinica/" data-rise data-tilt>
           <span class="wcard__img"><img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="Site da Odonto Clara" loading="lazy"></span>
           <span class="tiny">Site · Conceito · Clínica</span><b>Odonto Clara</b>
         </a>
-        <a class="wcard wcard--real" href="#trabalho" data-rise>
+        <a class="wcard wcard--real" href="#trabalho" data-rise data-tilt>
           <span class="wcard__img"><img src="assets/img/work-macedos-servicos.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail" loading="lazy"></span>
           <span class="tiny">Site · Cliente real · Estética automotiva</span><b>Macedo's Auto Detail</b>
         </a>
@@ -128,14 +138,19 @@
     <p class="state__text">{{manifesto.antes}} <strong>{{manifesto.destaque}}</strong>{{manifesto.depois}}</p>
   </section>
 
-  <section class="sec" id="previa" aria-labelledby="previa-h">
-    <div class="sec__head"><h2 id="previa-h" class="big" data-split>{{previa.titulo}}</h2><p class="tiny">{{previa.texto}}</p></div>
-    <ol class="steps">
-{{#each previa.passos}}      <li class="step" data-rise>
-        <span class="step__img"><img src="assets/img/{{foto}}-960.webp" width="960" height="640" alt="{{foto_alt}}" loading="lazy"></span>
-        <h3>{{nome}}</h3><p>{{texto}}</p>
-      </li>
-{{/each}}    </ol>
+  <!-- Os passos andam para o lado enquanto a página desce (seção presa) -->
+  <section class="hs" id="previa" aria-labelledby="previa-h" data-hs>
+    <div class="hs__sticky">
+      <div class="sec__head hs__head"><h2 id="previa-h" class="big" data-split>{{previa.titulo}}</h2><p class="tiny">{{previa.texto}}</p></div>
+      <ol class="hs__track" data-hs-track>
+{{#each previa.passos}}        <li class="hcard">
+          <span class="hcard__img"><img src="assets/img/{{foto}}-960.webp" width="960" height="640" alt="{{foto_alt}}" loading="lazy"></span>
+          <span class="hcard__text"><h3>{{nome}}</h3><p>{{texto}}</p></span>
+        </li>
+{{/each}}        <li class="hcard hcard--cta"><a href="#pedido" data-magnet><span class="tiny">Grátis, sem compromisso</span><b>Pedir a minha prévia</b><span class="hcard__arrow" aria-hidden="true">→</span></a></li>
+      </ol>
+      <div class="hs__progress" aria-hidden="true"><i data-hs-bar></i></div>
+    </div>
   </section>
 
   <section class="sec sec--ink" id="padrao" aria-labelledby="padrao-h">

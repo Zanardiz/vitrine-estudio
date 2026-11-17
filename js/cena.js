@@ -6,7 +6,12 @@ import { RoomEnvironment } from '../assets/vendor/RoomEnvironment.js';
 
 const stage = document.querySelector('[data-stage]');
 const canvas = document.querySelector('[data-canvas]');
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Com "reduzir movimento" ligado, a cena continua viva, só que mais devagar.
+const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = false;
+let released = false;
+document.addEventListener('vitrine:ready', () => { released = true; }, { once: true });
+setTimeout(() => { released = true; }, 4000);
 
 const SCREENS = ['assets/conceitos/barbearia-mob.webp', 'assets/conceitos/cafe-mob.webp', 'assets/conceitos/clinica-mob.webp'];
 const COLORS = { white: '#eef0f6', black: '#121318', blue: '#3d4bff' };
@@ -133,7 +138,8 @@ function start() {
   const tmp = new THREE.Vector3();
   const clock = new THREE.Clock();
   function step() {
-    const t = clock.getElapsedTime();
+    const t = clock.getElapsedTime() * (calm ? 0.6 : 1);
+    if (!released) { renderer.render(scene, camera); return; }
     for (const b of bodies) {
       tmp.copy(b.home);
       tmp.y += Math.sin(t * 0.8 + b.phase) * (b.phone ? 0.12 : 0.2);
