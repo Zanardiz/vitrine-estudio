@@ -115,6 +115,58 @@ function showReport(address, report) {
 }
 
 // As auditorias que falharam, das que mais pesam na nota para as que menos pesam.
+// O Google às vezes devolve os títulos em inglês; os mais comuns, em português simples para o dono da empresa.
+const ISSUE_PT = {
+  'robots-txt': 'O arquivo que orienta o Google (robots.txt) tem erro',
+  'forced-reflow-insight': 'O site faz o navegador recalcular a página várias vezes',
+  'image-delivery-insight': 'As imagens estão mais pesadas do que precisam',
+  'network-dependency-tree-insight': 'Muitos arquivos carregam em fila, um esperando o outro',
+  'render-blocking-insight': 'Arquivos que atrasam a primeira aparição da página',
+  'render-blocking-resources': 'Arquivos que atrasam a primeira aparição da página',
+  'lcp-discovery-insight': 'A imagem principal demora a ser encontrada',
+  'lcp-breakdown-insight': 'O maior elemento da tela demora a aparecer',
+  'cache-insight': 'Os arquivos não ficam guardados no celular de quem volta',
+  'uses-long-cache-ttl': 'Os arquivos não ficam guardados no celular de quem volta',
+  'document-latency-insight': 'O servidor demora para responder',
+  'font-display-insight': 'O texto some enquanto a fonte carrega',
+  'cls-culprits-insight': 'Partes da página pulam de lugar enquanto carrega',
+  'third-parties-insight': 'Serviços de fora deixam o site mais lento',
+  'unused-javascript': 'Código que o site baixa e não usa',
+  'unused-css-rules': 'Estilos que o site baixa e não usa',
+  'unminified-javascript': 'Código sem compactar',
+  'unminified-css': 'Estilos sem compactar',
+  'uses-responsive-images': 'Imagens maiores do que a tela precisa',
+  'modern-image-formats': 'Imagens em formato antigo e pesado',
+  'offscreen-images': 'Imagens fora da tela carregando antes da hora',
+  'total-byte-weight': 'A página é pesada demais para o celular',
+  'dom-size': 'A página tem elementos demais',
+  'bootup-time': 'O código demora para rodar no celular',
+  'mainthread-work-breakdown': 'O celular fica ocupado demais carregando o site',
+  'meta-description': 'Falta a descrição da página para o Google',
+  'document-title': 'Falta o título da página para o Google',
+  'link-text': 'Links com texto vago, como "clique aqui"',
+  'crawlable-anchors': 'Links que o Google não consegue seguir',
+  'is-crawlable': 'A página está bloqueada para o Google',
+  'hreflang': 'Idioma da página mal informado',
+  'canonical': 'Endereço principal da página mal informado',
+  'image-alt': 'Imagens sem descrição para quem não enxerga',
+  'color-contrast': 'Texto com pouco contraste, difícil de ler',
+  'tap-targets': 'Botões pequenos ou colados demais para o dedo',
+  'target-size': 'Botões pequenos ou colados demais para o dedo',
+  'label': 'Campos de formulário sem nome',
+  'button-name': 'Botões sem nome para leitores de tela',
+  'link-name': 'Links sem nome para leitores de tela',
+  'html-has-lang': 'A página não diz em que idioma está',
+  'viewport': 'A página não se ajusta à tela do celular',
+  'font-size': 'Letras pequenas demais para ler no celular',
+  'is-on-https': 'O site não usa conexão segura (https)',
+  'errors-in-console': 'O site mostra erros escondidos no navegador',
+  'deprecations': 'O site usa recursos que os navegadores vão deixar de aceitar',
+  'inspector-issues': 'O navegador encontrou problemas na página',
+  'image-aspect-ratio': 'Imagens esticadas ou achatadas',
+  'image-size-responsive': 'Imagens borradas por serem pequenas demais',
+};
+
 function pickIssues(report) {
   const seen = new Set();
   const failing = [];
@@ -125,7 +177,7 @@ function pickIssues(report) {
       if (typeof audit.score !== 'number' || audit.score >= PASSING_SCORE) return;
       seen.add(ref.id);
       const savings = audit.details?.overallSavingsMs ?? 0;
-      failing.push({ title: cleanTitle(audit.title), weight: ref.weight ?? 0, savings });
+      failing.push({ title: ISSUE_PT[ref.id] ?? cleanTitle(audit.title), weight: ref.weight ?? 0, savings });
     });
   });
   return failing
