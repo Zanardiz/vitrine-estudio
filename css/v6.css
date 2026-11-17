@@ -157,7 +157,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .real__shots > img:first-child { border-radius: var(--r); width: 88%; box-shadow: 0 40px 80px -40px rgb(0 0 0 / .45); }
 .real__phone { position: absolute; right: 0; bottom: -12%; width: 26%; border-radius: 22px; border: 6px solid var(--panel); box-shadow: 0 30px 60px -24px rgb(0 0 0 / .5); }
 .real h2 { font: 500 clamp(32px, 3.6vw, 56px)/1 var(--font); letter-spacing: -.045em; margin: 12px 0 16px; }
-.real p:last-child { color: var(--muted); font-size: 17px; }
+.real__text p:not(.tiny) { color: var(--muted); font-size: 17px; margin-bottom: 22px; }
 
 /* Análise */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
