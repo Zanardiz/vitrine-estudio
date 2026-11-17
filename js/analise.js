@@ -3,7 +3,8 @@
 // crie uma chave grátis no Google Cloud (PageSpeed Insights API), restrinja-a ao domínio do site
 // (referenciadores HTTP) e cole em API_KEY. Um link com ?url=empresa.com.br#analise já roda a análise.
 const API_URL = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-const API_KEY = '';
+// Chave pública de navegador, restrita no Google Cloud ao site https://zanardiz.github.io/* e só à PageSpeed Insights API.
+const API_KEY = 'AIzaSyCTaefTD5QTJNnA29w2Lgu9tBW82tXtqsY';
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 const MAX_ISSUES = 5;
 const PASSING_SCORE = 0.9;
