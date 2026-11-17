@@ -13,10 +13,10 @@
 
   /* ---------- Abertura: um ramo por vez ---------- */
   const SLIDES = [
-    { bg: '#e8603c', fg: '#1a0f0a', word: '#ffffff', text: 'CAFÉ', name: 'Café Aurora', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Oi! Vocês fazem encomenda de bolo?', desk: 'assets/conceitos/cafe-desk.webp', mob: 'assets/conceitos/cafe-mob.webp', alt: 'Site-conceito do Café Aurora' },
-    { bg: '#16120f', fg: '#f3ece4', word: '#ff7a1a', text: 'BARBA', name: 'Barbearia Brasa', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Tem horário amanhã às 18h?', desk: 'assets/conceitos/barbearia-desk.webp', mob: 'assets/conceitos/barbearia-mob.webp', alt: 'Site-conceito da Barbearia Brasa', dark: true },
-    { bg: '#f5c6d8', fg: '#141414', word: '#ffffff', text: 'SORRIA', name: 'Odonto Clara', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Vocês atendem por convênio?', desk: 'assets/conceitos/clinica-desk.webp', mob: 'assets/conceitos/clinica-mob.webp', alt: 'Site-conceito da Odonto Clara' },
-    { bg: '#2747ff', fg: '#ffffff', word: '#d7ff3a', text: 'BRILHO', name: "Macedo's Auto Detail", kind: 'Cliente real · Caxias do Sul', tag: 'Cliente real', wa: 'Quanto fica o polimento?', desk: 'assets/img/work-macedos-servicos.webp', mob: 'assets/img/work-macedos-servicos-celular.webp', alt: "Site da Macedo's Auto Detail", dark: true },
+    { bg: '#f6b88f', fg: '#1a1410', word: '#ffffff', text: 'CAFÉ', name: 'Café Aurora', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Oi! Vocês fazem encomenda de bolo?', desk: 'assets/conceitos/cafe-desk.webp', mob: 'assets/conceitos/cafe-mob.webp', alt: 'Site-conceito do Café Aurora' },
+    { bg: '#b6b0f2', fg: '#15122b', word: '#ffffff', text: 'BARBA', name: 'Barbearia Brasa', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Tem horário amanhã às 18h?', desk: 'assets/conceitos/barbearia-desk.webp', mob: 'assets/conceitos/barbearia-mob.webp', alt: 'Site-conceito da Barbearia Brasa' },
+    { bg: '#f4bfd3', fg: '#1d1016', word: '#ffffff', text: 'SORRIA', name: 'Odonto Clara', kind: 'Site-conceito · empresa fictícia', tag: 'Conceito', wa: 'Vocês atendem por convênio?', desk: 'assets/conceitos/clinica-desk.webp', mob: 'assets/conceitos/clinica-mob.webp', alt: 'Site-conceito da Odonto Clara' },
+    { bg: '#6fd0f6', fg: '#06212d', word: '#ffffff', text: 'BRILHO', name: "Macedo's Auto Detail", kind: 'Cliente real · Caxias do Sul', tag: 'Cliente real', wa: 'Quanto fica o polimento?', desk: 'assets/img/work-macedos-servicos.webp', mob: 'assets/img/work-macedos-servicos-celular.webp', alt: "Site da Macedo's Auto Detail" },
   ];
   const AUTO_MS = 6000;
 
@@ -66,12 +66,12 @@
       await Promise.all([
         M.animate(els.laptop, { rotateY: [0, -out], x: [0, -120 * dir], opacity: [1, 0] }, { duration: 0.45, ease: [0.4, 0, 1, 1] }).finished,
         M.animate(els.phone, { rotateY: [0, -out], x: [0, -60 * dir], opacity: [1, 0] }, { duration: 0.4, delay: 0.05, ease: [0.4, 0, 1, 1] }).finished,
-        M.animate(els.word, { y: [0, -60], opacity: [0.16, 0] }, { duration: 0.35 }).finished,
+        M.animate(els.word, { y: [0, -60], opacity: [0.28, 0] }, { duration: 0.35 }).finished,
         M.animate(els.chips, { scale: [1, 0.6], opacity: [1, 0] }, { duration: 0.25 }).finished,
       ]);
       fillText(s, next);
       current = next;
-      M.animate(els.word, { y: [80, 0], opacity: [0, 0.16] }, { duration: 0.7, ease: EASE });
+      M.animate(els.word, { y: [80, 0], opacity: [0, 0.28] }, { duration: 0.7, ease: EASE });
       M.animate(els.laptop, { rotateY: [out, 0], x: [140 * dir, 0], opacity: [0, 1] }, SPRING);
       M.animate(els.phone, { rotateY: [out, 0], x: [90 * dir, 0], opacity: [0, 1] }, { ...SPRING, delay: 0.08 });
       await M.animate(els.chips, { scale: [0.6, 1], opacity: [0, 1] }, { type: 'spring', stiffness: 260, damping: 16, delay: M.stagger(0.09, { startDelay: 0.25 }) }).finished;
@@ -108,15 +108,15 @@
       });
     }
 
-    // entrada da página
-    if (M && !reduce) {
-      M.animate(els.phone, { z: 80 }, { duration: 0 });
+    // entrada quando a seção aparece
+    if (M && !reduce) M.animate(els.phone, { z: 80 }, { duration: 0 });
+    if (M && !reduce) M.inView(hero, () => {
       M.animate($$('[data-hero-in]', hero), { y: [40, 0], opacity: [0, 1] }, { duration: 0.9, ease: EASE, delay: M.stagger(0.09, { startDelay: 0.1 }) });
       M.animate(els.laptop, { rotateY: [50, 0], y: [80, 0], opacity: [0, 1] }, { ...SPRING, delay: 0.25 });
       M.animate(els.phone, { rotateY: [50, 0], y: [140, 0], opacity: [0, 1] }, { ...SPRING, delay: 0.4 });
       M.animate(els.chips, { scale: [0.4, 1], opacity: [0, 1] }, { type: 'spring', stiffness: 260, damping: 15, delay: M.stagger(0.12, { startDelay: 0.8 }) });
-      M.animate(els.word, { y: [120, 0], opacity: [0, 0.16] }, { duration: 1.2, ease: EASE });
-    }
+      M.animate(els.word, { y: [120, 0], opacity: [0, 0.28] }, { duration: 1.2, ease: EASE });
+    }, { amount: 0.3 });
     startAuto();
   }
 
@@ -265,6 +265,72 @@
     });
   }
 
+  /* ---------- Abertura editorial: slides com borrão de movimento ---------- */
+  function initEditorial() {
+    const root = $('[data-ed]');
+    if (!root) return;
+    const slides = $$('[data-slide]', root);
+    const dots = $$('.ed__dots i', root);
+    const count = $('[data-ed-count]', root);
+    let current = 0;
+    let busy = false;
+    let timer = null;
+
+    const parts = (s) => ({ photo: $('.ed__photo', s), lines: $$('.ed__line', s), rest: $$('.ed__kicker, .ed__cols', s) });
+    const enter = (s, dir = 1) => {
+      const p = parts(s);
+      M.animate(p.photo, { clipPath: [dir > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)', 'inset(0 0% 0 0%)'], filter: ['blur(14px)', 'blur(0px)'] }, { duration: 0.9, ease: EASE });
+      M.animate($('img', p.photo), { scale: [1.18, 1] }, { duration: 1.4, ease: EASE });
+      M.animate(p.lines, { x: [140 * dir, 0], opacity: [0, 1], filter: ['blur(16px)', 'blur(0px)'] }, { duration: 0.85, ease: EASE, delay: M.stagger(0.08, { startDelay: 0.15 }) });
+      return M.animate(p.rest, { y: [24, 0], opacity: [0, 1] }, { duration: 0.6, ease: EASE, delay: 0.45 }).finished;
+    };
+    const leave = (s, dir = 1) => {
+      const p = parts(s);
+      return Promise.all([
+        M.animate([p.photo, ...p.lines, ...p.rest], { x: [0, -160 * dir], opacity: [1, 0], filter: ['blur(0px)', 'blur(18px)'] }, { duration: 0.42, ease: [0.5, 0, 0.9, 0.5] }).finished,
+      ]);
+    };
+    const mark = (i) => {
+      count.textContent = String(i + 1).padStart(2, '0');
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      slides.forEach((s, k) => { s.classList.toggle('is-on', k === i); s.setAttribute('aria-hidden', String(k !== i)); });
+    };
+
+    async function go(next, dir) {
+      if (busy || next === current) return;
+      if (!M || reduce) { current = next; mark(next); return; }
+      busy = true;
+      await leave(slides[current], dir);
+      const old = slides[current];
+      current = next;
+      mark(next);
+      M.animate($$('.ed__photo, .ed__line, .ed__kicker, .ed__cols', old), { x: 0, opacity: 1, filter: 'blur(0px)' }, { duration: 0 });
+      await enter(slides[next], dir);
+      busy = false;
+    }
+    const step = (d) => go((current + d + slides.length) % slides.length, d);
+    const stop = () => { if (timer) clearInterval(timer); timer = null; };
+    const start = () => { if (reduce) return; stop(); timer = setInterval(() => step(1), 5500); };
+    $('[data-ed-next]', root).addEventListener('click', () => { step(1); start(); });
+    $('[data-ed-prev]', root).addEventListener('click', () => { step(-1); start(); });
+    root.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { step(1); start(); } if (e.key === 'ArrowLeft') { step(-1); start(); } });
+    root.addEventListener('focusin', stop);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    // parallax suave nas manchas e no selo
+    if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+      const blobs = $$('.ed__blob', root);
+      root.addEventListener('pointermove', (e) => {
+        const px = e.clientX / window.innerWidth - 0.5;
+        const py = e.clientY / window.innerHeight - 0.5;
+        blobs.forEach((b, k) => { b.style.translate = `${px * (60 + k * 40)}px ${py * (40 + k * 30)}px`; });
+      });
+    }
+    if (M && !reduce) enter(slides[0], 1);
+    start();
+  }
+
+  initEditorial();
   initHero();
   initRing();
   initReveals();

@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/v3.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -29,17 +29,64 @@
 </header>
 
 <main id="topo">
-  <!-- Abertura: cada ramo pinta a tela, a palavra gigante muda e o site flutua em 3D -->
-  <section class="hero" data-hero style="--bg:#e8603c;--fg:#1a0f0a;--word:#ffffff" aria-labelledby="hero-h">
+  <!-- Abertura editorial: slides com título em serifa gigante, foto em preto e branco, mancha rosa e selo girando -->
+  <section class="ed" data-ed aria-labelledby="ed-h">
+    <div class="ed__blob ed__blob--a" aria-hidden="true"></div>
+    <div class="ed__blob ed__blob--b" aria-hidden="true"></div>
+
+    <article class="ed__slide ed__slide--muse is-on" data-slide>
+      <figure class="ed__photo"><img src="assets/img/photo-f197429032-960.webp" width="960" height="640" alt="Pessoa num café com o celular na mão e o notebook aberto" fetchpriority="high"></figure>
+      <h1 class="ed__title" id="ed-h"><span class="ed__line">Seu site</span> <span class="ed__line">antes de</span> <span class="ed__line">pagar</span></h1>
+      <div class="ed__cols">
+        <p><b>Sites sob medida para pequenas empresas.</b> Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada.</p>
+        <p>A prévia é grátis e chega por e-mail, ao lado do seu site atual. <a class="ed__more" href="#pedido">Pedir minha prévia</a></p>
+      </div>
+    </article>
+
+    <article class="ed__slide ed__slide--vanity" data-slide aria-hidden="true">
+      <figure class="ed__photo"><img src="assets/img/photo-f187311853-960.webp" width="960" height="640" alt="Barista preparando um espresso" loading="lazy"></figure>
+      <p class="ed__kicker">O site do seu</p>
+      <p class="ed__title"><span class="ed__line">Café</span></p>
+      <div class="ed__cols"><p>Cardápio, horário e encomendas pelo WhatsApp, numa página que abre rápido no celular. <a class="ed__more" href="conceitos/cafe/">Ver o conceito</a></p></div>
+    </article>
+
+    <article class="ed__slide ed__slide--muse" data-slide aria-hidden="true">
+      <figure class="ed__photo"><img src="assets/img/photo-f188536778-960.webp" width="960" height="640" alt="Barbeiro sorrindo enquanto atende um cliente" loading="lazy"></figure>
+      <p class="ed__title"><span class="ed__line">Agenda</span> <span class="ed__line">sempre</span> <span class="ed__line">cheia</span></p>
+      <div class="ed__cols"><p><b>Barbearia.</b> Preços à vista, botão de agendar e as fotos dos cortes no lugar do link solto do Instagram.</p><p><a class="ed__more" href="conceitos/barbearia/">Ver o conceito</a></p></div>
+    </article>
+
+    <article class="ed__slide ed__slide--vanity" data-slide aria-hidden="true">
+      <figure class="ed__photo"><img src="assets/img/photo-f197684384-960.webp" width="960" height="640" alt="Dentista sorrindo enquanto atende uma criança" loading="lazy"></figure>
+      <p class="ed__kicker">Clínicas que passam</p>
+      <p class="ed__title"><span class="ed__line">Calma</span></p>
+      <div class="ed__cols"><p>Equipe, convênios e avaliação marcada em dois toques, com cara de lugar cuidadoso. <a class="ed__more" href="conceitos/clinica/">Ver o conceito</a></p></div>
+    </article>
+
+    <a class="ed__badge" href="#pedido" aria-label="Pedir a prévia grátis">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="badge-c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#badge-c">Prévia grátis · Sem compromisso · Prévia grátis ·</textPath></text></svg>
+      <span aria-hidden="true">+</span>
+    </a>
+
+    <div class="ed__nav">
+      <button data-ed-prev aria-label="Slide anterior">‹</button>
+      <button data-ed-next aria-label="Próximo slide">›</button>
+      <span class="ed__count" aria-hidden="true">*<b data-ed-count>01</b></span>
+    </div>
+    <div class="ed__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- Vitrine dos ramos: cada ramo pinta a tela, a palavra gigante muda e o site flutua em 3D -->
+  <section class="hero" data-hero style="--bg:#f6b88f;--fg:#1a1410;--word:#ffffff" aria-labelledby="hero-h">
     <div class="hero__word" aria-hidden="true" data-word>CAFÉ</div>
 
     <div class="hero__copy">
-      <p class="eyebrow" data-hero-in>Sites sob medida para pequenas empresas</p>
-      <h1 id="hero-h" data-hero-in>Seu site novo, <em>pronto</em> antes de você pagar.</h1>
-      <p class="hero__lead" data-hero-in>Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Nota 90 ou mais no Google, em 4 áreas. Não gostou, não paga nada.</p>
+      <p class="eyebrow" data-hero-in>Escolha o seu ramo</p>
+      <h2 id="hero-h" data-hero-in>Um site com a <em>cara</em> do seu negócio.</h2>
+      <p class="hero__lead" data-hero-in>Troque a cor ao lado e veja o site de cada ramo no computador e no celular.</p>
       <div class="hero__ctas" data-hero-in>
-        <a class="btn btn--ink" href="#pedido">Pedir minha prévia grátis <span aria-hidden="true">→</span></a>
-        <a class="link" href="#conceitos">Ver os sites</a>
+        <a class="btn btn--ink" href="#pedido">Quero o meu assim <span aria-hidden="true">→</span></a>
+        <a class="link" href="#conceitos">Ver todos os sites</a>
       </div>
     </div>
 
@@ -62,10 +109,10 @@
       <div class="counter" aria-hidden="true"><span>*</span><b data-count>01</b><i>/04</i></div>
       <div class="hero__name"><b data-name>Café Aurora</b><span data-kind>Site-conceito · empresa fictícia</span></div>
       <div class="swatches" role="tablist" aria-label="Escolha um ramo">
-        <button role="tab" aria-selected="true" data-go="0" style="--c:#e8603c" aria-label="Café"></button>
-        <button role="tab" aria-selected="false" data-go="1" style="--c:#16120f" aria-label="Barbearia"></button>
-        <button role="tab" aria-selected="false" data-go="2" style="--c:#f5c6d8" aria-label="Clínica odontológica"></button>
-        <button role="tab" aria-selected="false" data-go="3" style="--c:#2747ff" aria-label="Estética automotiva, cliente real"></button>
+        <button role="tab" aria-selected="true" data-go="0" style="--c:#f6b88f" aria-label="Café"></button>
+        <button role="tab" aria-selected="false" data-go="1" style="--c:#b6b0f2" aria-label="Barbearia"></button>
+        <button role="tab" aria-selected="false" data-go="2" style="--c:#f4bfd3" aria-label="Clínica odontológica"></button>
+        <button role="tab" aria-selected="false" data-go="3" style="--c:#6fd0f6" aria-label="Estética automotiva, cliente real"></button>
       </div>
       <div class="arrows">
         <button data-prev aria-label="Ramo anterior">←</button><button data-next aria-label="Próximo ramo">→</button>
