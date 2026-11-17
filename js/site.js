@@ -22,8 +22,8 @@
   let lenis = null;
   function initScroll() {
     if (!window.Lenis) return;
-    // A roda do mouse é tratada pelas janelas (initPanels); no toque, a rolagem segue normal.
-    lenis = new window.Lenis({ lerp: calm ? 0.16 : 0.09, smoothWheel: !fine });
+    // Rolagem natural e suave; as janelas só encaixam de leve quando a pessoa para (initPanels).
+    lenis = new window.Lenis({ lerp: calm ? 0.16 : 0.1, smoothWheel: true, wheelMultiplier: 1 });
     const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
@@ -69,7 +69,8 @@
             if (!part) return;
             if (/^\s+$/.test(part)) { frag.append(part); return; }
             const outer = document.createElement('span');
-            outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em';
+            // folga em cima e embaixo para acentos (Ê, Ô, Á) e letras como g e p não serem cortados
+            outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding:.22em .04em .16em;margin:-.22em -.04em -.16em';
             const inner = document.createElement('span');
             inner.style.cssText = 'display:inline-block;transform:translateY(105%) rotate(4deg);transform-origin:left bottom';
             inner.textContent = part;
@@ -348,12 +349,27 @@
       lenis.scrollTo(target, { duration: D(STEP_MS), easing: (t) => 1 - Math.pow(1 - t, 4), onComplete: () => { clearTimeout(safety); setTimeout(unlock, 160); } });
     };
     const menuOpen = () => menu && !menu.hidden;
-    window.addEventListener('wheel', (e) => {
-      if (e.ctrlKey || menuOpen()) return;
-      e.preventDefault();
-      if (Math.abs(e.deltaY) < 4) return;
-      go(Math.sign(e.deltaY));
-    }, { passive: false });
+
+    // Encaixe leve: quando a rolagem para perto do começo de uma janela, ela se ajusta sozinha.
+    // A roda do mouse nunca é bloqueada.
+    const SNAP_IDLE_MS = 220;
+    const SNAP_RANGE = 0.22;
+    let idle = null;
+    lenis.on('scroll', () => {
+      clearTimeout(idle);
+      if (lock || menuOpen()) return;
+      idle = setTimeout(() => {
+        if (lock || Math.abs(lenis.velocity) > 0.5) return;
+        const y = window.scrollY;
+        const near = tops.map(Math.round).reduce((best, t) => (Math.abs(t - y) < Math.abs(best - y) ? t : best), Infinity);
+        const dist = Math.abs(near - y);
+        if (dist > 2 && dist < window.innerHeight * SNAP_RANGE) {
+          lock = true;
+          lenis.scrollTo(near, { duration: 0.6, easing: (t) => 1 - Math.pow(1 - t, 3), onComplete: () => { lock = false; } });
+          setTimeout(() => { lock = false; }, 900);
+        }
+      }, SNAP_IDLE_MS);
+    });
     document.addEventListener('keydown', (e) => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (menuOpen() || ['input', 'textarea', 'select'].includes(tag) || e.target.isContentEditable) return;
