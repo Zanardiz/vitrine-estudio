@@ -52,13 +52,36 @@
 </nav>
 
 <main id="topo">
+  <!-- Abertura: o Arthur. Foto que abre do meio, assinatura gigante que se desenha e os sites flutuando em volta -->
+  <section class="me" aria-labelledby="me-h" data-me>
+    <canvas class="topo" aria-hidden="true" data-topo></canvas>
+    <p class="tiny me__kicker">Vitrine Estúdio · Rio Grande do Sul</p>
+    <figure class="me__photo" data-me-photo>
+      <picture>
+        <source media="(max-width: 700px)" srcset="assets/img/arthur-mob.webp">
+        <img src="assets/img/arthur-960.webp" srcset="assets/img/arthur-960.webp 960w, assets/img/arthur.webp 1536w" sizes="(max-width: 700px) 92vw, 60vw" width="1536" height="1024" alt="{{sobre.foto_alt}}" fetchpriority="high">
+      </picture>
+    </figure>
+    <svg class="sign sign--hero" viewBox="0 0 600 200" aria-hidden="true" data-sign data-sign-hero><text x="300" y="140" text-anchor="middle">{{sobre.assinatura}}</text></svg>
+    <a class="me__float me__float--a" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-float="0.6" data-speed="0.12"><img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="Site da Macedo's Auto Detail"><span class="tiny">Macedo's · no ar ↗</span></a>
+    <a class="me__float me__float--b" href="conceitos/cafe/" data-float="-0.4" data-speed="-0.1"><img src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site-conceito do Café Aurora"><span class="tiny">Café · conceito</span></a>
+    <a class="me__float me__float--c" href="conceitos/barbearia/" data-float="0.9" data-speed="0.2"><img src="assets/conceitos/barbearia-mob.webp" width="390" height="844" alt="Site-conceito da Barbearia Brasa"><span class="tiny">Barbearia · conceito</span></a>
+    <div class="me__bottom">
+      <h1 id="me-h" class="me__title" data-split>Oi, eu sou o Arthur. Faço sites para pequenas empresas.</h1>
+      <div class="me__cta">
+        <a class="pill pill--dark pill--big" href="#pedido" data-magnet>Pedir minha prévia grátis <i aria-hidden="true"></i></a>
+        <span class="hero__scroll tiny" aria-hidden="true">Role <b>↓</b></span>
+      </div>
+    </div>
+  </section>
+
   <!-- Abertura: painel escuro com a cena 3D (peças e celulares que reagem ao mouse) -->
   <section class="hero" aria-labelledby="hero-h">
     <div class="hero__stage" data-stage>
       <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
       <picture class="hero__poster"><source media="(max-width: 700px)" srcset="assets/img/hero-cena-mob.webp"><img src="assets/img/hero-cena.webp" width="1365" height="804" alt="Celulares com os sites flutuando entre peças 3D brancas, pretas e azuis" fetchpriority="high"></picture>
       <div class="hero__over">
-        <h1 id="hero-h" class="hero__title" data-split>Sites que fazem a sua empresa ser lembrada.</h1>
+        <h2 id="hero-h" class="hero__title" data-split>Sites que fazem a sua empresa ser lembrada.</h2>
         <div class="hero__meta">
           <span>Prévia grátis antes de pagar</span>
           <span class="hero__scroll" aria-hidden="true">Role <b>↓</b></span>
@@ -122,11 +145,7 @@
   <section class="about" id="sobre" aria-labelledby="about-h">
     <canvas class="topo" aria-hidden="true" data-topo></canvas>
     <figure class="about__photo" data-rise>
-      <picture>
-        <source media="(max-width: 700px)" srcset="assets/img/arthur-mob.webp">
-        <img src="assets/img/arthur-960.webp" srcset="assets/img/arthur-960.webp 960w, assets/img/arthur.webp 1536w" sizes="(max-width: 1023px) 100vw, 56vw" width="1536" height="1024" alt="{{sobre.foto_alt}}" loading="lazy">
-      </picture>
-      <svg class="sign sign--about" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">{{sobre.assinatura}}</text></svg>
+      <img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Abertura do site da Macedo's Auto Detail, cliente real" loading="lazy">
     </figure>
     <div class="about__text">
       <p class="tiny">{{sobre.rotulo}}</p>

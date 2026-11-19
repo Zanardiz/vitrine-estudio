@@ -91,7 +91,8 @@
     $$('[data-split]').forEach((el) => {
       const words = splitWords(el);
       const play = () => M.animate(words, { y: ['105%', '0%'], rotate: [4, 0] }, { duration: D(1), ease: EASE, delay: M.stagger(0.045) });
-      if (el.closest('.hero')) whenReady(() => setTimeout(play, 250));
+      if (el.closest('.me')) whenReady(() => setTimeout(play, 900));
+      else if (el.closest('.hero')) M.inView(el, play, { amount: 0.3 });
       else M.inView(el, play, { amount: 0.25 });
     });
     $$('[data-rise]').forEach((el) => {
@@ -477,7 +478,8 @@
         if (!M) { text.style.strokeDashoffset = '0'; svg.classList.add('drawn'); return; }
         M.animate(LEN, 0, { duration: D(2.4), ease: [0.45, 0, 0.2, 1], onUpdate: (v) => { text.style.strokeDashoffset = `${v}`; } }).then(() => svg.classList.add('drawn'));
       };
-      if (M) M.inView(svg, draw, { amount: 0.5 }); else draw();
+      if (svg.hasAttribute('data-sign-hero')) whenReady(() => setTimeout(draw, 500));
+      else if (M) M.inView(svg, draw, { amount: 0.5 }); else draw();
     });
   }
 
@@ -521,6 +523,34 @@
       after.style.clipPath = `inset(${((1 - reveal) * 100).toFixed(1)}% 0 0 0 round 36px)`;
       phone.style.transform = `rotate(${((1 - reveal) * -8).toFixed(2)}deg) scale(${(0.92 + reveal * 0.08).toFixed(3)})`;
     }, { target: sec, offset: ['start start', 'end end'] });
+  }
+
+  /* Abertura do Arthur: a foto abre do meio, os sites flutuantes chegam e seguem o mouse */
+  function initMe() {
+    const me = $('[data-me]');
+    if (!me) return;
+    const photo = $('[data-me-photo]', me);
+    const floats = $('[data-float]', me);
+    if (M) {
+      photo.style.clipPath = 'inset(50% 50% 50% 50% round 30px)';
+      floats.forEach((f) => { f.style.opacity = '0'; });
+      whenReady(() => {
+        M.animate(photo, { clipPath: ['inset(50% 50% 50% 50% round 30px)', 'inset(0% 0% 0% 0% round 30px)'] }, { duration: D(1.3), ease: [0.7, 0, 0.2, 1] });
+        M.animate($('img', photo), { scale: [1.25, 1] }, { duration: D(1.8), ease: EASE });
+        M.animate(floats, { y: [120, 0], opacity: [0, 1], rotate: [-8, 0] }, { duration: D(1.1), ease: EASE, delay: M.stagger(0.15, { startDelay: 1.1 }) });
+      });
+    }
+    if (!fine) return;
+    let raf = 0;
+    me.addEventListener('pointermove', (e) => {
+      const px = e.clientX / window.innerWidth - 0.5;
+      const py = e.clientY / window.innerHeight - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        photo.style.transform = `translate(${px * -14}px, ${py * -10}px)`;
+        floats.forEach((f) => { const k = Number(f.dataset.float) || 0.5; f.style.transform = `translate(${px * 60 * k}px, ${py * 40 * k}px)`; });
+      });
+    });
   }
 
   /* Formulário do pedido */
@@ -578,6 +608,7 @@
   initReel();
   initMenu();
   initCursor();
+  initMe();
   initPanels();
   initChapters();
   initTopo();

@@ -480,3 +480,33 @@ main > section[data-pin] { position: relative; z-index: 1; min-height: 0; }
   .sign--about { right: 2%; bottom: -10%; width: 50%; }
   .about__card { width: 80%; }
 }
+
+/* ===== Abertura do Arthur (estilo da abertura do site do piloto) ===== */
+.me { position: relative; overflow: hidden; min-height: 100svh; background-color: #1c1f17 !important; color: #e9ecdf; display: grid; place-items: center; padding: 90px var(--g) 40px; }
+.me > *:not(.topo) { position: relative; z-index: 2; }
+.me__kicker { position: absolute !important; top: 92px; left: var(--g); color: var(--lime) !important; }
+.me__photo { margin: 0; width: min(62vw, 980px); border-radius: 30px; overflow: hidden; box-shadow: 0 60px 120px -50px rgb(0 0 0 / .8); transition: transform .6s var(--ease); }
+.me__photo img { display: block; width: 100%; height: auto; }
+.sign--hero { position: absolute !important; z-index: 4 !important; left: 50%; top: 62%; width: min(1000px, 86vw); margin: 0; translate: -50% -50%; filter: drop-shadow(0 8px 24px rgb(0 0 0 / .55)); pointer-events: none; }
+.sign--hero text { stroke-width: 2.6; }
+.me__float { position: absolute !important; z-index: 3 !important; display: grid; gap: 6px; text-decoration: none; transition: transform .6s var(--ease); }
+.me__float img { border-radius: 10px; box-shadow: 0 30px 60px -24px rgb(0 0 0 / .7); }
+.me__float .tiny { color: rgb(233 236 223 / .65) !important; font-size: 9px; }
+.me__float--a { width: clamp(170px, 17vw, 270px); right: 4%; top: 16%; }
+.me__float--b { width: clamp(90px, 8vw, 130px); left: 5%; top: 22%; }
+.me__float--c { width: clamp(90px, 8vw, 130px); right: 9%; bottom: 14%; }
+.me__bottom { position: absolute !important; left: var(--g); right: var(--g); bottom: 78px; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.me__title { font: 500 clamp(28px, 3.2vw, 52px)/1.02 var(--font); letter-spacing: -.04em; max-width: 17ch; color: #fff; }
+.me__cta { display: grid; justify-items: end; gap: 12px; }
+.me__cta .tiny { color: rgb(233 236 223 / .6) !important; }
+.me__cta .pill--dark { background: var(--lime); color: var(--ink); }
+.me__cta .pill--dark i { background: var(--ink); }
+@media (max-width: 1023px) {
+  .me { place-items: start center; padding-top: 130px; }
+  .me__photo { width: 100%; }
+  .sign--hero { top: 38%; width: 96vw; }
+  .me__float--a { right: 2%; top: auto; bottom: 30%; width: 34vw; }
+  .me__float--b, .me__float--c { display: none; }
+  .me__bottom { flex-direction: column; align-items: start; }
+  .me__cta { justify-items: start; }
+}
