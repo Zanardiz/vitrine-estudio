@@ -43,6 +43,7 @@
   <ul>
     <li><a href="#previa">Como funciona</a></li>
     <li><a href="#trabalhos">Sites</a></li>
+    <li><a href="#sobre">Quem faz</a></li>
     <li><a href="#padrao">O que você recebe</a></li>
     <li><a href="#analise">Análise</a></li>
     <li><a href="#perguntas">Perguntas</a></li>
@@ -117,16 +118,27 @@
     </div>
   </section>
 
-  <!-- A frase grande, com o mapa de linhas ao fundo e fotos que andam em velocidades diferentes -->
-  <section class="state" aria-labelledby="state-h">
+  <!-- Quem está por trás: foto grande, assinatura que se desenha, história curta e o mapa de linhas ao fundo -->
+  <section class="about" id="sobre" aria-labelledby="about-h">
     <canvas class="topo" aria-hidden="true" data-topo></canvas>
-    <figure class="state__ph state__ph--a" data-speed="0.18"><figcaption class="tiny">Barbearia · conceito</figcaption><img src="assets/img/photo-f188536778-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <figure class="state__ph state__ph--b" data-speed="-0.12"><figcaption class="tiny">Café · conceito</figcaption><img src="assets/img/photo-f187311853-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <figure class="state__ph state__ph--c" data-speed="0.1"><figcaption class="tiny">Clínica · conceito</figcaption><img src="assets/img/photo-f197684384-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <svg class="sign" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
-    <p class="tiny state__kicker">{{manifesto.rotulo}}</p>
-    <h2 id="state-h" class="state__title" data-light>Site de pequena empresa não precisa parecer <span class="hl">pequeno.</span></h2>
-    <p class="state__text">{{manifesto.antes}} <strong>{{manifesto.destaque}}</strong>{{manifesto.depois}}</p>
+    <figure class="about__photo" data-rise>
+      <picture>
+        <source media="(max-width: 700px)" srcset="assets/img/arthur-mob.webp">
+        <img src="assets/img/arthur-960.webp" srcset="assets/img/arthur-960.webp 960w, assets/img/arthur.webp 1536w" sizes="(max-width: 1023px) 100vw, 56vw" width="1536" height="1024" alt="{{sobre.foto_alt}}" loading="lazy">
+      </picture>
+      <svg class="sign sign--about" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">{{sobre.assinatura}}</text></svg>
+    </figure>
+    <div class="about__text">
+      <p class="tiny">{{sobre.rotulo}}</p>
+      <h2 id="about-h" data-split>{{sobre.titulo}}</h2>
+      <p class="about__lead">{{sobre.lead}}</p>
+      <p>{{sobre.historia}}</p>
+      <p>{{sobre.motivo}} <strong>{{sobre.destaque}}</strong></p>
+      <a class="about__card" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-speed="-0.06">
+        <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="" loading="lazy">
+        <span class="tiny">{{sobre.legenda}} ↗</span>
+      </a>
+    </div>
   </section>
 
   <!-- Os passos andam para o lado enquanto a página desce (seção presa) -->

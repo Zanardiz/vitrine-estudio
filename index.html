@@ -42,6 +42,7 @@
   <ul>
     <li><a href="#previa">Como funciona</a></li>
     <li><a href="#trabalhos">Sites</a></li>
+    <li><a href="#sobre">Quem faz</a></li>
     <li><a href="#padrao">O que você recebe</a></li>
     <li><a href="#analise">Análise</a></li>
     <li><a href="#perguntas">Perguntas</a></li>
@@ -116,16 +117,27 @@
     </div>
   </section>
 
-  <!-- A frase grande, com o mapa de linhas ao fundo e fotos que andam em velocidades diferentes -->
-  <section class="state" aria-labelledby="state-h">
+  <!-- Quem está por trás: foto grande, assinatura que se desenha, história curta e o mapa de linhas ao fundo -->
+  <section class="about" id="sobre" aria-labelledby="about-h">
     <canvas class="topo" aria-hidden="true" data-topo></canvas>
-    <figure class="state__ph state__ph--a" data-speed="0.18"><figcaption class="tiny">Barbearia · conceito</figcaption><img src="assets/img/photo-f188536778-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <figure class="state__ph state__ph--b" data-speed="-0.12"><figcaption class="tiny">Café · conceito</figcaption><img src="assets/img/photo-f187311853-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <figure class="state__ph state__ph--c" data-speed="0.1"><figcaption class="tiny">Clínica · conceito</figcaption><img src="assets/img/photo-f197684384-500.webp" width="500" height="333" alt="" loading="lazy"></figure>
-    <svg class="sign" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
-    <p class="tiny state__kicker">O que defendemos</p>
-    <h2 id="state-h" class="state__title" data-light>Site de pequena empresa não precisa parecer <span class="hl">pequeno.</span></h2>
-    <p class="state__text">Ele precisa abrir rápido, mostrar o seu trabalho de verdade e fazer quem chegou pelo celular <strong>chamar você</strong> no mesmo minuto.</p>
+    <figure class="about__photo" data-rise>
+      <picture>
+        <source media="(max-width: 700px)" srcset="assets/img/arthur-mob.webp">
+        <img src="assets/img/arthur-960.webp" srcset="assets/img/arthur-960.webp 960w, assets/img/arthur.webp 1536w" sizes="(max-width: 1023px) 100vw, 56vw" width="1536" height="1024" alt="Arthur, criador do Vitrine Estúdio, de blusa preta, sorrindo de leve" loading="lazy">
+      </picture>
+      <svg class="sign sign--about" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Arthur</text></svg>
+    </figure>
+    <div class="about__text">
+      <p class="tiny">Quem está por trás</p>
+      <h2 id="about-h" data-split>Oi, eu sou o Arthur.</h2>
+      <p class="about__lead">Sou do Rio Grande do Sul e faço sites para pequenas empresas.</p>
+      <p>Meu primeiro site foi para a minha namorada, um site de jornalismo cultural. Depois veio um amigo, que tem uma estética automotiva e tinha recebido a proposta de site de outra empresa. Eu fiz uma versão melhor, sem custo de hospedagem para ele. Ele aprovou, e hoje o site dele está no ar.</p>
+      <p>Foi aí que eu percebi quanta empresa boa some no celular por não ter um site à altura do trabalho que faz. Por isso a prévia é grátis: <strong>você vê o seu site pronto antes de pagar qualquer coisa.</strong></p>
+      <a class="about__card" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-speed="-0.06">
+        <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="" loading="lazy">
+        <span class="tiny">Macedo's Auto Detail · no ar desde nov/2026 ↗</span>
+      </a>
+    </div>
   </section>
 
   <!-- Os passos andam para o lado enquanto a página desce (seção presa) -->

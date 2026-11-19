@@ -71,6 +71,19 @@ collections:
               - { label: Começo da frase, name: antes, widget: text }
               - { label: Parte destacada, name: destaque, widget: string }
               - { label: Final da frase, name: depois, widget: string }
+          - label: Quem está por trás
+            name: sobre
+            widget: object
+            fields:
+              - { label: Frase pequena acima, name: rotulo, widget: string }
+              - { label: Título, name: titulo, widget: string }
+              - { label: Primeira frase, name: lead, widget: string }
+              - { label: História, name: historia, widget: text }
+              - { label: Por que faz, name: motivo, widget: text }
+              - { label: Frase destacada, name: destaque, widget: string }
+              - { label: Legenda do cartão da Macedo's, name: legenda, widget: string }
+              - { label: Assinatura, name: assinatura, widget: string }
+              - { label: Descrição da foto, name: foto_alt, widget: string }
           - label: Análise grátis
             name: analise
             widget: object

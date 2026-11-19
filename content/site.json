@@ -132,5 +132,16 @@
     "titulo": "Veja o seu site novo antes de pagar",
     "texto": "A prévia é grátis e chega por e-mail, com o link privado.",
     "frase": "Sites sob medida para pequenas empresas."
+  },
+  "sobre": {
+    "rotulo": "Quem está por trás",
+    "titulo": "Oi, eu sou o Arthur.",
+    "lead": "Sou do Rio Grande do Sul e faço sites para pequenas empresas.",
+    "historia": "Meu primeiro site foi para a minha namorada, um site de jornalismo cultural. Depois veio um amigo, que tem uma estética automotiva e tinha recebido a proposta de site de outra empresa. Eu fiz uma versão melhor, sem custo de hospedagem para ele. Ele aprovou, e hoje o site dele está no ar.",
+    "motivo": "Foi aí que eu percebi quanta empresa boa some no celular por não ter um site à altura do trabalho que faz. Por isso a prévia é grátis:",
+    "destaque": "você vê o seu site pronto antes de pagar qualquer coisa.",
+    "legenda": "Macedo's Auto Detail · no ar desde nov/2026",
+    "assinatura": "Arthur",
+    "foto_alt": "Arthur, criador do Vitrine Estúdio, de blusa preta, sorrindo de leve"
   }
 }
