@@ -259,7 +259,7 @@
     document.addEventListener('pointerleave', () => dot.classList.remove('on'));
     const tick = () => { cx += (x - cx) * 0.2; cy += (y - cy) * 0.2; dot.style.transform = `translate(${cx}px, ${cy}px)`; requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
-    const labels = [['[data-tilt], [data-reel]', 'Ver'], ['[data-stage]', 'Mexa'], ['.hcard--cta', 'Pedir']];
+    const labels = [['[data-tilt], [data-reel], .tile, .me__float', 'Ver'], ['[data-stage]', 'Mexa'], ['.hcard--cta', 'Pedir']];
     labels.forEach(([sel, word]) => $$(sel).forEach((el) => {
       el.addEventListener('pointerenter', () => { text.textContent = word; dot.classList.add('label'); });
       el.addEventListener('pointerleave', () => dot.classList.remove('label'));
@@ -420,8 +420,7 @@
   function initTopo() {
     $$('[data-topo]').forEach((canvas) => {
       const ctx = canvas.getContext('2d');
-      const lime = !canvas.closest('.foot');
-      const color = lime ? 'rgba(214,255,31,.3)' : 'rgba(255,255,255,.16)';
+      const color = 'rgba(236,230,216,.075)';
       let w = 0; let h = 0;
       const dpr = Math.min(window.devicePixelRatio, 1.5);
       const size = () => { w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
@@ -530,12 +529,13 @@
     const me = $('[data-me]');
     if (!me) return;
     const photo = $('[data-me-photo]', me);
-    const floats = $('[data-float]', me);
+    const floats = $$('[data-float]', me);
     if (M) {
-      photo.style.clipPath = 'inset(50% 50% 50% 50% round 30px)';
+      // a foto abre do meio por transição de CSS (o Motion não interpola bem o recorte com cantos)
+      photo.classList.add('is-closed');
       floats.forEach((f) => { f.style.opacity = '0'; });
       whenReady(() => {
-        M.animate(photo, { clipPath: ['inset(50% 50% 50% 50% round 30px)', 'inset(0% 0% 0% 0% round 30px)'] }, { duration: D(1.3), ease: [0.7, 0, 0.2, 1] });
+        requestAnimationFrame(() => photo.classList.remove('is-closed'));
         M.animate($('img', photo), { scale: [1.25, 1] }, { duration: D(1.8), ease: EASE });
         M.animate(floats, { y: [120, 0], opacity: [0, 1], rotate: [-8, 0] }, { duration: D(1.1), ease: EASE, delay: M.stagger(0.15, { startDelay: 1.1 }) });
       });
@@ -550,6 +550,28 @@
         photo.style.transform = `translate(${px * -14}px, ${py * -10}px)`;
         floats.forEach((f) => { const k = Number(f.dataset.float) || 0.5; f.style.transform = `translate(${px * 60 * k}px, ${py * 40 * k}px)`; });
       });
+    });
+  }
+
+  /* Palavra que troca no título (empresa, barbearia, clínica…), como no site da Panda */
+  const ROTATE_MS = 2200;
+  function initRotate() {
+    $$('[data-rotate]').forEach((el) => {
+      const words = el.dataset.rotate.split('|').filter(Boolean);
+      if (words.length < 2) return;
+      let i = 0;
+      let timer = null;
+      const swap = async () => {
+        i = (i + 1) % words.length;
+        if (!M) { el.textContent = words[i]; return; }
+        await M.animate(el, { y: [0, -14], opacity: [1, 0] }, { duration: D(0.28), ease: [0.5, 0, 0.9, 0.4] }).finished;
+        el.textContent = words[i];
+        M.animate(el, { y: [14, 0], opacity: [0, 1] }, { duration: D(0.4), ease: EASE });
+      };
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !timer) timer = setInterval(swap, ROTATE_MS);
+        if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
+      }).observe(el);
     });
   }
 
@@ -609,6 +631,7 @@
   initMenu();
   initCursor();
   initMe();
+  initRotate();
   initPanels();
   initChapters();
   initTopo();

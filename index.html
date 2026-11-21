@@ -10,13 +10,13 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#eef0f6">
+<meta name="theme-color" content="#07081c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap"></noscript>
-<link rel="stylesheet" href="css/v6.css?v=1794931256">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap"></noscript>
+<link rel="stylesheet" href="css/v8.css?v=1795283083">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -32,8 +32,8 @@
 <header class="bar">
   <a class="bar__logo" href="#topo" aria-label="Vitrine Estúdio, início">VITRINE<sup>®</sup></a>
   <div class="bar__actions">
-    <a class="pill pill--dark" href="#pedido" data-magnet>Pedir prévia <i aria-hidden="true"></i></a>
-    <button class="pill" data-magnet type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu <span aria-hidden="true">••</span></button>
+    <a class="pill bar__cta" href="#pedido" data-magnet>Pedir prévia</a>
+    <button class="menu-btn" data-magnet type="button" aria-expanded="false" aria-controls="menu" data-menu-open><span class="burger" aria-hidden="true"><i></i><i></i></span>Menu</button>
   </div>
 </header>
 
@@ -115,28 +115,24 @@
     </div>
   </section>
 
+  <!-- Trabalhos: grade sem espaço entre as fotos, título com a palavra que troca, faixas cruzadas e botões -->
   <section class="work" id="trabalhos" aria-labelledby="work-h">
-    <div class="work__head">
-      <h2 id="work-h" class="big" data-split>Sites que eu já fiz</h2>
-      <p class="tiny">Três sites de demonstração, para mostrar o estilo,<br>e um cliente de verdade, no ar.</p>
+    <h2 id="work-h" class="work__title">Dá uma olhada no que eu posso fazer pela sua <span class="rot" data-rotate="empresa|barbearia|clínica|cafeteria|estética">empresa</span></h2>
+    <div class="tiles">
+      <a class="tile" href="conceitos/cafe/" data-rise><img src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site do Café Aurora" loading="lazy"><span class="tile__info"><span class="tiny">Demonstração · Café</span><b>Café Aurora</b></span></a>
+      <a class="tile" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-rise><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail" loading="lazy"><span class="tile__info"><span class="tiny">Cliente real · no ar</span><b>Macedo's Auto Detail ↗</b></span></a>
+      <a class="tile" href="conceitos/barbearia/" data-rise><img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="Site da Barbearia Brasa" loading="lazy"><span class="tile__info"><span class="tiny">Demonstração · Barbearia</span><b>Barbearia Brasa</b></span></a>
+      <a class="tile" href="conceitos/clinica/" data-rise><img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="Site da Odonto Clara" loading="lazy"><span class="tile__info"><span class="tiny">Demonstração · Clínica</span><b>Odonto Clara</b></span></a>
+      <a class="tile" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-rise><img src="assets/img/macedos-farol.webp" width="1440" height="900" alt="Farol antes e depois no site da Macedo's" loading="lazy"><span class="tile__info"><span class="tiny">Cliente real · antes e depois</span><b>Farol como novo ↗</b></span></a>
+      <a class="tile" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-rise><img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="Vitrine de serviços no site da Macedo's" loading="lazy"><span class="tile__info"><span class="tiny">Cliente real · serviços</span><b>Vitrine de serviços ↗</b></span></a>
     </div>
-    <div class="work__grid">
-      <a class="wcard" href="conceitos/cafe/" data-rise data-tilt>
-        <span class="wcard__img"><img src="assets/conceitos/cafe-desk.webp" width="1440" height="900" alt="Site do Café Aurora" loading="lazy"></span>
-        <span class="tiny">Demonstração · Café</span><b>Café Aurora</b>
-      </a>
-      <a class="wcard" href="conceitos/barbearia/" data-rise data-tilt>
-        <span class="wcard__img"><img src="assets/conceitos/barbearia-desk.webp" width="1440" height="900" alt="Site da Barbearia Brasa" loading="lazy"></span>
-        <span class="tiny">Demonstração · Barbearia</span><b>Barbearia Brasa</b>
-      </a>
-      <a class="wcard" href="conceitos/clinica/" data-rise data-tilt>
-        <span class="wcard__img"><img src="assets/conceitos/clinica-desk.webp" width="1440" height="900" alt="Site da Odonto Clara" loading="lazy"></span>
-        <span class="tiny">Demonstração · Clínica</span><b>Odonto Clara</b>
-      </a>
-      <a class="wcard wcard--real" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-rise data-tilt>
-        <span class="wcard__img"><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail" loading="lazy"></span>
-        <span class="tiny">Site no ar · Cliente real · Estética automotiva · Caxias do Sul</span><b>Macedo's Auto Detail ↗</b>
-      </a>
+    <div class="ribbons" aria-hidden="true">
+      <div class="ribbon ribbon--a"><div class="ribbon__track"><span>Site novo</span><i>✦</i><span>Prévia grátis</span><i>✦</i><span>Otimização</span><i>✦</i><span>Manutenção</span><i>✦</i><span>Site novo</span><i>✦</i><span>Prévia grátis</span><i>✦</i><span>Otimização</span><i>✦</i><span>Manutenção</span><i>✦</i></div></div>
+      <div class="ribbon ribbon--b"><div class="ribbon__track"><span>Rápido no celular</span><i>✦</i><span>WhatsApp</span><i>✦</i><span>Google</span><i>✦</i><span>Rápido no celular</span><i>✦</i><span>WhatsApp</span><i>✦</i><span>Google</span><i>✦</i></div></div>
+    </div>
+    <div class="work__cta">
+      <a class="pill pill--dark pill--big" href="#pedido" data-magnet>Pedir minha prévia <span aria-hidden="true">→</span></a>
+      <a class="pill pill--big" href="#sobre" data-magnet>Conheça o Arthur <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -293,12 +289,12 @@
 
 <script src="assets/vendor/motion.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=1794931256" defer></script>
+<script src="js/site.js?v=1795283041" defer></script>
 <script type="module">
   // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
   const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;
   const later = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
-  if (big) addEventListener("load", () => later(() => import("./js/cena.js?v=1794931256")), { once: true });
+  if (big) addEventListener("load", () => later(() => import("./js/cena.js?v=1795282128")), { once: true });
 </script>
 <script type="module" src="js/analise.js?v=1794933840"></script>
 </body>

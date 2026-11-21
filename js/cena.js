@@ -14,7 +14,9 @@ document.addEventListener('vitrine:ready', () => { released = true; }, { once: t
 setTimeout(() => { released = true; }, 4000);
 
 const SCREENS = ['assets/conceitos/barbearia-mob.webp', 'assets/conceitos/cafe-mob.webp', 'assets/conceitos/clinica-mob.webp'];
-const COLORS = { white: '#eef0f6', black: '#121318', blue: '#3d4bff' };
+// creme, marinho e violeta, com reflexo de arco-íris (iridescência), como a bolha holográfica da Panda
+const COLORS = { white: '#ece6d8', black: '#10122f', blue: '#6d5cff' };
+const IRIS = { iridescence: 1, iridescenceIOR: 1.35, iridescenceThicknessRange: [120, 720] };
 const SPRING = 0.018;
 const DAMPING = 0.9;
 const MOUSE_RADIUS = 3.2;
@@ -45,9 +47,9 @@ function start() {
   scene.add(key, new THREE.AmbientLight('#8a90ff', 0.35));
 
   const mat = {
-    white: new THREE.MeshPhysicalMaterial({ color: COLORS.white, roughness: 0.32, clearcoat: 0.7, clearcoatRoughness: 0.2 }),
-    black: new THREE.MeshPhysicalMaterial({ color: COLORS.black, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.08 }),
-    blue: new THREE.MeshPhysicalMaterial({ color: COLORS.blue, roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.15 }),
+    white: new THREE.MeshPhysicalMaterial({ color: COLORS.white, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.1, ...IRIS }),
+    black: new THREE.MeshPhysicalMaterial({ color: COLORS.black, roughness: 0.2, metalness: 0.2, clearcoat: 1, clearcoatRoughness: 0.06, ...IRIS }),
+    blue: new THREE.MeshPhysicalMaterial({ color: COLORS.blue, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1, ...IRIS }),
   };
   const palette = [mat.white, mat.white, mat.black, mat.black, mat.blue];
 
