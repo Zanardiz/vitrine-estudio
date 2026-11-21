@@ -328,7 +328,7 @@ main > section.hs, main > section[data-pin] { position: relative; }
   .me { place-items: start center; padding: 118px 16px 34px; }
   .me__kicker { top: 76px; left: 16px; }
   .me__photo { width: 100%; }
-  .sign--hero { top: 57%; width: 92vw; }
+  .sign--hero { top: 37%; width: 92vw; }
   .me__float--a { width: 40vw; right: 16px; top: auto; bottom: 31%; }
   .me__bottom { left: 16px; right: 16px; bottom: 70px; flex-direction: column; align-items: start; gap: 18px; }
   .me__title { font-size: 22px; }
