@@ -574,7 +574,8 @@
       if (!endpoint) {
         // sem endereço de envio, monta o e-mail com os campos e abre o app de e-mail
         const data = new FormData(form);
-        const body = [...data.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
+        // campos que começam com "_" são instruções para o serviço de formulário, não texto do pedido
+        const body = [...data.entries()].filter(([k]) => !k.startsWith('_')).map(([k, v]) => `${k}: ${v}`).join('\n');
         window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent('Pedido de prévia')}&body=${encodeURIComponent(body)}`;
         status.textContent = 'Abrimos o seu e-mail com o pedido pronto. É só enviar.';
         return;

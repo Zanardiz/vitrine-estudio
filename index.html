@@ -244,10 +244,9 @@
         <h2 id="pedido-h" class="big" data-split>Peça a prévia do seu site</h2>
         <p class="lead">Mande o endereço do site atual ou do Instagram. Sem nenhum dos dois, conte o que a empresa faz e onde fica.</p>
       </div>
-      <form class="form" action="#pedido" method="post" data-mailto="contato.vitrineestudio@gmail.com" data-endpoint="https://formsubmit.co/ajax/contato.vitrineestudio@gmail.com" data-sent="Seu pedido chegou. Eu mando a prévia no seu e-mail." novalidate data-form>
-        <!-- FormSubmit: assunto do e-mail e campos em tabela; o pedido chega no Gmail da Vitrine -->
+      <form class="form" action="#pedido" method="post" data-mailto="contato.vitrineestudio@gmail.com" data-endpoint="" data-sent="Seu pedido chegou. Eu mando a prévia no seu e-mail." novalidate data-form>
+        <!-- assunto do e-mail quando houver serviço de formulário (Formspree lê _subject) -->
         <input type="hidden" name="_subject" value="Novo pedido de prévia pelo site">
-        <input type="hidden" name="_template" value="table">
         <div class="field"><label for="f-name">Nome</label>
           <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
           <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
@@ -286,7 +285,7 @@
 
 <script src="assets/vendor/motion.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=1795560000" defer></script>
+<script src="js/site.js?v=1795600000" defer></script>
 <script type="module">
   // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
   const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;
