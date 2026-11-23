@@ -125,8 +125,8 @@
   "orcamento": {
     "titulo": "Peça a prévia do seu site",
     "texto": "Mande o endereço do site atual ou do Instagram. Sem nenhum dos dois, conte o que a empresa faz e onde fica.",
-    "email": "contato@vitrineestudio.example",
-    "endereco_formulario": ""
+    "email": "contato.vitrineestudio@gmail.com",
+    "endereco_formulario": "https://formsubmit.co/ajax/contato.vitrineestudio@gmail.com"
   },
   "rodape": {
     "titulo": "Veja o seu site novo antes de pagar",
