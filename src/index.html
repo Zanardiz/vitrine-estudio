@@ -11,165 +11,200 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07081c">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap"></noscript>
-<link rel="stylesheet" href="css/v8.css?v=1795830000">
-<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
+<link rel="preload" href="assets/fonts/schibsted-grotesk-v7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/v9.css?v=10">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#topo">Pular para o conteúdo</a>
-<div class="cursor" aria-hidden="true" data-cursor><span data-cursor-text></span></div>
-<div class="loader" aria-hidden="true" data-loader>
-  <span class="loader__word">VITRINE<sup>®</sup></span>
-  <span class="loader__bar"><i data-loader-bar></i></span>
-</div>
 
-<header class="bar">
-  <a class="bar__logo" href="#topo" aria-label="Vitrine Estúdio, início">VITRINE<sup>®</sup></a>
-  <div class="bar__actions">
-    <a class="pill bar__cta" href="#pedido" data-magnet>Pedir prévia</a>
-    <button class="menu-btn" data-magnet type="button" aria-expanded="false" aria-controls="menu" data-menu-open><span class="burger" aria-hidden="true"><i></i><i></i></span>Menu</button>
-  </div>
+<header class="bar" data-bar>
+  <a class="bar__logo" href="#topo" aria-label="Vitrine Estúdio, início">Vitrine<span>Estúdio</span></a>
+  <nav class="bar__nav" aria-label="Seções">
+    <a href="#trabalhos">Trabalhos</a>
+    <a href="#como">Como funciona</a>
+    <a href="#precos">Preços</a>
+    <a href="#perguntas">Perguntas</a>
+  </nav>
+  <a class="btn btn--primary btn--small" href="#pedido">Pedir prévia</a>
 </header>
 
-<nav class="menu" id="menu" aria-label="Seções" hidden data-menu>
-  <button class="pill menu__close" type="button" data-menu-close>Fechar <span aria-hidden="true">✕</span></button>
-  <ul>
-    <li><a href="#previa">Como funciona</a></li>
-    <li><a href="#trabalhos">Sites</a></li>
-    <li><a href="#padrao">O que você recebe</a></li>
-    <li><a href="#analise">Análise</a></li>
-    <li><a href="#perguntas">Perguntas</a></li>
-    <li><a href="#sobre">Quem faz</a></li>
-    <li><a href="#pedido">Pedir prévia</a></li>
-  </ul>
-</nav>
-
 <main id="topo">
-  <!-- Abertura: print de um site real que abre do meio, assinatura gigante que se desenha e os sites flutuando em volta -->
-  <section class="me" aria-labelledby="me-h" data-me>
-    <canvas class="topo" aria-hidden="true" data-topo></canvas>
-    <p class="tiny me__kicker">Vitrine Estúdio · Rio Grande do Sul</p>
-    <figure class="me__photo" data-me-photo>
-      <img src="assets/img/macedos-farol.webp" width="1440" height="900" alt="Farol antes e depois no site da Macedo's Auto Detail, cliente real" fetchpriority="high">
-    </figure>
-    <a class="me__float me__float--a" href="exemplos/boa-de-contar/" data-float="0.6" data-speed="0.12"><img src="assets/img/boa-de-contar-720.webp" width="720" height="450" alt="Site do Boa de Contar"><span class="tiny">Boa de Contar ↗</span></a>
-    <a class="me__float me__float--c" href="exemplos/boa-de-contar/" data-float="0.9" data-speed="0.2"><img src="assets/img/boa-de-contar-celular.webp" width="390" height="844" alt="Site do Boa de Contar no celular"><span class="tiny">No celular ↗</span></a>
-    <div class="me__bottom">
-      <div class="me__intro">
-        <h1 id="me-h" class="me__title" data-split>Sites bonitos e rápidos para pequenas empresas.</h1>
-        <p class="me__sub">Eu monto uma prévia do seu site novo, de graça. Você só paga se aprovar.</p>
-        <p class="me__proof"><b>Cliente no ar:</b> Macedo's Auto Detail, Caxias do Sul</p>
-      </div>
-      <div class="me__cta">
-        <a class="pill pill--dark pill--big" href="#pedido" data-magnet>Pedir minha prévia grátis <i aria-hidden="true"></i></a>
-        <span class="hero__scroll tiny" aria-hidden="true">Role <b>↓</b></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Abertura: painel escuro com a cena 3D (peças e celulares que reagem ao mouse) -->
+  <!-- Abertura: o site de um cliente real exposto como num showroom, com uma luz e o piso que reflete -->
   <section class="hero" aria-labelledby="hero-h">
-    <div class="hero__stage" data-stage>
-      <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
-      <picture class="hero__poster"><source media="(max-width: 700px)" srcset="assets/img/hero-cena-mob.webp?v=3"><img src="assets/img/hero-cena.webp?v=3" width="1365" height="804" alt="Celular com o site do Boa de Contar flutuando entre peças 3D holográficas" fetchpriority="high"></picture>
-      <div class="hero__over">
-        <h2 id="hero-h" class="hero__title" data-split>Seu site novo, pronto antes de você pagar.</h2>
-        <div class="hero__meta">
-          <span>Grátis · você só paga se gostar</span>
-          <span class="hero__scroll" aria-hidden="true">Role <b>↓</b></span>
-        </div>
+    <div class="hero__copy">
+      <h1 id="hero-h" class="hero__title">{{inicio.titulo}}</h1>
+      <p class="hero__lead">{{inicio.texto}}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#pedido">Pedir minha prévia grátis</a>
+        <a class="btn btn--ghost" href="#trabalhos">Ver trabalhos</a>
       </div>
+      <p class="hero__proof"><span class="dot" aria-hidden="true"></span>Cliente no ar: <a href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener">Macedo's Auto Detail</a>, Caxias do Sul</p>
+    </div>
+    <div class="stage" data-stage>
+      <div class="stage__light" aria-hidden="true"></div>
+      <div class="stage__set" data-stage-set>
+        <figure class="device device--laptop">
+          <div class="device__screen"><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail aberto num notebook" fetchpriority="high"></div>
+          <div class="device__base" aria-hidden="true"></div>
+        </figure>
+        <figure class="device device--phone">
+          <div class="device__screen"><img src="assets/img/macedos-celular.webp" width="390" height="844" alt="O mesmo site no celular"></div>
+        </figure>
+      </div>
+      <div class="stage__floor" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- Capítulos: cada um é uma janela com estilo próprio; a rolada ou a seta troca de janela -->
-  <section class="chap chap--antes" aria-labelledby="c1-h">
-    <div class="chap__text">
-      <p class="tiny">01 · Hoje</p>
-      <h2 id="c1-h" data-split>O cliente procura você e acha um site parado no tempo.</h2>
-      <p>Letra difícil, foto quebrada, sem preço. Ele fecha a aba e chama o concorrente.</p>
+  <!-- Antes e depois: um site antigo de exemplo ao lado de um site real -->
+  <section class="sec compare" aria-labelledby="compare-h">
+    <div class="sec__head">
+      <h2 id="compare-h">O cliente procura você no celular e decide em segundos.</h2>
+      <p>Letra difícil, foto quebrada e sem preço fazem ele fechar a aba e chamar o concorrente. Não tem site? A prévia sai do seu Instagram.</p>
     </div>
-    <div class="chap__phone" data-chap><img src="assets/img/antes-feio.webp" width="390" height="844" alt="" loading="lazy"></div>
-    <span class="chap__stamp" aria-hidden="true" data-chap-extra>Desatualizado</span>
-  </section>
-
-  <!-- Antes | Depois: as palavras se afastam e o celular sai do preto e branco para a cor (seção presa) -->
-  <section class="ad" aria-labelledby="ad-h" data-pin data-ad>
-    <div class="ad__sticky">
-      <canvas class="topo" aria-hidden="true" data-topo></canvas>
-      <h2 id="ad-h" class="sr">Antes e depois do site</h2>
-      <span class="ad__word" aria-hidden="true" data-ad-l>Antes</span>
-      <figure class="ad__phone">
-        <img class="ad__before" src="assets/img/antes-feio.webp" width="390" height="844" alt="Antes: um site antigo, com letra difícil de ler, aviso de site em construção e imagem quebrada" loading="lazy">
-        <img class="ad__after" src="assets/img/macedos-celular.webp" width="390" height="844" alt="Depois: o site da Macedo's Auto Detail" loading="lazy" data-ad-after>
+    <div class="compare__row">
+      <figure class="exhibit exhibit--before" data-reveal>
+        <div class="phone"><img src="assets/img/antes-feio.webp" width="390" height="844" alt="Exemplo de site antigo: letra difícil, aviso de site em construção e imagem quebrada" loading="lazy"></div>
+        <figcaption><b>Antes</b> Exemplo de site parado no tempo</figcaption>
       </figure>
-      <span class="ad__word" aria-hidden="true" data-ad-r>Depois</span>
-      <p class="tiny ad__cap">Role para ver o site mudar</p>
+      <span class="compare__arrow" aria-hidden="true"><svg viewBox="0 0 48 16"><path d="M0 8h44M37 1l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <figure class="exhibit exhibit--after" data-reveal>
+        <div class="phone"><img src="assets/img/macedos-celular.webp" width="390" height="844" alt="Depois: o site da Macedo's Auto Detail no celular" loading="lazy"></div>
+        <figcaption><b>Depois</b> Macedo's Auto Detail, no ar</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- Trabalhos: grade sem espaço entre as fotos, título com a palavra que troca, faixas cruzadas e botões -->
-  <section class="work" id="trabalhos" aria-labelledby="work-h">
-    <h2 id="work-h" class="work__title">Dá uma olhada no que eu posso fazer pela sua <span class="rot" data-rotate="empresa|barbearia|clínica|cafeteria|estética">empresa</span></h2>
-    <div class="tiles tiles--duo">
-      <a class="tile" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-rise><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Site da Macedo's Auto Detail" loading="lazy"><span class="tile__info"><span class="tiny">Cliente real · no ar</span><b>Macedo's Auto Detail ↗</b></span></a>
-      <!-- Boa de Contar: prévia estática do site real (WordPress), sem matérias de teste e sem o e-mail pessoal -->
-      <a class="tile" href="exemplos/boa-de-contar/" data-rise><img src="assets/img/boa-de-contar.webp" width="1440" height="900" alt="Site do Boa de Contar, projeto de jornalismo cultural" loading="lazy"><span class="tile__info"><span class="tiny">Jornalismo cultural · prévia</span><b>Boa de Contar →</b></span></a>
+  <!-- Trabalhos: cada site exposto em tamanho grande, com o que ele é de verdade -->
+  <section class="sec work" id="trabalhos" aria-labelledby="work-h">
+    <div class="sec__head">
+      <h2 id="work-h">Veja os sites de perto.</h2>
+      <p>Um cliente real, no ar, e uma prévia. Abra e navegue como o seu cliente faria.</p>
     </div>
-    <div class="ribbons" aria-hidden="true">
-      <div class="ribbon ribbon--a"><div class="ribbon__track"><span>Site novo</span><i>✦</i><span>Prévia grátis</span><i>✦</i><span>Otimização</span><i>✦</i><span>Manutenção</span><i>✦</i><span>Site novo</span><i>✦</i><span>Prévia grátis</span><i>✦</i><span>Otimização</span><i>✦</i><span>Manutenção</span><i>✦</i></div></div>
-      <div class="ribbon ribbon--b"><div class="ribbon__track"><span>Rápido no celular</span><i>✦</i><span>WhatsApp</span><i>✦</i><span>Google</span><i>✦</i><span>Rápido no celular</span><i>✦</i><span>WhatsApp</span><i>✦</i><span>Google</span><i>✦</i></div></div>
-    </div>
-    <div class="work__cta">
-      <a class="pill pill--dark pill--big" href="#pedido" data-magnet>Pedir minha prévia <span aria-hidden="true">→</span></a>
-      <a class="pill pill--big" href="#sobre" data-magnet>Conheça o Arthur <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
-  <!-- Quem está por trás: foto grande, assinatura que se desenha, história curta e o mapa de linhas ao fundo -->
-
-  <!-- Os passos andam para o lado enquanto a página desce (seção presa) -->
-  <section class="hs" id="previa" aria-labelledby="previa-h" data-hs>
-    <div class="hs__sticky">
-      <div class="sec__head hs__head"><h2 id="previa-h" class="big" data-split>{{previa.titulo}}</h2><p class="tiny">{{previa.texto}}</p></div>
-      <ol class="hs__track" data-hs-track>
-{{#each previa.passos}}        <li class="hcard">
-          <span class="hcard__img"><img src="assets/img/{{foto}}-960.webp" width="960" height="640" alt="{{foto_alt}}" loading="lazy"></span>
-          <span class="hcard__text"><h3>{{nome}}</h3><p>{{texto}}</p></span>
-        </li>
-{{/each}}        <li class="hcard hcard--cta"><a href="#pedido" data-magnet><span class="tiny">Grátis, sem compromisso</span><b>Pedir a minha prévia</b><span class="hcard__arrow" aria-hidden="true">→</span></a></li>
-      </ol>
-      <div class="hs__progress" aria-hidden="true"><i data-hs-bar></i></div>
+    <div class="work__grid">
+      <a class="plate plate--wide" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-reveal>
+        <span class="plate__img"><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Página inicial do site da Macedo's Auto Detail" loading="lazy"></span>
+        <span class="plate__text"><b>Macedo's Auto Detail</b><span class="tag">Cliente real · no ar</span><span>{{trabalhos.texto}}</span><span class="plate__go">Abrir o site <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+      </a>
+      <a class="plate" href="exemplos/boa-de-contar/" data-reveal>
+        <span class="plate__img"><img src="assets/img/boa-de-contar.webp" width="1440" height="900" alt="Página inicial do Boa de Contar, projeto de jornalismo cultural" loading="lazy"></span>
+        <span class="plate__text"><b>Boa de Contar</b><span class="tag">Prévia</span><span>Jornalismo cultural com capa em carrossel, editorias e página para enviar histórias.</span><span class="plate__go">Ver a prévia <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+      </a>
     </div>
   </section>
 
-  <section class="sec sec--ink oferta" id="padrao" aria-labelledby="padrao-h">
-    <div class="sec__head"><h2 id="padrao-h" class="big" data-split>O que você recebe</h2><p class="tiny">{{servicos.texto}}</p></div>
-    <ul class="services">
-{{#each servicos.itens}}      <li class="service" data-rise><h3>{{nome}}</h3><p>{{texto}}</p><p class="service__price">{{preco}}</p><span aria-hidden="true">↗</span></li>
-{{/each}}    </ul>
-    <p class="oferta__kicker tiny">{{padrao.titulo}} · {{padrao.complemento}}</p>
-    <ol class="rules rules--compact">
-{{#each padrao.itens}}      <li class="rule" data-rise><h3>{{nome}}</h3><p>{{texto}}</p></li>
+  <!-- Como funciona: três passos, o número é a ordem de verdade -->
+  <section class="sec steps" id="como" aria-labelledby="como-h">
+    <div class="sec__head">
+      <h2 id="como-h">{{previa.titulo}}</h2>
+      <p>{{previa.texto}}</p>
+    </div>
+    <ol class="steps__list">
+{{#each previa.passos}}      <li class="step" data-reveal><h3>{{nome}}</h3><p>{{texto}}</p></li>
 {{/each}}    </ol>
   </section>
 
-  <section class="sec sec--blue" id="analise" aria-labelledby="analise-h">
-    <div class="split">
+  <!-- Serviços e preços, depois as regras que valem para todo site -->
+  <section class="sec offer" id="precos" aria-labelledby="precos-h">
+    <div class="sec__head">
+      <h2 id="precos-h">{{servicos.titulo}}</h2>
+      <p>{{servicos.texto}} Você recebe o preço fechado antes de começar.</p>
+    </div>
+    <ul class="offer__list">
+{{#each servicos.itens}}      <li class="price" data-reveal><h3>{{nome}}</h3><p class="price__value">{{preco}}</p><p>{{texto}}</p><a class="price__go" href="#pedido">Pedir prévia <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+{{/each}}    </ul>
+    <div class="rules">
+      <h3 class="rules__title">{{padrao.titulo}}: {{padrao.complemento}}</h3>
+      <ul class="rules__list">
+{{#each padrao.itens}}        <li><b>{{nome}}</b><span>{{texto}}</span></li>
+{{/each}}      </ul>
+    </div>
+  </section>
+
+  <section class="sec faq" id="perguntas" aria-labelledby="perguntas-h">
+    <div class="sec__head">
+      <h2 id="perguntas-h">{{perguntas.titulo}}</h2>
+      <p>{{perguntas.texto}}</p>
+    </div>
+    <div class="faq__list">
+{{#each perguntas.itens}}      <details><summary>{{pergunta}}<i aria-hidden="true"></i></summary><p>{{resposta}}</p></details>
+{{/each}}    </div>
+  </section>
+
+  <section class="sec about" id="sobre" aria-labelledby="about-h">
+    <figure class="about__img" data-reveal>
+      <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="Seção de serviços do site da Macedo's Auto Detail" loading="lazy">
+      <img src="assets/img/boa-de-contar-720.webp" width="720" height="450" alt="Capa do Boa de Contar" loading="lazy">
+    </figure>
+    <div class="about__text">
+      <h2 id="about-h">{{sobre.titulo}}</h2>
+      <p class="about__lead">{{sobre.lead}}</p>
+      <p>{{sobre.historia}}</p>
+      <p>{{sobre.motivo}} <strong>{{sobre.destaque}}</strong></p>
+      <p class="sign" aria-hidden="true">{{sobre.assinatura}}</p>
+    </div>
+  </section>
+
+  <!-- Pedido: as garantias ficam ao lado do formulário -->
+  <section class="sec order" id="pedido" aria-labelledby="pedido-h">
+    <div class="order__side">
+      <h2 id="pedido-h">{{orcamento.titulo}}</h2>
+      <p>{{orcamento.texto}}</p>
+      <ul class="promise">
+        <li>A prévia é grátis</li>
+        <li>Você só paga se aprovar</li>
+        <li>Sem aprovação, eu apago a prévia em 30 dias</li>
+        <li>Respondo pelo WhatsApp ou e-mail que você deixar</li>
+      </ul>
+      <p class="order__mail">Prefere escrever direto? <a href="mailto:{{orcamento.email}}">{{orcamento.email}}</a></p>
+    </div>
+    <div class="order__box">
+      <form class="form" action="#pedido" method="post" data-mailto="{{orcamento.email}}" data-endpoint="{{orcamento.endereco_formulario}}" novalidate data-form>
+        <!-- Web3Forms: chave pública do formulário (manda os pedidos para o Gmail da Vitrine), assunto e remetente -->
+        <input type="hidden" name="access_key" value="7706d0be-b75c-4fb7-acef-abeb89add731">
+        <input type="hidden" name="subject" value="Novo pedido de prévia pelo site">
+        <input type="hidden" name="from_name" value="Site Vitrine Estúdio">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <div class="field"><label for="f-name">Seu nome</label>
+          <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
+          <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
+        <div class="field"><label for="f-contato">WhatsApp ou e-mail</label>
+          <input id="f-contato" name="contato" type="text" autocomplete="tel" required aria-describedby="f-contato-hint f-contato-err">
+          <p class="field__hint" id="f-contato-hint">Para onde eu mando a prévia.</p>
+          <p class="field__error" id="f-contato-err" hidden>Escreva um WhatsApp com DDD, como (54) 99999-0000, ou um e-mail com @.</p></div>
+        <div class="field field--full"><label for="f-site">Site atual ou Instagram <span>(se tiver)</span></label>
+          <input id="f-site" name="site" type="text" inputmode="url" autocomplete="url" placeholder="@suaempresa ou suaempresa.com.br"></div>
+        <fieldset class="field field--full choice">
+          <legend>Você já tem site? <span>(opcional)</span></legend>
+          <label><input type="radio" name="situacao" value="Ainda não tenho site"><span>Ainda não tenho</span></label>
+          <label><input type="radio" name="situacao" value="Já tenho e quero melhorar"><span>Já tenho e quero melhorar</span></label>
+        </fieldset>
+        <div class="field field--full"><label for="f-msg">O que a empresa faz <span>(opcional)</span></label>
+          <textarea id="f-msg" name="mensagem" rows="3" placeholder="Ex.: salão de beleza no bairro São Pelegrino"></textarea></div>
+        <button class="btn btn--primary btn--block" type="submit" data-submit>Pedir minha prévia grátis</button>
+        <p class="form__status" role="status" data-form-status></p>
+      </form>
+      <div class="form__done" hidden tabindex="-1" data-form-done>
+        <h3>Pedido recebido.</h3>
+        <p>Obrigado, <span data-done-name></span>. Eu olho o que você já tem e respondo por aqui: <b data-done-contact></b>.</p>
+        <p>Errou o contato? Escreva para <a href="mailto:{{orcamento.email}}">{{orcamento.email}}</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Análise grátis: para quem já tem site, depois do pedido -->
+  <section class="sec audit-sec" id="analise" aria-labelledby="analise-h">
+    <div class="audit-grid">
       <div>
-        <h2 id="analise-h" class="big" data-split>{{analise.titulo}}</h2>
+        <h2 id="analise-h">Já tem site? {{analise.titulo}}</h2>
         <p class="lead">{{analise.complemento}} {{analise.texto}}</p>
         <form class="audit" action="https://pagespeed.web.dev/analysis" method="get" target="_blank" novalidate data-audit>
           <label for="a-url">Endereço do site</label>
           <div class="audit__row">
             <input id="a-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="minhaloja.com.br" required aria-describedby="a-url-err">
-            <button class="pill pill--dark" type="submit">Analisar <i aria-hidden="true"></i></button>
+            <button class="btn btn--ghost" type="submit">Analisar</button>
           </div>
           <p class="field__error" id="a-url-err" hidden>Escreva o endereço do site, como minhaloja.com.br.</p>
           <p class="form__status" role="status" data-audit-status></p>
@@ -178,10 +213,10 @@
       <div class="audit-panel" data-audit-panel aria-live="polite">
         <div class="audit-panel__head"><b>Resultado</b><span data-audit-site>Nenhum site analisado</span></div>
         <ul class="audit-scores">
-          <li data-score="performance"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Desempenho</span></li>
-          <li data-score="accessibility"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Acessibilidade</span></li>
-          <li data-score="best-practices"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Boas práticas</span></li>
-          <li data-score="seo"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>SEO</span></li>
+          <li data-score="performance"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Velocidade</span></li>
+          <li data-score="accessibility"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Fácil de usar</span></li>
+          <li data-score="best-practices"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Segurança</span></li>
+          <li data-score="seo"><span class="audit-ring" style="--v: 0"><b>–</b></span><span>Google</span></li>
         </ul>
         <div class="audit-issues">
           <h3 data-audit-issues-title>O que a análise do site confere</h3>
@@ -191,94 +226,24 @@
             <li>Se o Google encontra o título e a descrição de cada página</li>
           </ol>
         </div>
+        <a class="btn btn--primary btn--block" href="#pedido">Quer que eu resolva? Pedir prévia</a>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="perguntas" aria-labelledby="perguntas-h">
-    <div class="split split--faq">
-      <div class="sec__head"><h2 id="perguntas-h" class="big" data-split>{{perguntas.titulo}}</h2><p class="tiny">{{perguntas.texto}}</p></div>
-      <div class="faq">
-{{#each perguntas.itens}}        <details><summary>{{pergunta}}</summary><p>{{resposta}}</p></details>
-{{/each}}      </div>
-    </div>
-  </section>
-
-  <section class="about" id="sobre" aria-labelledby="about-h">
-    <canvas class="topo" aria-hidden="true" data-topo></canvas>
-    <figure class="about__photo" data-rise>
-      <a href="exemplos/boa-de-contar/"><img src="assets/img/boa-de-contar.webp" width="1440" height="900" alt="Site do Boa de Contar, o primeiro que eu fiz" loading="lazy"></a>
-    </figure>
-    <div class="about__text">
-      <p class="tiny">{{sobre.rotulo}}</p>
-      <h2 id="about-h" data-split>{{sobre.titulo}}</h2>
-      <p class="about__lead">{{sobre.lead}}</p>
-      <p>{{sobre.historia}}</p>
-      <p>{{sobre.motivo}} <strong>{{sobre.destaque}}</strong></p>
-      <svg class="sign sign--about" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">{{sobre.assinatura}}</text></svg>
-      <a class="about__card" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-speed="-0.06">
-        <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="" loading="lazy">
-        <span class="tiny">{{sobre.legenda}} ↗</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="sec sec--lime" id="pedido" aria-labelledby="pedido-h">
-    <div class="split">
-      <div>
-        <h2 id="pedido-h" class="big" data-split>{{orcamento.titulo}}</h2>
-        <p class="lead">{{orcamento.texto}}</p>
-      </div>
-      <form class="form" action="#pedido" method="post" data-mailto="{{orcamento.email}}" data-endpoint="{{orcamento.endereco_formulario}}" data-sent="Seu pedido chegou. Eu mando a prévia no seu e-mail." novalidate data-form>
-        <!-- Web3Forms: chave pública do formulário (manda os pedidos para o Gmail da Vitrine), assunto e remetente -->
-        <input type="hidden" name="access_key" value="7706d0be-b75c-4fb7-acef-abeb89add731">
-        <input type="hidden" name="subject" value="Novo pedido de prévia pelo site">
-        <input type="hidden" name="from_name" value="Site Vitrine Estúdio">
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-        <div class="field"><label for="f-name">Nome</label>
-          <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
-          <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
-        <div class="field"><label for="f-email">E-mail</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
-          <p class="field__error" id="f-email-err" hidden>Escreva um e-mail com @, como nome@empresa.com.br.</p></div>
-        <div class="field"><label for="f-site">Site atual ou Instagram</label>
-          <input id="f-site" name="site" type="text" inputmode="url" autocomplete="url"></div>
-        <div class="field"><label for="f-servico">Serviço</label>
-          <select id="f-servico" name="servico" required aria-describedby="f-servico-err">
-            <option value="">Escolha um</option>
-{{#each servicos.itens}}            <option>{{nome}}</option>
-{{/each}}          </select>
-          <p class="field__error" id="f-servico-err" hidden>Escolha o serviço que você quer.</p></div>
-        <div class="field field--full"><label for="f-msg">O que a empresa faz</label>
-          <textarea id="f-msg" name="mensagem" rows="3"></textarea></div>
-        <button class="pill pill--dark pill--big" type="submit">Pedir minha prévia <i aria-hidden="true"></i></button>
-        <p class="form__status" role="status" data-form-status></p>
-        <p class="form__note">Prefere escrever direto? <a href="mailto:{{orcamento.email}}">{{orcamento.email}}</a>. Seus dados servem só para responder o seu pedido.</p>
-      </form>
     </div>
   </section>
 </main>
 
 <footer class="foot">
-  <canvas class="topo" aria-hidden="true" data-topo></canvas>
-  <svg class="sign sign--foot" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
-  <p class="tiny">{{rodape.texto}}</p>
-  <a class="foot__big" href="#pedido" data-split>{{rodape.titulo}}</a>
+  <a class="foot__big" href="#pedido">{{rodape.titulo}} <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <p class="foot__lead">{{rodape.texto}}</p>
   <div class="foot__row">
-    <span>VITRINE<sup>®</sup> Estúdio · {{rodape.frase}}<br>Rio Grande do Sul, Brasil · <a href="mailto:{{orcamento.email}}">{{orcamento.email}}</a></span>
+    <span><b>Vitrine Estúdio</b> · {{rodape.frase}}<br>Rio Grande do Sul, Brasil · <a href="mailto:{{orcamento.email}}">{{orcamento.email}}</a></span>
     <span>© 2026 Vitrine Estúdio · <a href="privacidade.html">Privacidade</a> · <a href="credits.html">Créditos das fotos</a></span>
   </div>
 </footer>
 
-<script src="assets/vendor/motion.js"></script>
-<script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=1795700000" defer></script>
-<script type="module">
-  // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
-  const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;
-  const later = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
-  if (big) addEventListener("load", () => later(() => import("./js/cena.js?v=1795580000")), { once: true });
-</script>
+<a class="dock" href="#pedido" data-dock>Pedir minha prévia grátis</a>
+
+<script src="js/v9.js?v=1" defer></script>
 <script type="module" src="js/analise.js?v=1794933840"></script>
 </body>
 </html>

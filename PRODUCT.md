@@ -23,7 +23,8 @@ O Vitrine Estúdio faz sites sob medida para pequenas empresas, além de otimiza
 ## Capabilities and Constraints
 - Site estático no GitHub Pages (Zanardiz/vitrine-estudio). Os textos ficam em `content/site.json`, o `node build.mjs` monta o `index.html`, e o painel Sveltia fica em `/admin`.
 - Promessa técnica: nota 90 ou mais no Google, nas 4 áreas do PageSpeed.
-- Ainda não definidos: os preços, o e-mail real, o domínio próprio e a chave do PageSpeed.
+- Preços de entrada (decididos pelo Claude a pedido do usuário em 2026-11-23): otimização a partir de R$ 490, site novo a partir de R$ 1.200, manutenção a partir de R$ 90/mês. E-mail: contato.vitrineestudio@gmail.com. Promessas da prévia: grátis, só paga se aprovar, apagada em 30 dias sem aprovação.
+- Ainda não definidos: o domínio próprio e a chave do PageSpeed.
 
 ## Brand Commitments
 - O nome é **Vitrine Estúdio**. "Zanardigital" foi descartado.

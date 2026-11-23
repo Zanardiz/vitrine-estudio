@@ -5,8 +5,8 @@
     "descricao_compartilhar": "Veja o seu site novo pronto antes de pagar: a Prévia Vitrine."
   },
   "inicio": {
-    "titulo": "Sites sob medida para negócios",
-    "texto": "Mandamos o site da sua empresa pronto, ao lado do seu site atual ou do Instagram. Ele abre rápido no celular: nota 90 ou mais no teste de velocidade do próprio Google. Não gostou, não paga nada."
+    "titulo": "Seu site novo, pronto antes de você pagar.",
+    "texto": "Sites rápidos e bem-feitos para pequenas empresas do Rio Grande do Sul. Eu monto uma prévia do seu, de graça, e você só paga se aprovar."
   },
   "previa": {
     "titulo": "A prévia em 3 passos.",
@@ -46,8 +46,8 @@
         "texto": "As suas fotos, os seus serviços e o seu bairro, em vez de um tema pronto com o seu logo."
       },
       {
-        "nome": "Um efeito do seu ramo no site",
-        "texto": "Um movimento feito para o seu negócio, como as peças 3D do começo desta página."
+        "nome": "Um detalhe feito para o seu ramo",
+        "texto": "Um efeito pensado para o seu negócio, como o showroom do começo desta página."
       },
       {
         "nome": "Botão de WhatsApp no site",
@@ -127,13 +127,13 @@
   },
   "orcamento": {
     "titulo": "Peça a prévia do seu site",
-    "texto": "Mande o endereço do site atual ou do Instagram. Sem nenhum dos dois, conte o que a empresa faz e onde fica.",
+    "texto": "Deixe o seu WhatsApp ou e-mail e o endereço do site atual ou do Instagram. Sem nenhum dos dois, conte o que a empresa faz e onde fica.",
     "email": "contato.vitrineestudio@gmail.com",
     "endereco_formulario": "https://api.web3forms.com/submit"
   },
   "rodape": {
     "titulo": "Veja o seu site novo antes de pagar",
-    "texto": "A prévia é grátis e chega no seu e-mail, num link só seu.",
+    "texto": "A prévia é grátis e chega no seu WhatsApp ou e-mail, num link só seu.",
     "frase": "Sites sob medida para pequenas empresas."
   },
   "sobre": {
