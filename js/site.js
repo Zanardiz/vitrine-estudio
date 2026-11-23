@@ -12,7 +12,8 @@
   const EASE = [0.2, 0.8, 0.2, 1];
   const D = (s) => (calm ? s * 0.6 : s);
   const REEL_MS = 2600;
-  const LOADER_MS = 1600;
+  const LOADER_MS = 700;
+  const FONT_WAIT_MS = 2500;
 
   if (M) document.documentElement.classList.add('motion-ok');
   let ready = false;
@@ -39,22 +40,28 @@
     }));
   }
 
-  /* Carregamento: contador de 0 a 100, depois a tela sobe e a abertura aparece */
+  /* Carregamento: o nome e uma linha fina que enche rápido; depois a tela some num fade curto */
   function initLoader() {
     const loader = $('[data-loader]');
     const finish = () => { ready = true; document.documentElement.dataset.ready = '1'; document.dispatchEvent(new Event('vitrine:ready')); };
     if (!loader || !M) { loader?.remove(); finish(); return; }
-    const count = $('[data-loader-count]', loader);
     const bar = $('[data-loader-bar]', loader);
-    lenis?.stop();
-    M.animate(0, 100, { duration: D(LOADER_MS) / 1000, ease: [0.6, 0, 0.2, 1], onUpdate: (v) => { count.textContent = Math.round(v); bar.style.width = `${v}%`; } })
+    // espera a linha encher e as fontes chegarem (a assinatura precisa da letra cursiva), no máximo FONT_WAIT_MS
+    const scriptLoaded = () => !document.fonts || [...document.fonts].some((f) => f.family.includes('Delafield') && f.status === 'loaded');
+    const fonts = new Promise((resolve) => {
+      const t0 = performance.now();
+      const poll = () => {
+        if (scriptLoaded() || performance.now() - t0 > FONT_WAIT_MS) return resolve();
+        [...(document.fonts || [])].forEach((f) => { if (f.family.includes('Delafield') && f.status === 'unloaded') f.load().catch(() => {}); });
+        setTimeout(poll, 80);
+      };
+      poll();
+    });
+    Promise.all([M.animate(bar, { transform: ['scaleX(0)', 'scaleX(1)'] }, { duration: LOADER_MS / 1000, ease: [0.6, 0, 0.2, 1] }), fonts])
       .then(() => {
         loader.classList.add('done');
         finish();
-        lenis?.start();
-        M.animate(loader, { clipPath: ['inset(0 0 0% 0)', 'inset(0 0 100% 0)'] }, { duration: D(0.9), ease: [0.7, 0, 0.2, 1] }).then(() => loader.remove());
-        const stage = $('[data-stage]');
-        if (stage) M.animate(stage, { scale: [0.9, 1] }, { duration: D(1.3), ease: EASE });
+        M.animate(loader, { opacity: [1, 0] }, { duration: 0.45, ease: 'linear' }).then(() => loader.remove());
       });
   }
 
@@ -270,12 +277,14 @@
     });
   }
 
-  /* Janelas: cada seção gruda no topo, a próxima sobe por cima e a de baixo encolhe e escurece.
-     Uma rolada (ou seta para baixo) leva à próxima janela; seções altas andam uma tela por vez. */
+  /* Janelas: no computador cada seção gruda no topo e a próxima sobe por cima, sem encolher nem pular sozinha.
+     A seta para baixo leva à próxima janela. No celular as seções seguem em fila normal, sem grudar. */
   const STEP_MS = 1.05;
   function initPanels() {
     const panels = $$('main > section, .flow > section, .foot');
     if (!panels.length) return;
+    const stack = fine && window.innerWidth >= 900;
+    document.documentElement.classList.toggle('stack', stack);
     const marks = panels.map((p) => { const m = document.createElement('i'); m.style.cssText = 'display:block;height:0'; p.before(m); return m; });
     let stops = [];
     let tops = [];
@@ -285,7 +294,7 @@
       tops = [];
       panels.forEach((p, i) => {
         const h = p.offsetHeight;
-        if (!p.matches('.hs, [data-pin]')) p.style.setProperty('--stick', `${Math.min(0, vh - h)}px`);
+        if (stack && !p.matches('.hs, [data-pin]')) p.style.setProperty('--stick', `${Math.min(0, vh - h)}px`);
         const top = marks[i].getBoundingClientRect().top + window.scrollY;
         tops.push(top);
         stops.push(Math.round(top));
@@ -302,22 +311,6 @@
     window.addEventListener('resize', measure);
     window.addEventListener('load', measure);
     setTimeout(measure, 1500);
-
-    // a janela de baixo encolhe e escurece enquanto a próxima sobe
-    if (M) {
-      panels.forEach((p, i) => {
-        const next = panels[i + 1];
-        if (!next || p.matches('.hs, [data-pin]')) return;
-        const shade = document.createElement('span');
-        shade.className = 'panel-shade';
-        p.append(shade);
-        M.scroll((v) => {
-          p.style.transform = v > 0 ? `scale(${(1 - 0.08 * v).toFixed(4)})` : '';
-          p.style.borderRadius = v > 0 ? `${Math.round(v * 32)}px` : '';
-          shade.style.opacity = (v * 0.55).toFixed(3);
-        }, { target: next, offset: ['start end', 'start start'] });
-      });
-    }
 
     // contador de janelas
     const pager = document.createElement('div');
@@ -351,26 +344,6 @@
     };
     const menuOpen = () => menu && !menu.hidden;
 
-    // Encaixe leve: quando a rolagem para perto do começo de uma janela, ela se ajusta sozinha.
-    // A roda do mouse nunca é bloqueada.
-    const SNAP_IDLE_MS = 220;
-    const SNAP_RANGE = 0.22;
-    let idle = null;
-    lenis.on('scroll', () => {
-      clearTimeout(idle);
-      if (lock || menuOpen()) return;
-      idle = setTimeout(() => {
-        if (lock || Math.abs(lenis.velocity) > 0.5) return;
-        const y = window.scrollY;
-        const near = tops.map(Math.round).reduce((best, t) => (Math.abs(t - y) < Math.abs(best - y) ? t : best), Infinity);
-        const dist = Math.abs(near - y);
-        if (dist > 2 && dist < window.innerHeight * SNAP_RANGE) {
-          lock = true;
-          lenis.scrollTo(near, { duration: 0.6, easing: (t) => 1 - Math.pow(1 - t, 3), onComplete: () => { lock = false; } });
-          setTimeout(() => { lock = false; }, 900);
-        }
-      }, SNAP_IDLE_MS);
-    });
     document.addEventListener('keydown', (e) => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (menuOpen() || ['input', 'textarea', 'select'].includes(tag) || e.target.isContentEditable) return;

@@ -16,7 +16,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap"></noscript>
-<link rel="stylesheet" href="css/v8.css?v=1795370000">
+<link rel="stylesheet" href="css/v8.css?v=1795542000">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -25,7 +25,6 @@
 <div class="cursor" aria-hidden="true" data-cursor><span data-cursor-text></span></div>
 <div class="loader" aria-hidden="true" data-loader>
   <span class="loader__word">VITRINE<sup>®</sup></span>
-  <span class="loader__count"><b data-loader-count>0</b>%</span>
   <span class="loader__bar"><i data-loader-bar></i></span>
 </div>
 
@@ -42,28 +41,28 @@
   <ul>
     <li><a href="#previa">Como funciona</a></li>
     <li><a href="#trabalhos">Sites</a></li>
-    <li><a href="#sobre">Quem faz</a></li>
     <li><a href="#padrao">O que você recebe</a></li>
     <li><a href="#analise">Análise</a></li>
     <li><a href="#perguntas">Perguntas</a></li>
+    <li><a href="#sobre">Quem faz</a></li>
     <li><a href="#pedido">Pedir prévia</a></li>
   </ul>
 </nav>
 
 <main id="topo">
-  <!-- Abertura: o Arthur. Print de um site real que abre do meio, assinatura gigante que se desenha e os sites flutuando em volta -->
+  <!-- Abertura: print de um site real que abre do meio, assinatura gigante que se desenha e os sites flutuando em volta -->
   <section class="me" aria-labelledby="me-h" data-me>
     <canvas class="topo" aria-hidden="true" data-topo></canvas>
     <p class="tiny me__kicker">Vitrine Estúdio · Rio Grande do Sul</p>
     <figure class="me__photo" data-me-photo>
       <img src="assets/img/macedos-farol.webp" width="1440" height="900" alt="Farol antes e depois no site da Macedo's Auto Detail, cliente real" fetchpriority="high">
     </figure>
-    <svg class="sign sign--hero" viewBox="0 0 600 200" aria-hidden="true" data-sign data-sign-hero><text x="300" y="140" text-anchor="middle">Arthur</text></svg>
+    <svg class="sign sign--hero" viewBox="0 0 600 200" aria-hidden="true" data-sign data-sign-hero><text x="300" y="140" text-anchor="middle">Vitrine</text></svg>
     <a class="me__float me__float--a" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-float="0.6" data-speed="0.12"><img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="Site da Macedo's Auto Detail"><span class="tiny">Macedo's · no ar ↗</span></a>
     <a class="me__float me__float--b" href="conceitos/cafe/" data-float="-0.4" data-speed="-0.1"><img src="assets/conceitos/cafe-mob.webp" width="390" height="844" alt="Site-conceito do Café Aurora"><span class="tiny">Café · demonstração</span></a>
     <a class="me__float me__float--c" href="conceitos/barbearia/" data-float="0.9" data-speed="0.2"><img src="assets/conceitos/barbearia-mob.webp" width="390" height="844" alt="Site-conceito da Barbearia Brasa"><span class="tiny">Barbearia · demonstração</span></a>
     <div class="me__bottom">
-      <h1 id="me-h" class="me__title" data-split>Oi, eu sou o Arthur. Faço sites para pequenas empresas.</h1>
+      <h1 id="me-h" class="me__title" data-split>Sites bonitos e rápidos para pequenas empresas.</h1>
       <div class="me__cta">
         <a class="pill pill--dark pill--big" href="#pedido" data-magnet>Pedir minha prévia grátis <i aria-hidden="true"></i></a>
         <span class="hero__scroll tiny" aria-hidden="true">Role <b>↓</b></span>
@@ -134,23 +133,6 @@
   </section>
 
   <!-- Quem está por trás: foto grande, assinatura que se desenha, história curta e o mapa de linhas ao fundo -->
-  <section class="about" id="sobre" aria-labelledby="about-h">
-    <canvas class="topo" aria-hidden="true" data-topo></canvas>
-    <figure class="about__photo" data-rise>
-      <img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Abertura do site da Macedo's Auto Detail, cliente real" loading="lazy">
-    </figure>
-    <div class="about__text">
-      <p class="tiny">Quem está por trás</p>
-      <h2 id="about-h" data-split>Como tudo começou.</h2>
-      <p class="about__lead">Sou do Rio Grande do Sul e faço sites para pequenas empresas.</p>
-      <p>Meu primeiro site foi para a minha namorada, um site de jornalismo cultural. Depois veio um amigo, que tem uma estética automotiva e tinha recebido a proposta de site de outra empresa. Eu fiz uma versão melhor, sem custo de hospedagem para ele. Ele aprovou, e hoje o site dele está no ar.</p>
-      <p>Foi aí que eu percebi quanta empresa boa some no celular por não ter um site à altura do trabalho que faz. Por isso a prévia é grátis: <strong>você vê o seu site pronto antes de pagar qualquer coisa.</strong></p>
-      <a class="about__card" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-speed="-0.06">
-        <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="" loading="lazy">
-        <span class="tiny">Macedo's Auto Detail · no ar desde nov/2026 ↗</span>
-      </a>
-    </div>
-  </section>
 
   <!-- Os passos andam para o lado enquanto a página desce (seção presa) -->
   <section class="hs" id="previa" aria-labelledby="previa-h" data-hs>
@@ -241,6 +223,25 @@
     </div>
   </section>
 
+  <section class="about" id="sobre" aria-labelledby="about-h">
+    <canvas class="topo" aria-hidden="true" data-topo></canvas>
+    <figure class="about__photo" data-rise>
+      <img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Abertura do site da Macedo's Auto Detail, cliente real" loading="lazy">
+    </figure>
+    <div class="about__text">
+      <p class="tiny">Quem está por trás</p>
+      <h2 id="about-h" data-split>Prazer, eu sou o Arthur.</h2>
+      <p class="about__lead">Sou do Rio Grande do Sul e faço sites para pequenas empresas. Foi assim que começou:</p>
+      <p>Meu primeiro site foi para a minha namorada, um site de jornalismo cultural. Depois veio um amigo, que tem uma estética automotiva e tinha recebido a proposta de site de outra empresa. Eu fiz uma versão melhor, sem custo de hospedagem para ele. Ele aprovou, e hoje o site dele está no ar.</p>
+      <p>Foi aí que eu percebi quanta empresa boa some no celular por não ter um site à altura do trabalho que faz. Por isso a prévia é grátis: <strong>você vê o seu site pronto antes de pagar qualquer coisa.</strong></p>
+      <svg class="sign sign--about" viewBox="0 0 600 200" aria-hidden="true" data-sign><text x="300" y="140" text-anchor="middle">Arthur</text></svg>
+      <a class="about__card" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-speed="-0.06">
+        <img src="assets/img/macedos-servicos-720.webp" width="720" height="450" alt="" loading="lazy">
+        <span class="tiny">Macedo's Auto Detail · no ar desde nov/2026 ↗</span>
+      </a>
+    </div>
+  </section>
+
   <section class="sec sec--lime" id="pedido" aria-labelledby="pedido-h">
     <div class="split">
       <div>
@@ -286,7 +287,7 @@
 
 <script src="assets/vendor/motion.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=1795283041" defer></script>
+<script src="js/site.js?v=1795541000" defer></script>
 <script type="module">
   // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
   const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;

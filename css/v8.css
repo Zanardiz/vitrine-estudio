@@ -64,12 +64,12 @@ em { font-style: normal; color: var(--lime); }
 @media (pointer: coarse) { .cursor { display: none; } }
 
 /* Carregamento */
-.loader { position: fixed; inset: 0; z-index: 550; background: var(--bg); color: var(--cream); display: grid; grid-template-rows: 1fr auto auto; padding: var(--g); }
+.loader { position: fixed; inset: 0; z-index: 550; background: var(--bg); color: var(--cream); display: grid; grid-template-rows: 1fr auto; padding: var(--g); }
 .loader__word { align-self: center; justify-self: center; font: 800 clamp(40px, 9vw, 150px)/1 var(--wide); font-stretch: 125%; }
 .loader__word sup { font-size: .2em; }
 .loader__count { font: 800 clamp(32px, 5vw, 72px)/1 var(--wide); font-stretch: 125%; text-align: right; }
 .loader__bar { display: block; height: 2px; margin-top: 18px; background: var(--line); }
-.loader__bar i { display: block; height: 100%; width: 0; background: var(--lime); }
+.loader__bar i { display: block; height: 100%; width: 100%; background: var(--lime); transform: scaleX(0); transform-origin: left; }
 .loader.done { pointer-events: none; }
 html:not(.js) .loader { display: none; }
 
@@ -93,9 +93,11 @@ html:not(.js) .loader { display: none; }
 .menu__close { position: absolute; top: 20px; right: var(--g); }
 
 /* Janelas: cada seção gruda no topo e a próxima sobe por cima */
-main > section { position: sticky; top: var(--stick, 0px); z-index: 1; min-height: 100svh; transform-origin: 50% 0%; will-change: transform; background-color: var(--bg); border-top: 1px solid var(--line); }
+main > section { position: relative; z-index: 1; min-height: 100svh; background-color: var(--bg); border-top: 1px solid var(--line); }
 main > section:first-child { border-top: 0; }
-main > section.hs, main > section[data-pin] { position: relative; }
+/* No computador as janelas grudam e a próxima cobre; no celular seguem em fila */
+.stack main > section { position: sticky; top: var(--stick, 0px); }
+.stack main > section.hs, .stack main > section[data-pin] { position: relative; top: auto; }
 .panel-shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 50; border-radius: inherit; }
 .foot { position: relative; z-index: 1; }
 
@@ -322,7 +324,7 @@ main > section.hs, main > section[data-pin] { position: relative; }
 /* Celular */
 @media (max-width: 639px) {
   body { font-size: 15px; }
-  .bar { padding: 14px 16px; }
+  .bar { padding: 14px 16px 22px; background: linear-gradient(var(--bg) 62%, rgb(7 8 28 / 0)); }
   .bar__cta { display: none; }
   .bar__logo { font-size: 16px; }
   .me { place-items: start center; padding: 118px 16px 34px; }
@@ -386,3 +388,7 @@ main > section.hs, main > section[data-pin] { position: relative; }
 }
 /* A coluna dos passos não pode crescer junto com a faixa de cartões */
 .hs__sticky { grid-template-columns: minmax(0, 1fr); }
+
+/* Assinatura do Arthur no fim da história, na seção "Quem faz" */
+.about .sign--about { width: min(340px, 72%); margin: -18px 0 -26px -14px; }
+@media (max-width: 1023px) { .about__photo { order: -1; } }
