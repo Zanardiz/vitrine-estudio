@@ -392,3 +392,14 @@ main > section:first-child { border-top: 0; }
 /* Assinatura do Arthur no fim da história, na seção "Quem faz" */
 .about .sign--about { width: min(340px, 72%); margin: -18px 0 -26px -14px; }
 @media (max-width: 1023px) { .about__photo { order: -1; } }
+
+/* Grade com dois: o site real e o lugar do próximo */
+.tiles--duo { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.tiles--duo .tile { aspect-ratio: 16 / 10.5; }
+.tile--next { display: grid; place-items: center; background: var(--cream); color: var(--bg); border: 0; }
+.tile__next { display: grid; gap: 14px; justify-items: start; padding: clamp(22px, 4vw, 56px); }
+.tile__next .tiny { color: rgb(7 8 28 / .6); }
+.tile__next b { font: 800 clamp(26px, 3.2vw, 52px)/1.02 var(--wide); font-stretch: 125%; text-transform: uppercase; max-width: 12ch; }
+.tile__go { font: 700 13px var(--text); letter-spacing: .14em; text-transform: uppercase; border-bottom: 2px solid var(--bg); padding-bottom: 4px; transition: letter-spacing .4s var(--ease); }
+.tile--next:hover .tile__go { letter-spacing: .2em; }
+@media (max-width: 639px) { .tiles--duo { grid-template-columns: 1fr !important; } .tiles--duo .tile { aspect-ratio: 4 / 3; } }

@@ -1,5 +1,5 @@
-// Cena 3D da abertura: peças brancas, pretas e azuis e três celulares com os sites, num painel escuro.
-// As peças voltam para o lugar como molas e fogem do mouse; os celulares olham para o mouse.
+// Cena 3D da abertura: peças holográficas e um celular com o site da Macedo's, num painel escuro.
+// As peças voltam para o lugar como molas e fogem do mouse; o celular olha para o mouse.
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from '../assets/vendor/RoundedBoxGeometry.js';
 import { RoomEnvironment } from '../assets/vendor/RoomEnvironment.js';
@@ -13,7 +13,7 @@ let released = document.documentElement.dataset.ready === '1';
 document.addEventListener('vitrine:ready', () => { released = true; }, { once: true });
 setTimeout(() => { released = true; }, 4000);
 
-const SCREENS = ['assets/conceitos/barbearia-mob.webp', 'assets/conceitos/cafe-mob.webp', 'assets/conceitos/clinica-mob.webp'];
+const SCREENS = ['assets/img/macedos-celular.webp'];
 // creme, marinho e violeta, com reflexo de arco-íris (iridescência), como a bolha holográfica da Panda
 const COLORS = { white: '#ece6d8', black: '#10122f', blue: '#6d5cff' };
 const IRIS = { iridescence: 1, iridescenceIOR: 1.35, iridescenceThicknessRange: [120, 720] };
@@ -85,7 +85,7 @@ function start() {
   const loader = new THREE.TextureLoader();
   const phoneBody = new RoundedBoxGeometry(1.9, 4.05, 0.24, 6, 0.3);
   const screenGeo = new THREE.PlaneGeometry(1.72, 3.82);
-  const phoneSpots = [new THREE.Vector3(-2.6, -0.2, 1.2), new THREE.Vector3(0, 0.25, 2.4), new THREE.Vector3(2.6, -0.3, 1.2)];
+  const phoneSpots = [new THREE.Vector3(1.9, 0.55, 2.4)];
   SCREENS.forEach((src, i) => {
     const tex = loader.load(src);
     tex.colorSpace = THREE.SRGBColorSpace;
@@ -95,7 +95,7 @@ function start() {
     const screen = new THREE.Mesh(screenGeo, new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }));
     screen.position.z = 0.125;
     phone.add(screen);
-    phone.scale.setScalar(i === 1 ? 1.08 : 0.9);
+    phone.scale.setScalar(1.15);
     addBody(phone, phoneSpots[i], { phone: true });
   });
 
@@ -135,7 +135,10 @@ function start() {
   window.addEventListener('resize', resize);
 
   let scrollP = 0;
-  window.addEventListener('scroll', () => { scrollP = Math.min(1, window.scrollY / Math.max(1, stage.clientHeight)); }, { passive: true });
+  // quanto a cena já subiu da tela (0 quando o topo dela está no topo da janela), não a rolagem da página toda
+  const onScroll = () => { scrollP = Math.min(1, Math.max(0, -stage.getBoundingClientRect().top / Math.max(1, stage.clientHeight))); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   const tmp = new THREE.Vector3();
   const clock = new THREE.Clock();
