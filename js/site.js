@@ -574,8 +574,9 @@
       if (!endpoint) {
         // sem endereço de envio, monta o e-mail com os campos e abre o app de e-mail
         const data = new FormData(form);
-        // campos que começam com "_" são instruções para o serviço de formulário, não texto do pedido
-        const body = [...data.entries()].filter(([k]) => !k.startsWith('_')).map(([k, v]) => `${k}: ${v}`).join('\n');
+        // campos escondidos são instruções para o serviço de formulário, não texto do pedido
+        const service = new Set($$('input[type="hidden"], input[name="botcheck"]', form).map((i) => i.name));
+        const body = [...data.entries()].filter(([k]) => !service.has(k)).map(([k, v]) => `${k}: ${v}`).join('\n');
         window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent('Pedido de prévia')}&body=${encodeURIComponent(body)}`;
         status.textContent = 'Abrimos o seu e-mail com o pedido pronto. É só enviar.';
         return;
@@ -583,7 +584,8 @@
       status.textContent = 'Enviando…';
       try {
         const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const answer = await res.json().catch(() => ({}));
+        if (!res.ok || answer.success === false) throw new Error(answer.message || `HTTP ${res.status}`);
         status.textContent = form.dataset.sent;
         form.reset();
       } catch (problem) {

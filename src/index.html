@@ -227,9 +227,11 @@
         <p class="lead">{{orcamento.texto}}</p>
       </div>
       <form class="form" action="#pedido" method="post" data-mailto="{{orcamento.email}}" data-endpoint="{{orcamento.endereco_formulario}}" data-sent="Seu pedido chegou. Eu mando a prévia no seu e-mail." novalidate data-form>
-        <!-- instruções para o FormSubmit: assunto do e-mail e campos em tabela -->
-        <input type="hidden" name="_subject" value="Novo pedido de prévia pelo site">
-        <input type="hidden" name="_template" value="table">
+        <!-- Web3Forms: chave pública do formulário (manda os pedidos para o Gmail da Vitrine), assunto e remetente -->
+        <input type="hidden" name="access_key" value="7706d0be-b75c-4fb7-acef-abeb89add731">
+        <input type="hidden" name="subject" value="Novo pedido de prévia pelo site">
+        <input type="hidden" name="from_name" value="Site Vitrine Estúdio">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <div class="field"><label for="f-name">Nome</label>
           <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
           <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
@@ -266,7 +268,7 @@
 
 <script src="assets/vendor/motion.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=1795600000" defer></script>
+<script src="js/site.js?v=1795700000" defer></script>
 <script type="module">
   // A cena 3D só carrega em computador, depois que a página terminou; no celular fica a imagem dela.
   const big = matchMedia("(pointer: fine) and (min-width: 900px)").matches && (navigator.hardwareConcurrency || 4) >= 4;

@@ -132,7 +132,7 @@ collections:
               - { label: Título, name: titulo, widget: string }
               - { label: Texto, name: texto, widget: text }
               - { label: E-mail que recebe os pedidos, name: email, widget: string }
-              - { label: Endereço do formulário (Formspree), name: endereco_formulario, widget: string, required: false, hint: "Opcional. Ex.: https://formsubmit.co/ajax/seu@email.com (FormSubmit) ou https://formspree.io/f/abcd1234. Com ele, o pedido chega sem abrir o app de e-mail." }
+              - { label: Endereço do formulário (Web3Forms), name: endereco_formulario, widget: string, required: false, hint: "Opcional. Hoje: https://api.web3forms.com/submit (a chave fica no formulário do site). Vazio = abre o app de e-mail. Com ele, o pedido chega sem abrir o app de e-mail." }
           - label: Rodapé
             name: rodape
             widget: object
