@@ -227,8 +227,9 @@
         <p class="lead">{{orcamento.texto}}</p>
       </div>
       <form class="form" action="#pedido" method="post" data-mailto="{{orcamento.email}}" data-endpoint="{{orcamento.endereco_formulario}}" data-sent="Seu pedido chegou. Eu mando a prévia no seu e-mail." novalidate data-form>
-        <!-- assunto do e-mail quando houver serviço de formulário (Formspree lê _subject) -->
+        <!-- instruções para o FormSubmit: assunto do e-mail e campos em tabela -->
         <input type="hidden" name="_subject" value="Novo pedido de prévia pelo site">
+        <input type="hidden" name="_template" value="table">
         <div class="field"><label for="f-name">Nome</label>
           <input id="f-name" name="nome" type="text" autocomplete="name" required aria-describedby="f-name-err">
           <p class="field__error" id="f-name-err" hidden>Escreva o seu nome.</p></div>
