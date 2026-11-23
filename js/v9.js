@@ -149,6 +149,93 @@
     });
   }
 
+  /* Fundo: cinzas caindo devagar; o mouse (ou o dedo) espalha as que estão perto e elas voltam a cair */
+  const ASH = { AREA_PER_FLAKE: 9000, MAX: 220, MAX_PHONE: 80, RADIUS: 130, PUSH: 260, FRICTION: 0.92, DPR_MAX: 1.5 };
+
+  function makeFlake(w, h, anywhere) {
+    const size = 0.6 + Math.random() ** 2 * 2.2;
+    return {
+      x: Math.random() * w,
+      y: anywhere ? Math.random() * h : -10 - Math.random() * 40,
+      size,
+      stretch: 1 + Math.random() * 1.4,          // algumas lascas são mais compridas
+      fall: 10 + size * 9 + Math.random() * 10,   // px por segundo; as maiores caem mais rápido
+      sway: 6 + Math.random() * 14,
+      phase: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 1.2,
+      angle: Math.random() * Math.PI,
+      alpha: 0.18 + Math.random() * 0.42,
+      tone: 150 + Math.floor(Math.random() * 70), // do aço ao cinza claro
+      vx: 0, vy: 0,
+    };
+  }
+
+  function initAsh() {
+    const canvas = $('[data-ash]');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const phone = matchMedia('(max-width: 639px)').matches;
+    const slow = calm ? 0.5 : 1;
+    let w = 0; let h = 0; let flakes = [];
+    const pointer = { x: -9999, y: -9999 };
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, ASH.DPR_MAX);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const target = Math.min(phone ? ASH.MAX_PHONE : ASH.MAX, Math.round((w * h) / ASH.AREA_PER_FLAKE * (calm ? 0.6 : 1)));
+      while (flakes.length < target) flakes.push(makeFlake(w, h, true));
+      flakes.length = target;
+    }
+
+    function step(f, dt, t) {
+      const dx = f.x - pointer.x; const dy = f.y - pointer.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < ASH.RADIUS && dist > 0.1) {
+        const force = (1 - dist / ASH.RADIUS) * ASH.PUSH * dt;
+        f.vx += (dx / dist) * force; f.vy += (dy / dist) * force;
+        f.spin += (Math.random() - 0.5) * 0.4;
+      }
+      f.vx *= ASH.FRICTION; f.vy *= ASH.FRICTION;
+      f.x += (Math.sin(t * 0.0006 + f.phase) * f.sway * dt + f.vx) * 1;
+      f.y += f.fall * slow * dt + f.vy;
+      f.angle += f.spin * dt;
+      if (f.y > h + 12 || f.x < -30 || f.x > w + 30) Object.assign(f, makeFlake(w, h, false));
+    }
+
+    function draw(f) {
+      ctx.save();
+      ctx.translate(f.x, f.y); ctx.rotate(f.angle);
+      ctx.fillStyle = `rgba(${f.tone},${f.tone},${f.tone + 4},${f.alpha})`;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, f.size * f.stretch, f.size, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    let last = performance.now(); let running = true;
+    function frame(now) {
+      if (!running) return;
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      ctx.clearRect(0, 0, w, h);
+      flakes.forEach((f) => { step(f, dt, now); draw(f); });
+      requestAnimationFrame(frame);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('pointermove', (e) => { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
+    window.addEventListener('pointerleave', () => { pointer.x = -9999; pointer.y = -9999; });
+    document.addEventListener('pointerout', (e) => { if (!e.relatedTarget) { pointer.x = -9999; pointer.y = -9999; } });
+    document.addEventListener('visibilitychange', () => {
+      running = !document.hidden;
+      if (running) { last = performance.now(); requestAnimationFrame(frame); }
+    });
+    requestAnimationFrame(frame);
+  }
+
+  initAsh();
   initBar();
   initReveal();
   initStage();
