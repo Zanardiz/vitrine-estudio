@@ -149,7 +149,7 @@ main, .foot { position: relative; z-index: 1; }
 .offer__list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .price { display: grid; gap: 12px; align-content: start; padding: 30px; background: var(--s1); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--edge); }
 .price:nth-child(2) { background: var(--s2); border-color: var(--line-2); box-shadow: var(--shadow), var(--edge); }
-.price h3 { font-size: 20px; font-weight: 600; color: var(--ink-2); }
+.price h3 { font-size: clamp(24px, 2vw, 30px); font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
 .price__value { font-size: clamp(26px, 2.3vw, 34px); font-weight: 700; letter-spacing: -.025em; color: var(--ink); line-height: 1.1; }
 .price p:not(.price__value) { color: var(--ink-2); font-size: 15px; }
 .price__go { margin-top: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--ink); justify-self: start; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; transition: border-color .2s; }

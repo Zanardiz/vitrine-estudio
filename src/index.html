@@ -14,7 +14,7 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/schibsted-grotesk-v7.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/v9.css?v=11">
+<link rel="stylesheet" href="css/v9.css?v=12">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -26,7 +26,7 @@
   <nav class="bar__nav" aria-label="Seções">
     <a href="#trabalhos">Trabalhos</a>
     <a href="#como">Como funciona</a>
-    <a href="#precos">Preços</a>
+    <a href="#precos">Serviços</a>
     <a href="#perguntas">Perguntas</a>
   </nav>
   <a class="btn btn--primary btn--small" href="#pedido">Pedir prévia</a>
@@ -111,10 +111,10 @@
   <section class="sec offer" id="precos" aria-labelledby="precos-h">
     <div class="sec__head">
       <h2 id="precos-h">{{servicos.titulo}}</h2>
-      <p>{{servicos.texto}} Você recebe o preço fechado antes de começar.</p>
+      <p>{{servicos.texto}} Você vê o seu site pronto e só depois recebe o valor fechado, sem compromisso.</p>
     </div>
     <ul class="offer__list">
-{{#each servicos.itens}}      <li class="price" data-reveal><h3>{{nome}}</h3><p class="price__value">{{preco}}</p><p>{{texto}}</p><a class="price__go" href="#pedido">Pedir prévia <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+{{#each servicos.itens}}      <li class="price" data-reveal><h3 class="price__value">{{nome}}</h3><p>{{texto}}</p><a class="price__go" href="#pedido">Pedir minha prévia <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
 {{/each}}    </ul>
     <div class="rules">
       <h3 class="rules__title">{{padrao.titulo}}: {{padrao.complemento}}</h3>
