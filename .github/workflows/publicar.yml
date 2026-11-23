@@ -37,5 +37,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+      # o GitHub às vezes demora a registrar o arquivo enviado; esperar evita o erro "No artifacts named github-pages"
+      - name: Espera o arquivo aparecer
+        run: sleep 30
       - id: deploy
         uses: actions/deploy-pages@v5
