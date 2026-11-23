@@ -1,4 +1,4 @@
-// Cena 3D da abertura: peças holográficas e um celular com o site da Macedo's, num painel escuro.
+// Cena 3D da abertura: peças holográficas e um celular com o site do Boa de Contar, num painel escuro.
 // As peças voltam para o lugar como molas e fogem do mouse; o celular olha para o mouse.
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from '../assets/vendor/RoundedBoxGeometry.js';
@@ -13,7 +13,7 @@ let released = document.documentElement.dataset.ready === '1';
 document.addEventListener('vitrine:ready', () => { released = true; }, { once: true });
 setTimeout(() => { released = true; }, 4000);
 
-const SCREENS = ['assets/img/macedos-celular.webp'];
+const SCREENS = ['assets/img/boa-de-contar-celular.webp'];
 // creme, marinho e violeta, com reflexo de arco-íris (iridescência), como a bolha holográfica da Panda
 const COLORS = { white: '#ece6d8', black: '#10122f', blue: '#6d5cff' };
 const IRIS = { iridescence: 1, iridescenceIOR: 1.35, iridescenceThicknessRange: [120, 720] };

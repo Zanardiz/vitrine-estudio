@@ -150,7 +150,7 @@ main > section:first-child { border-top: 0; }
 .chap h2 { font-size: clamp(30px, 4.4vw, 72px); line-height: 1.02; }
 .chap__text p:not(.tiny) { font-size: 18px; max-width: 40ch; color: var(--cream-2); }
 .chap__phone { position: relative; z-index: 1; grid-column: 8 / span 5; justify-self: center; width: clamp(190px, 20vw, 300px); aspect-ratio: 390 / 844; padding: 9px; border-radius: 42px; background: linear-gradient(145deg, #2b2c3a, #0b0c16 40%); box-shadow: 0 0 0 1.5px #333548 inset, 0 60px 90px -40px #000; transform: rotate(12deg); }
-.chap__phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 34px; filter: grayscale(1) blur(1.5px) brightness(.8); }
+.chap__phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 34px; }
 .chap__stamp { position: absolute; z-index: 3; right: 16%; top: 30%; padding: 10px 22px; border: 4px solid var(--red); border-radius: 10px; color: var(--red); font: 800 clamp(22px, 2.6vw, 40px)/1 var(--wide); font-stretch: 125%; text-transform: uppercase; transform: rotate(-14deg); }
 
 /* 4. Antes | Depois */
@@ -162,7 +162,7 @@ main > section:first-child { border-top: 0; }
 .ad__word[data-ad-r] { left: 50%; margin-left: clamp(118px, 12vw, 190px); color: var(--lime); }
 .ad__phone { margin: 0; width: clamp(190px, 19vw, 290px); aspect-ratio: 390 / 844; padding: 9px; border-radius: 42px; background: #0b0c16; box-shadow: 0 0 0 1.5px #333548 inset, 0 60px 100px -40px #000; }
 .ad__phone img { position: absolute; inset: 9px; width: calc(100% - 18px); height: calc(100% - 18px); object-fit: cover; object-position: top; border-radius: 34px; }
-.ad__before { filter: grayscale(1) blur(2px) brightness(.7); }
+.ad__before { filter: none; }
 .ad__after { clip-path: inset(100% 0 0 0); }
 .ad__cap { position: absolute !important; bottom: 34px; left: 50%; translate: -50% 0; }
 
