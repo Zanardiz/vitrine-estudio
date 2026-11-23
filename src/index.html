@@ -17,7 +17,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Sen:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap"></noscript>
-<link rel="stylesheet" href="css/v8.css?v=1795820000">
+<link rel="stylesheet" href="css/v8.css?v=1795830000">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -152,7 +152,7 @@
   <section class="sec sec--ink oferta" id="padrao" aria-labelledby="padrao-h">
     <div class="sec__head"><h2 id="padrao-h" class="big" data-split>O que você recebe</h2><p class="tiny">{{servicos.texto}}</p></div>
     <ul class="services">
-{{#each servicos.itens}}      <li class="service" data-rise><h3>{{nome}}</h3><p>{{texto}}</p><span aria-hidden="true">↗</span></li>
+{{#each servicos.itens}}      <li class="service" data-rise><h3>{{nome}}</h3><p>{{texto}}</p><p class="service__price">{{preco}}</p><span aria-hidden="true">↗</span></li>
 {{/each}}    </ul>
     <p class="oferta__kicker tiny">{{padrao.titulo}} · {{padrao.complemento}}</p>
     <ol class="rules rules--compact">

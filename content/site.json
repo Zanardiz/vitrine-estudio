@@ -84,15 +84,18 @@
     "itens": [
       {
         "nome": "Otimização",
-        "texto": "Deixo o site que você já tem mais rápido no celular, ajeito para aparecer no Google e coloco o botão do WhatsApp."
+        "texto": "Deixo o site que você já tem mais rápido no celular, ajeito para aparecer no Google e coloco o botão do WhatsApp.",
+        "preco": "A partir de R$ 490"
       },
       {
         "nome": "Site novo",
-        "texto": "Do zero, com a cara da sua empresa: uma página ou várias, com fotos, textos e formulário de contato."
+        "texto": "Do zero, com a cara da sua empresa: uma página ou várias, com fotos, textos e formulário de contato.",
+        "preco": "A partir de R$ 1.200"
       },
       {
         "nome": "Manutenção mensal",
-        "texto": "Todo mês eu confiro a velocidade, troco os textos e fotos que você pedir e corrijo o que piorar."
+        "texto": "Todo mês eu confiro a velocidade, troco os textos e fotos que você pedir e corrijo o que piorar.",
+        "preco": "A partir de R$ 90 por mês"
       }
     ]
   },
@@ -110,7 +113,7 @@
       },
       {
         "pergunta": "Quanto custa arrumar ou fazer um site?",
-        "resposta": "Depende do tamanho do site e do que precisa mudar. Eu mando o valor fechado antes de começar."
+        "resposta": "A otimização começa em R$ 490 e o site novo em R$ 1.200; a manutenção, em R$ 90 por mês. O valor final depende do tamanho do site, e eu mando o preço fechado antes de começar. A prévia continua grátis."
       },
       {
         "pergunta": "Você mexe em site de WordPress?",
