@@ -1,12 +1,12 @@
 {
   "seo": {
-    "titulo": "Vitrine Estúdio: sites sob medida para pequenas empresas",
+    "titulo": "Vitrine Estúdio: sites sob medida para empresas",
     "descricao": "Eu faço o site da sua empresa e mando a prévia pronta antes de você pagar, ao lado do site atual ou do Instagram. Rápido no celular: nota 90 ou mais no teste do Google.",
     "descricao_compartilhar": "Veja o seu site novo pronto antes de pagar: a Prévia Vitrine."
   },
   "inicio": {
     "titulo": "Seu site novo, pronto antes de você pagar.",
-    "texto": "Sites rápidos e bem-feitos para pequenas empresas do Rio Grande do Sul. Eu monto uma prévia do seu, de graça, e você só paga se aprovar."
+    "texto": "Sites rápidos e bem-feitos para empresas de qualquer tamanho, em todo o Brasil. Eu monto uma prévia do seu, de graça, e você só paga se aprovar."
   },
   "previa": {
     "titulo": "A prévia em 3 passos.",
@@ -116,6 +116,10 @@
         "resposta": "Depende do tamanho do site e do que precisa mudar. Primeiro você vê a prévia pronta, de graça. Se gostar, eu mando o valor fechado antes de começar, sem surpresa e sem compromisso."
       },
       {
+        "pergunta": "Você atende só pequenas empresas do seu estado?",
+        "resposta": "Não. Atendo micro, pequenas, médias e grandes empresas, em todo o Brasil. Tudo é feito a distância, por WhatsApp e e-mail."
+      },
+      {
         "pergunta": "Você mexe em site de WordPress?",
         "resposta": "Sim. Faço temas de WordPress do zero e também trabalho com sites em HTML."
       },
@@ -134,12 +138,12 @@
   "rodape": {
     "titulo": "Veja o seu site novo antes de pagar",
     "texto": "A prévia é grátis e chega no seu WhatsApp ou e-mail, num link só seu.",
-    "frase": "Sites sob medida para pequenas empresas."
+    "frase": "Sites sob medida para empresas de qualquer tamanho."
   },
   "sobre": {
     "rotulo": "Quem está por trás",
     "titulo": "Prazer, eu sou o Arthur.",
-    "lead": "Sou do Rio Grande do Sul e faço sites para pequenas empresas. Foi assim que começou:",
+    "lead": "Faço sites para empresas de qualquer tamanho, em todo o Brasil. Foi assim que começou:",
     "historia": "Meu primeiro site foi para a minha namorada, um site de jornalismo cultural. Depois veio um amigo, que tem uma estética automotiva e tinha recebido a proposta de site de outra empresa. Eu fiz uma versão melhor, sem custo de hospedagem para ele. Ele aprovou, e hoje o site dele está no ar.",
     "motivo": "Foi aí que eu percebi quanta empresa boa some no celular por não ter um site à altura do trabalho que faz. Por isso a prévia é grátis:",
     "destaque": "você vê o seu site pronto antes de pagar qualquer coisa.",
