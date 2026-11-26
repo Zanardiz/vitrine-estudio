@@ -132,6 +132,16 @@ main, .foot { position: relative; z-index: 1; }
 .plate__go { margin-top: 8px; color: var(--ink); font-weight: 600; }
 .plate__go i { font-style: normal; display: inline-block; transition: transform .3s var(--ease); }
 .plate:hover .plate__go i { transform: translate(3px, -1px); }
+/* Trabalho na largura toda: foto à esquerda, texto e prova à direita */
+.plate--full { grid-column: 1 / -1; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.plate--full .plate__img { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line); }
+.plate--full .plate__text { align-content: center; }
+.plate__go { text-decoration: none; }
+.proof { margin: 10px 0 0; display: grid; gap: 8px; }
+.proof figcaption { font-size: 13px; color: var(--ink-3); }
+.proof a { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); transition: border-color .3s; }
+.proof a:hover { border-color: var(--line-2); }
+.proof img { display: block; width: 100%; height: auto; }
 
 /* O brilho que passa quando a peça entra na luz */
 .plate::after, .exhibit .phone::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / .09) 50%, transparent 65%) no-repeat; background-size: 260% 100%; background-position: 130% 0; }
@@ -273,6 +283,8 @@ main, .foot { position: relative; z-index: 1; }
   .sec__head { grid-template-columns: 1fr; align-items: start; }
   .work__grid { grid-template-columns: 1fr; }
   .plate:nth-child(2) { margin-top: 0; }
+  .plate--full { grid-template-columns: 1fr; }
+  .plate--full .plate__img { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
   .steps__list, .offer__list { grid-template-columns: 1fr; }
   .step { grid-template-columns: 80px 1fr; column-gap: 20px; }
   .step::before { grid-row: span 2; font-size: 52px; }
