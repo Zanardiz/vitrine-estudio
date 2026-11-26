@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/schibsted-grotesk-v7.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/v9.css?v=13">
+<link rel="stylesheet" href="css/v9.css?v=14">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -44,7 +44,10 @@
         <a class="btn btn--primary" href="#pedido">Pedir minha prévia grátis</a>
         <a class="btn btn--ghost" href="#trabalhos">Ver trabalhos</a>
       </div>
-      <p class="hero__proof"><span class="dot" aria-hidden="true"></span>Cliente no ar: <a href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener">Macedo's Auto Detail</a>, Caxias do Sul</p>
+      <div class="hero__proofs">
+        <p class="hero__proof"><span class="dot" aria-hidden="true"></span>Cliente no ar: <a href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener">Macedo's Auto Detail</a>, Caxias do Sul</p>
+        <p class="hero__proof"><span class="ring" aria-hidden="true"></span>Elogiado pela Passtech Games, o estúdio francês de Ravenswatch. <a href="#ravenswatch">Ver o e-mail</a></p>
+      </div>
     </div>
     <div class="stage" data-stage>
       <div class="stage__light" aria-hidden="true"></div>
@@ -84,8 +87,27 @@
   <section class="sec work" id="trabalhos" aria-labelledby="work-h">
     <div class="sec__head">
       <h2 id="work-h">Veja os sites de perto.</h2>
-      <p>Um cliente real, um guia no ar e uma prévia. Abra e navegue como o seu cliente faria.</p>
+      <p>Um guia aprovado por um estúdio de games da França, um cliente real no ar e uma prévia. Abra e navegue como o seu cliente faria.</p>
     </div>
+    <!-- Destaque: o Manual de Ravenswatch, guia de fã que o estúdio do jogo aprovou e elogiou. O e-mail é real; o nome de quem recebeu fica coberto -->
+    <article class="feature" id="ravenswatch" aria-labelledby="raven-h" data-reveal>
+      <a class="feature__shot" href="https://ravenswatch-manual.pages.dev/#roleta" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/img/ravenswatch-manual.webp" width="1440" height="900" alt="" loading="lazy"></a>
+      <div class="feature__text">
+        <h3 class="feature__name" id="raven-h">Manual de Ravenswatch</h3>
+        <p class="tag">Guia de fã · no ar · aprovado pela Passtech Games, França</p>
+        <p>O guia do jogo Ravenswatch, em português e inglês: roleta com os 13 heróis, 65 builds explicadas nível a nível e tiers de talentos e objetos.</p>
+        <figure class="feature__quote">
+          <blockquote lang="en"><p>“The website looks really good, well done!”</p></blockquote>
+          <p class="feature__pt">“O site ficou muito bom, parabéns!”</p>
+          <figcaption>Passtech Games, o estúdio francês que criou Ravenswatch</figcaption>
+        </figure>
+        <a class="plate__go" href="https://ravenswatch-manual.pages.dev/#roleta" target="_blank" rel="noopener">Abrir o site <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <figure class="feature__mail">
+        <figcaption><span><b>O e-mail que recebemos do estúdio</b> Original em inglês. O nome de quem recebeu está coberto.</span><a href="assets/img/passtech-email.webp" target="_blank" rel="noopener">Ver em tamanho real</a></figcaption>
+        <a class="feature__paper" href="assets/img/passtech-email.webp" target="_blank" rel="noopener"><img src="assets/img/passtech-email.webp" width="1070" height="455" alt="E-mail da Passtech Games: o site ficou muito bom, parabéns; vocês têm a nossa autorização para publicar, não precisa falar com a Nacon; se publicar logo, talvez a gente cite o guia num vídeo do diário oficial do jogo." loading="lazy"></a>
+      </figure>
+    </article>
     <div class="work__grid">
       <a class="plate plate--wide" href="https://macedos-auto-detail.pages.dev" target="_blank" rel="noopener" data-reveal>
         <span class="plate__img"><img src="assets/img/macedos-home.webp" width="1440" height="900" alt="Página inicial do site da Macedo's Auto Detail" loading="lazy"></span>
@@ -95,20 +117,6 @@
         <span class="plate__img"><img src="assets/img/boa-de-contar.webp" width="1440" height="900" alt="Página inicial do Boa de Contar, projeto de jornalismo cultural" loading="lazy"></span>
         <span class="plate__text"><b>Boa de Contar</b><span class="tag">Prévia</span><span>Jornalismo cultural com capa em carrossel, editorias e página para enviar histórias.</span><span class="plate__go">Ver a prévia <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
       </a>
-      <!-- Manual de Ravenswatch: projeto de fã publicado com autorização do estúdio do jogo; o nome no e-mail fica coberto -->
-      <article class="plate plate--full" data-reveal>
-        <a class="plate__img" href="https://ravenswatch-manual.pages.dev/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/img/ravenswatch-manual.webp" width="1440" height="900" alt="" loading="lazy"></a>
-        <div class="plate__text">
-          <b>Manual de Ravenswatch</b>
-          <span class="tag">Projeto de fã · no ar · autorizado pela Passtech Games</span>
-          <span>Guia do jogo Ravenswatch em português e inglês: roleta com os 13 heróis, 65 builds explicadas nível a nível e tiers de talentos e objetos.</span>
-          <figure class="proof">
-            <figcaption>O e-mail do estúdio que criou o jogo, liberando a publicação:</figcaption>
-            <a href="assets/img/passtech-email.webp" target="_blank" rel="noopener"><img src="assets/img/passtech-email.webp" width="1070" height="455" alt="E-mail da Passtech Games: o site ficou muito bom, vocês têm a nossa autorização para publicar, não precisa falar com a Nacon." loading="lazy"></a>
-          </figure>
-          <a class="plate__go" href="https://ravenswatch-manual.pages.dev/" target="_blank" rel="noopener">Abrir o site <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </article>
     </div>
   </section>
 

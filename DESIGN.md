@@ -44,6 +44,18 @@ typography:
     fontWeight: 700
     lineHeight: 1.25
     letterSpacing: "-0.015em"
+  feature:
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(28px, 2.6vw, 38px)"
+    fontWeight: 700
+    lineHeight: 1.04
+    letterSpacing: "-0.03em"
+  quote:
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(21px, 1.9vw, 27px)"
+    fontWeight: 600
+    lineHeight: 1.18
+    letterSpacing: "-0.02em"
   numeral:
     fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
     fontSize: "64px"
@@ -200,6 +212,7 @@ A monochrome night palette: a black floor, three charcoal planes, three ink step
 
 ### Signals
 - **Live** (`status-live`): the single dot before "Cliente no ar" in the hero proof line, with a 4px halo at 14% opacity. It means "online now" and nothing else.
+- **Ring** (`steel` 1.5px outline, 8px): the marker before the second hero proof line (the Passtech praise). Same size and rhythm as the live dot, but hollow and gray, because it is evidence, not "online now".
 - **Error** (`error`): invalid field borders and error text.
 
 ### Named Rules
@@ -220,6 +233,8 @@ A monochrome night palette: a black floor, three charcoal planes, three ink step
 ### Hierarchy
 - **Display** (750, clamp(40px, 5.4vw, 80px), 0.98, -0.035em): the hero h1. The footer call uses the same voice at clamp(34px, 5.6vw, 84px), max 15ch.
 - **Headline** (700, clamp(30px, 3.5vw, 52px), 1.04, -0.03em): every section h2; 30px fixed on phones. The analysis h2 runs one step down (clamp(28px, 3vw, 44px)).
+- **Feature** (700, clamp(28px, 2.6vw, 38px), 1.04, -0.03em): the name of the featured work, one step under the section h2.
+- **Quote** (600, clamp(21px, 1.9vw, 27px), 1.18, -0.02em, balanced): the studio's sentence in the featured work, in its original English, followed by the Portuguese translation in support gray at 16px and the attribution in steel at 13px. Curly quotes inline; no oversized quote glyph.
 - **Price** (700, clamp(26px, 2.3vw, 34px), 1.1): the price value inside a price card.
 - **Title** (600 to 700, 20 to 22px, -0.015 to -0.02em): plate names (22px), step titles (21px), price-card names (20px, 600, in support gray), FAQ questions (19px, 600; 17px on phones).
 - **Numeral** (300, 64px, tabular): step counters in steel; 52px on tablet, 44px on phones.
@@ -283,6 +298,9 @@ The hero exhibit. A laptop (82% wide) and a phone (23% wide, pushed 60px forward
 
 ### Exhibits (before and after)
 Two phones on a shared floor line. The "before" phone is desaturated (saturate .55, brightness .72) and tilted -2deg; the "after" phone stands 14px higher. A thin steel arrow sits between them. Captions: name in ink, description in steel, centered.
+
+### Feature (featured work)
+The strongest proof sits above the plates, alone, full width: the Manual de Ravenswatch, approved and praised by Passtech Games. A first-plane panel with lit edges, Cast + Edge shadow and 14px radius, split 7fr/5fr: the screenshot on the left (cover, anchored top left, hairline on its right, 1.025 zoom on hover), the text on the right (Feature name, steel tag, description, then a strong hairline and the Quote block, then the arrow link). A second row spans the panel under a hairline: a caption row ("O e-mail que recebemos do estúdio" in ink, the note that it is the original with the recipient's name covered, and a "Ver em tamanho real" link) above the e-mail itself, shown as a sheet of paper at its native 1070px so it reads at desktop size (12px radius, Cast shadow, lifts 2px on hover, opens full size on tap). It catches the same light sweep as the plates. Below 1024px it stacks: screenshot 16:10, text, e-mail. The e-mail is a real screenshot; only the recipient's name is covered with a visible gray bar, never retouched otherwise.
 
 ### Plates (work)
 Each site shown large: first-plane ground, hairline border with lit top/left edges, Cast + Edge shadow, 14px radius. Image 16:10 on top, then name (22px, ink), tag (13px, steel), description, and a link line with an arrow icon. Hover lifts 3px, brightens the border, scales the image to 1.025 and nudges the arrow up-right.

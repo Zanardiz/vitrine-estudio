@@ -132,16 +132,34 @@ main, .foot { position: relative; z-index: 1; }
 .plate__go { margin-top: 8px; color: var(--ink); font-weight: 600; }
 .plate__go i { font-style: normal; display: inline-block; transition: transform .3s var(--ease); }
 .plate:hover .plate__go i { transform: translate(3px, -1px); }
-/* Trabalho na largura toda: foto à esquerda, texto e prova à direita */
-.plate--full { grid-column: 1 / -1; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-.plate--full .plate__img { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line); }
-.plate--full .plate__text { align-content: center; }
-.plate__go { text-decoration: none; }
-.proof { margin: 10px 0 0; display: grid; gap: 8px; }
-.proof figcaption { font-size: 13px; color: var(--ink-3); }
-.proof a { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); transition: border-color .3s; }
-.proof a:hover { border-color: var(--line-2); }
-.proof img { display: block; width: 100%; height: auto; }
+.plate__go { text-decoration: none; justify-self: start; }
+
+/* Destaque: o trabalho maior, com a frase do estúdio e o e-mail dele em tamanho de leitura */
+.feature { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); margin-bottom: clamp(28px, 3vw, 44px); background: var(--s1); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow), var(--edge); }
+.feature__shot { display: block; overflow: hidden; border-right: 1px solid var(--line); }
+.feature__shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; transition: transform .8s var(--ease); }
+.feature__shot:hover img { transform: scale(1.025); }
+.feature__text { display: grid; gap: 10px; align-content: center; padding: clamp(28px, 3.2vw, 48px); color: var(--ink-2); font-size: 16px; }
+.feature__name { font-size: clamp(28px, 2.6vw, 38px); line-height: 1.04; letter-spacing: -.03em; font-weight: 700; color: var(--ink); }
+.feature__quote { margin: 14px 0 6px; padding-top: 22px; border-top: 1px solid var(--line-2); display: grid; gap: 8px; }
+.feature__quote blockquote { margin: 0; }
+.feature__quote blockquote p { font-size: clamp(21px, 1.9vw, 27px); line-height: 1.18; letter-spacing: -.02em; font-weight: 600; color: var(--ink); text-wrap: balance; }
+.feature__pt { color: var(--ink-2); font-size: 16px; }
+.feature__quote figcaption { font-size: 13px; color: var(--ink-3); }
+.feature__mail { grid-column: 1 / -1; display: grid; justify-items: center; gap: 18px; padding: clamp(24px, 3vw, 40px) clamp(20px, 3.2vw, 48px) clamp(32px, 4vw, 56px); border-top: 1px solid var(--line); }
+.feature__mail figcaption { width: 100%; max-width: 1070px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; font-size: 14px; color: var(--ink-3); }
+.feature__mail figcaption b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.feature__mail figcaption a { color: var(--ink-2); text-underline-offset: 3px; text-decoration-color: var(--line-2); transition: color .2s, text-decoration-color .2s; }
+.feature__mail figcaption a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+.feature__paper { display: block; width: 100%; max-width: 1070px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform .4s var(--ease); }
+.feature__paper:hover { transform: translateY(-2px); }
+.feature__paper img { display: block; width: 100%; height: auto; }
+.feature::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / .07) 50%, transparent 65%) no-repeat; background-size: 260% 100%; background-position: 130% 0; }
+.feature.is-lit::after { animation: sweep 1.6s var(--ease) .15s 1 both; }
+.hero__proofs { display: grid; gap: 8px; }
+.hero__proofs .hero__proof { padding-left: 18px; text-indent: -18px; }
+.hero__proof a[href^="#"] { white-space: nowrap; }
+.ring { display: inline-block; vertical-align: 1px; margin-right: 10px; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--ink-3); }
 
 /* O brilho que passa quando a peça entra na luz */
 .plate::after, .exhibit .phone::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / .09) 50%, transparent 65%) no-repeat; background-size: 260% 100%; background-position: 130% 0; }
@@ -283,8 +301,8 @@ main, .foot { position: relative; z-index: 1; }
   .sec__head { grid-template-columns: 1fr; align-items: start; }
   .work__grid { grid-template-columns: 1fr; }
   .plate:nth-child(2) { margin-top: 0; }
-  .plate--full { grid-template-columns: 1fr; }
-  .plate--full .plate__img { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
+  .feature { grid-template-columns: 1fr; }
+  .feature__shot { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
   .steps__list, .offer__list { grid-template-columns: 1fr; }
   .step { grid-template-columns: 80px 1fr; column-gap: 20px; }
   .step::before { grid-row: span 2; font-size: 52px; }
@@ -326,7 +344,7 @@ main, .foot { position: relative; z-index: 1; }
 }
 
 /* A mesma luz do alto à esquerda em toda a página: a aresta de cima e a da esquerda de cada plano pegam um fio de aço */
-.plate, .price, .audit-panel, .order__box { border-top-color: rgb(138 143 150 / .38); border-left-color: rgb(138 143 150 / .2); }
+.plate, .feature, .price, .audit-panel, .order__box { border-top-color: rgb(138 143 150 / .38); border-left-color: rgb(138 143 150 / .2); }
 .ico { width: 1em; height: 1em; vertical-align: -.12em; display: inline-block; transition: transform .3s var(--ease); }
 .plate:hover .plate__go .ico { transform: translate(3px, -1px); }
 .price__go:hover .ico { transform: translateX(3px); }
@@ -354,5 +372,5 @@ main, .foot { position: relative; z-index: 1; }
   html { scroll-behavior: auto; }
   .js [data-reveal] { transform: none; transition-duration: .5s; }
   .stage__set { transition: none; }
-  .plate.is-lit::after, .exhibit.is-lit .phone::after { animation: none; }
+  .plate.is-lit::after, .feature.is-lit::after, .exhibit.is-lit .phone::after { animation: none; }
 }

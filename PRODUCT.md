@@ -34,7 +34,8 @@ O Vitrine Estúdio faz sites sob medida para pequenas empresas, além de otimiza
 ## Evidence on Hand
 - **Cliente real:** só a Macedo's Auto Detail, com prints em `assets/img/`.
 - **Sites de demonstração** (aprovados pelo usuário em 2026-11-17): só podem aparecer marcados como "conceito", nunca como clientes.
-- Não existem depoimentos, números de clientes nem logos de clientes. Nunca inventar.
+- **Trabalho de destaque (2026-11-26):** o Manual de Ravenswatch (https://ravenswatch-manual.pages.dev), guia de fã do jogo, publicado com autorização por e-mail da Passtech Games (estúdio francês do jogo, Lyon). O e-mail é real: "The website looks really good, well done!". Pode aparecer como elogio do estúdio ao guia, nunca como cliente nem como depoimento de cliente. O print fica em `assets/img/passtech-email.webp` com o nome de quem recebeu coberto.
+- Fora essa frase da Passtech, não existem depoimentos, números de clientes nem logos de clientes. Nunca inventar.
 
 ## Product Principles
 1. Mostrar antes de pedir: o trabalho pronto convence mais que a promessa.
